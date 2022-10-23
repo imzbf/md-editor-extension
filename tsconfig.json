@@ -1,0 +1,17 @@
+{
+  "strict": true,
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "resolveJsonModule": true,
+    "moduleResolution": "node",
+    "declaration": true,
+    "declarationDir": "./dist/locale",
+    "outDir": "./dist/locale",
+    "lib": ["esnext"],
+    "importHelpers": true,
+    "skipLibCheck": true
+  },
+  "include": ["src/locale/*.ts"],
+  "exclude": ["node_modules"]
+}
