@@ -20,7 +20,7 @@
   ],
   "types": "index.d.ts",
   "scripts": {
-    "build": "tsc & node scripts/build-style"
+    "build": "tsc && node scripts/build-style"
   },
   "devDependencies": {
     "sass": "^1.55.0",
