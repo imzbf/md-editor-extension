@@ -4,6 +4,18 @@
 
 分享你关于[md-editor-v3](https://github.com/imzbf/md-editor-v3) 和 [md-editor-rt](https://github.com/imzbf/md-editor-rt)的公共配置。
 
+语言
+
+| 语言名称 | 描述 | 作者                               |
+| -------- | ---- | ---------------------------------- |
+| zh_TW    | 暂无 | [@imzbf](https://github.com/imzbf) |
+
+预览主题
+
+| 主题名称   | 描述                                                                                                                                        | 作者                               |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- |
+| devui-blue | 来自[juejin-markdown-theme-devui-blue](https://github.com/kagol/juejin-markdown-theme-devui-blue)，原作者[@kagol](https://github.com/kagol) | [@imzbf](https://github.com/imzbf) |
+
 ## 使用
 
 ### md-editor-v3
@@ -18,7 +30,7 @@ yarn add md-editor-v3 @vavt/md-editor-extension
 
 ```vue
 <template>
-  <md-editor language="zh-tw" preview-theme="devui-blue" />
+  <md-editor language="zh-TW" preview-theme="devui-blue" />
 </template>
 
 <script setup>
@@ -26,12 +38,12 @@ import MdEditor from 'md-editor-v3';
 // 引入公共库中的预览主题
 import '@vavt/md-editor-extension/dist/previewTheme/devui-blue.css';
 // 引入公共库中的语言配置
-import zhTW from '@vavt/md-editor-extension/dist/locale/zh-TW';
+import ZH_TW from '@vavt/md-editor-extension/dist/locale/zh-TW';
 
 MdEditor.config({
   editorConfig: {
     languageUserDefined: {
-      'zh-tw': zhTW,
+      'zh-TW': ZH_TW,
     },
   },
 });
@@ -54,18 +66,18 @@ import MdEditor from 'md-editor-rt';
 // 引入公共库中的预览主题
 import '@vavt/md-editor-extension/dist/previewTheme/devui-blue.css';
 // 引入公共库中的语言配置
-import zhTW from '@vavt/md-editor-extension/dist/locale/zh-TW';
+import ZH_TW from '@vavt/md-editor-extension/dist/locale/zh-TW';
 
 MdEditor.config({
   editorConfig: {
     languageUserDefined: {
-      'zh-tw': zhTW,
+      'zh-TW': ZH_TW,
     },
   },
 });
 
 export default () => {
-  return <MdEditor language="zh-tw" previewTheme="devui-blue" />;
+  return <MdEditor language="zh-TW" previewTheme="devui-blue" />;
 };
 ```
 

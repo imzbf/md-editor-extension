@@ -4,6 +4,18 @@ English \| [中文](https://github.com/imzbf/md-editor-extension/blob/dev/README
 
 Share your configuration of [md-editor-v3](https://github.com/imzbf/md-editor-v3) and [md-editor-rt](https://github.com/imzbf/md-editor-rt).
 
+Language
+
+| name  | description | author                             |
+| ----- | ----------- | ---------------------------------- |
+| zh_TW | 中文繁体    | [@imzbf](https://github.com/imzbf) |
+
+PreviewTheme
+
+| name       | description                                                                                                                                            | author                             |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------- |
+| devui-blue | From [juejin-markdown-theme-devui-blue](https://github.com/kagol/juejin-markdown-theme-devui-blue), original author [@kagol](https://github.com/kagol) | [@imzbf](https://github.com/imzbf) |
+
 ## Usage
 
 ### md-editor-v3
@@ -18,7 +30,7 @@ yarn add md-editor-v3 @vavt/md-editor-extension
 
 ```vue
 <template>
-  <md-editor language="zh-tw" preview-theme="devui-blue" />
+  <md-editor language="zh-TW" preview-theme="devui-blue" />
 </template>
 
 <script setup>
@@ -26,12 +38,12 @@ import MdEditor from 'md-editor-v3';
 // import theme css
 import '@vavt/md-editor-extension/dist/previewTheme/devui-blue.css';
 // import existing language
-import zhTW from '@vavt/md-editor-extension/dist/locale/zh-TW';
+import ZH_TW from '@vavt/md-editor-extension/dist/locale/zh-TW';
 
 MdEditor.config({
   editorConfig: {
     languageUserDefined: {
-      'zh-tw': zhTW,
+      'zh-TW': ZH_TW,
     },
   },
 });
@@ -54,18 +66,18 @@ import MdEditor from 'md-editor-rt';
 // import existing theme
 import '@vavt/md-editor-extension/dist/previewTheme/devui-blue.css';
 // import existing language
-import zhTW from '@vavt/md-editor-extension/dist/locale/zh-TW';
+import ZH_TW from '@vavt/md-editor-extension/dist/locale/zh-TW';
 
 MdEditor.config({
   editorConfig: {
     languageUserDefined: {
-      'zh-tw': zhTW,
+      'zh-TW': ZH_TW,
     },
   },
 });
 
 export default () => {
-  return <MdEditor language="zh-tw" previewTheme="devui-blue" />;
+  return <MdEditor language="zh-TW" previewTheme="devui-blue" />;
 };
 ```
 
