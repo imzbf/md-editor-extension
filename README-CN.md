@@ -1,5 +1,7 @@
 # md-editor-extension
 
+[English](https://github.com/imzbf/md-editor-extension) \| 中文
+
 分享你关于[md-editor-v3](https://github.com/imzbf/md-editor-v3) 和 [md-editor-rt](https://github.com/imzbf/md-editor-rt)的公共配置。
 
 ## 使用
