@@ -2,6 +2,7 @@
   "name": "@vavt/md-editor-extension",
   "version": "1.0.0",
   "license": "MIT",
+  "description": "Extensions for md-editor-rt and md-editor-v3.",
   "author": {
     "name": "zbf",
     "url": "https://imzbf.cc"
