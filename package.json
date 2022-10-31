@@ -14,7 +14,8 @@
     "url": "https://github.com/imzbf/md-editor-extension/issues"
   },
   "files": [
-    "dist"
+    "dist",
+    "index.d.ts"
   ],
   "types": "index.d.ts",
   "scripts": {
