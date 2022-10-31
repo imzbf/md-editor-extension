@@ -2,11 +2,6 @@
 # yarn lockfile v1
 
 
-"@types/marked@^4.0.3":
-  version "4.0.7"
-  resolved "https://registry.npmmirror.com/@types/marked/-/marked-4.0.7.tgz#400a76809fd08c2bbd9e25f3be06ea38c8e0a1d3"
-  integrity sha512-eEAhnz21CwvKVW+YvRvcTuFKNU9CV1qH+opcgVK3pIMI6YZzDm6gc8o2vHjldFk6MGKt5pueSB7IOpvpx5Qekw==
-
 anymatch@~3.1.2:
   version "3.1.2"
   resolved "https://registry.npmmirror.com/anymatch/-/anymatch-3.1.2.tgz#c0557c096af32f106198f4f4e2a383537e378716"
@@ -89,20 +84,6 @@ is-number@^7.0.0:
   version "7.0.0"
   resolved "https://registry.npmmirror.com/is-number/-/is-number-7.0.0.tgz#7535345b896734d5f80c4d06c50955527a14f12b"
   integrity sha512-41Cifkg6e8TylSpdtTpeLVMqvSBEVzTttHvERD741+pnZ8ANv0004MRL43QKPDlK9cGvNp6NZWZUBlbGXYxxng==
-
-md-editor-rt@^2.3.0:
-  version "2.3.0"
-  resolved "https://registry.npmmirror.com/md-editor-rt/-/md-editor-rt-2.3.0.tgz#a931cbb90a007b4c34960c66987aefa4c72ed252"
-  integrity sha512-4iWKkmGaFnb2v6ORRNqxlPDysdaqliCoX4qoNKU3QmIqkqTXz3vGtELYejc5/d3VJyOVYDDDGcHgFGmscAKwMw==
-  dependencies:
-    "@types/marked" "^4.0.3"
-
-md-editor-v3@^2.3.0:
-  version "2.3.0"
-  resolved "https://registry.npmmirror.com/md-editor-v3/-/md-editor-v3-2.3.0.tgz#4402389fa838f9681a4b38ef26ef3a8b3a37908f"
-  integrity sha512-HZiOSwOct3YsuTtsTucEg5o9mSRkgnazVn2sTInjG+d+zlMQE6iCMmDyGICBoh5Im0kmX2Pf6Sxhz6qp/0XngQ==
-  dependencies:
-    "@types/marked" "^4.0.3"
 
 normalize-path@^3.0.0, normalize-path@~3.0.0:
   version "3.0.0"

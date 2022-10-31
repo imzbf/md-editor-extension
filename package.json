@@ -1,18 +1,26 @@
 {
   "name": "@vavt/md-editor-extension",
   "version": "1.0.0",
-  "main": "index.js",
   "license": "MIT",
   "author": {
     "name": "zbf",
     "url": "https://imzbf.cc"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imzbf/md-editor-extension.git"
+  },
+  "bugs": {
+    "url": "https://github.com/imzbf/md-editor-extension/issues"
+  },
+  "files": [
+    "dist"
+  ],
+  "types": "index.d.ts",
   "scripts": {
     "build": "tsc & node scripts/build-style"
   },
   "devDependencies": {
-    "md-editor-rt": "^2.3.0",
-    "md-editor-v3": "^2.3.0",
     "sass": "^1.55.0",
     "typescript": "^4.8.4"
   }

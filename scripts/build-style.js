@@ -13,7 +13,7 @@ if (!fs.existsSync(distFolder)) {
   fs.mkdirSync(distFolder);
 }
 // 获取构建文件存放目录
-const targetDir = path.resolve(__dirname, '../dist/css');
+const targetDir = path.resolve(__dirname, '../dist/previewTheme');
 if (!fs.existsSync(targetDir)) {
   // removeDir(targetDir);
   fs.mkdirSync(targetDir);

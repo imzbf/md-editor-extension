@@ -1,15 +1,16 @@
-import { StaticTextDefaultValue } from 'md-editor-v3';
+import type { StaticTextDefaultValue } from '../../index';
 
 /**
  * @author imzbf
  * @email  zbfcqtl@gmail.com
+ * @github https://github.com/imzbf
  *
  * 繁体
  *
  * 作者不确定是否完全翻译正确中文繁体
  * 如果您发现错误，请纠正我
  */
-const zhTW: StaticTextDefaultValue = {
+const ZH_TW: StaticTextDefaultValue = {
   toolbarTips: {
     bold: '加粗',
     underline: '下劃線',
@@ -89,4 +90,4 @@ const zhTW: StaticTextDefaultValue = {
   },
 };
 
-export default zhTW;
+export default ZH_TW;
