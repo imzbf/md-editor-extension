@@ -12,9 +12,9 @@
 
 预览主题
 
-| 主题名称   | 描述                                                                                                                                        | 作者                               |
-| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- |
-| devui-blue | 来自[juejin-markdown-theme-devui-blue](https://github.com/kagol/juejin-markdown-theme-devui-blue)，原作者[@kagol](https://github.com/kagol) | [@imzbf](https://github.com/imzbf) |
+| 主题名称  | 描述                                                                                                                                                    | 作者                               |
+| --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- |
+| arknights | 来自[juejin-markdown-theme-arknights](https://github.com/viewweiwu/juejin-markdown-theme-arknights)，原作者：[@viewweiwu](https://github.com/viewweiwu) | [@imzbf](https://github.com/imzbf) |
 
 ## 使用
 
@@ -30,13 +30,13 @@ yarn add md-editor-v3 @vavt/md-editor-extension
 
 ```vue
 <template>
-  <md-editor language="zh-TW" preview-theme="devui-blue" />
+  <md-editor language="zh-TW" preview-theme="arknights" />
 </template>
 
 <script setup>
 import MdEditor from 'md-editor-v3';
 // 引入公共库中的预览主题
-import '@vavt/md-editor-extension/dist/previewTheme/devui-blue.css';
+import '@vavt/md-editor-extension/dist/previewTheme/arknights.css';
 // 引入公共库中的语言配置
 import ZH_TW from '@vavt/md-editor-extension/dist/locale/zh-TW';
 
@@ -64,7 +64,7 @@ yarn add md-editor-rt @vavt/md-editor-extension
 import React from 'react';
 import MdEditor from 'md-editor-rt';
 // 引入公共库中的预览主题
-import '@vavt/md-editor-extension/dist/previewTheme/devui-blue.css';
+import '@vavt/md-editor-extension/dist/previewTheme/arknights.css';
 // 引入公共库中的语言配置
 import ZH_TW from '@vavt/md-editor-extension/dist/locale/zh-TW';
 
@@ -77,7 +77,7 @@ MdEditor.config({
 });
 
 export default () => {
-  return <MdEditor language="zh-TW" previewTheme="devui-blue" />;
+  return <MdEditor language="zh-TW" previewTheme="arknights" />;
 };
 ```
 
@@ -195,3 +195,5 @@ export default ZH_CN;
 ```
 
 `xxx` 即是你的主题名称，通过 `previewTheme="xxx"` 来使用。
+
+你可以充分的利用编辑器已提供的[css 变量](https://github.com/imzbf/md-editor-v3#change-styles)来设置你的主题。
