@@ -113,6 +113,7 @@ const EN_US: StaticTextDefaultValue = {
     quote: 'quote',
     unorderedList: 'unordered list',
     orderedList: 'ordered list',
+    task: 'task list',
     codeRow: 'inline code',
     code: 'block-level code',
     link: 'link',

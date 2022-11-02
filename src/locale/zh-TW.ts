@@ -22,6 +22,7 @@ const ZH_TW: StaticTextDefaultValue = {
     quote: '引用',
     unorderedList: '無序列錶',
     orderedList: '有序列錶',
+    task: '任務列錶',
     codeRow: '行內代碼',
     code: '塊級代碼',
     link: '鏈接',

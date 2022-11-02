@@ -113,6 +113,7 @@ const ZH_CN: StaticTextDefaultValue = {
     quote: '引用',
     unorderedList: '无序列表',
     orderedList: '有序列表',
+    task: '任务列表',
     codeRow: '行内代码',
     code: '块级代码',
     link: '链接',
