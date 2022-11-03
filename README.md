@@ -150,7 +150,7 @@ const EN_US: StaticTextDefaultValue = {
     descLable: 'Desc:',
     descLablePlaceHolder: 'Enter a description...',
     urlLable: 'Link:',
-    UrlLablePlaceHolder: 'Enter a link...',
+    urlLablePlaceHolder: 'Enter a link...',
     buttonOK: 'OK',
   },
   clipModalTips: {

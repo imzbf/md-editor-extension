@@ -59,7 +59,7 @@ const ZH_TW: StaticTextDefaultValue = {
     descLable: '鏈接描述：',
     descLablePlaceHolder: '請輸入描述...',
     urlLable: '鏈接地址：',
-    UrlLablePlaceHolder: '請輸入链接...',
+    urlLablePlaceHolder: '請輸入链接...',
     buttonOK: '確定',
   },
   clipModalTips: {
