@@ -64,8 +64,8 @@ $bg-color: rgba(224, 224, 224, 0.1);
     padding-bottom: 0;
     margin-top: 35px;
     margin-bottom: 10px;
-    font-weight: 900;
-    font-family: serif;
+    // font-weight: 900;
+    // font-family: serif;
     letter-spacing: 1px;
     color: var(--text);
 
@@ -281,7 +281,6 @@ $bg-color: rgba(224, 224, 224, 0.1);
   }
 
   blockquote {
-    color: #666;
     padding: 12px 23px 2px;
     border: 1px solid var(--border-blue);
     background-color: var(--area);
