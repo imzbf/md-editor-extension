@@ -9,7 +9,7 @@ const FR_FR: StaticTextDefaultValue = {
   toolbarTips: {
     bold: 'Gras',
     underline: 'Souligné',
-    italic: 'Italic',
+    italic: 'Italique',
     strikeThrough: 'Barré',
     title: 'Titre',
     sub: 'Indice',
