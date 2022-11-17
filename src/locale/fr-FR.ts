@@ -34,7 +34,7 @@ const FR_FR: StaticTextDefaultValue = {
     preview: 'Prévisualiser',
     htmlPreview: 'Prévisualiser le HTML',
     catalog: 'Table des matières',
-    github: 'Code source de l'editeur',
+    github: 'Code source de l\'editeur',
   },
   titleItem: {
     h1: 'Titre niveau 1',
@@ -71,7 +71,7 @@ const FR_FR: StaticTextDefaultValue = {
     sequence: 'Chronogramme',
     gantt: 'Diagramme de Gantt',
     class: 'Diagramme de classes',
-    state: 'Diagramme d'état',
+    state: 'Diagramme d\'état',
     pie: 'Diagramme circulaire',
     relationship: 'Diagramme de relation',
     journey: 'Diagramme de tâches',
