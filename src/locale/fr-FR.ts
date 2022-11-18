@@ -46,15 +46,16 @@ const FR_FR: StaticTextDefaultValue = {
   },
   imgTitleItem: {
     link: 'Ajouter depuis une url',
+    linkModalTitle: 'Ajouter une image depuis une url',
     upload: 'Télécharger une image',
     clip2upload: 'Télécharger et recadrer',
   },
   linkModalTips: {
     title: 'Ajouter un lien',
-    descLable: 'Texte ：',
-    descLablePlaceHolder: 'Entrez un texte...',
-    urlLable: 'Url ：',
-    urlLablePlaceHolder: 'Entrez une url...',
+    descLabel: 'Texte ：',
+    descLabelPlaceHolder: 'Entrez un texte...',
+    urlLabel: 'Url ：',
+    urlLabelPlaceHolder: 'Entrez une url...',
     buttonOK: 'Valider',
   },
   clipModalTips: {
