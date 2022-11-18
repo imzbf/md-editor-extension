@@ -9,6 +9,7 @@ Language
 | name  | description | author                             |
 | ----- | ----------- | ---------------------------------- |
 | zh_TW | 中文繁体    | [@imzbf](https://github.com/imzbf) |
+| fr_FR | French     | [@tofandel](https://github.com/tofandel) |
 
 PreviewTheme
 
