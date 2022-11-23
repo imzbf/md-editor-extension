@@ -51,12 +51,12 @@ const ZH_TW: StaticTextDefaultValue = {
   },
   imgTitleItem: {
     link: '添加鏈接',
-    linkModalTitle: '添加圖片',
     upload: '上傳圖片',
     clip2upload: '裁剪上傳',
   },
   linkModalTips: {
-    title: '添加鏈接',
+    linkTitle: '添加鏈接',
+    imageTitle: '添加圖片',
     descLabel: '鏈接描述：',
     descLabelPlaceHolder: '請輸入描述...',
     urlLabel: '鏈接地址：',
