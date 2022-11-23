@@ -148,10 +148,10 @@ const EN_US: StaticTextDefaultValue = {
   },
   linkModalTips: {
     title: 'Add ',
-    descLable: 'Desc:',
-    descLablePlaceHolder: 'Enter a description...',
-    urlLable: 'Link:',
-    urlLablePlaceHolder: 'Enter a link...',
+    descLabel: 'Desc:',
+    descLabelPlaceHolder: 'Enter a description...',
+    urlLabel: 'Link:',
+    urlLabelPlaceHolder: 'Enter a link...',
     buttonOK: 'OK',
   },
   clipModalTips: {
