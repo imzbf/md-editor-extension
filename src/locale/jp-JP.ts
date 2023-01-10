@@ -3,7 +3,7 @@ import type { StaticTextDefaultValue } from '../../index';
 /**
  * @author Jie Xie
  * @github https://github.com/xj89959853
- * 
+ *
  * 日语翻译
  */
 const JP_JP: StaticTextDefaultValue = {
@@ -35,7 +35,7 @@ const JP_JP: StaticTextDefaultValue = {
     preview: 'プレビュー',
     htmlPreview: 'htmlプレビュー',
     catalog: '目次',
-    github: "ギットハブ",
+    github: 'ギットハブ',
   },
   titleItem: {
     h1: '見出し1',
@@ -73,7 +73,7 @@ const JP_JP: StaticTextDefaultValue = {
     sequence: 'タイミング図',
     gantt: 'ガントチャート',
     class: 'クラス図',
-    state: "状態図",
+    state: '状態図',
     pie: '円グラフ',
     relationship: '関係図',
     journey: '旅路図',

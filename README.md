@@ -6,10 +6,11 @@ Share your configuration of [md-editor-v3](https://github.com/imzbf/md-editor-v3
 
 Language
 
-| name  | description | author                             |
-| ----- | ----------- | ---------------------------------- |
-| zh_TW | 中文繁体    | [@imzbf](https://github.com/imzbf) |
-| fr_FR | French     | [@tofandel](https://github.com/tofandel) |
+| name  | description            | author                                       |
+| ----- | ---------------------- | -------------------------------------------- |
+| zh_TW | Chinese ( Traditional) | [@imzbf](https://github.com/imzbf)           |
+| fr_FR | French                 | [@tofandel](https://github.com/tofandel)     |
+| jp_JP | Japanese               | [@xj89959853](https://github.com/xj89959853) |
 
 PreviewTheme
 
