@@ -1,6 +1,6 @@
 # md-editor-extension
 
-English \| [中文](https://github.com/imzbf/md-editor-extension/blob/dev/README-CN.md)
+English \| [中文](https://github.com/imzbf/md-editor-extension/blob/develop/README-CN.md)
 
 Share your configuration of [md-editor-v3](https://github.com/imzbf/md-editor-v3) and [md-editor-rt](https://github.com/imzbf/md-editor-rt).
 
