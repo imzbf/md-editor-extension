@@ -1,10 +1,10 @@
-@import '../common.scss';
+@import '../../common/index.scss';
 
 $ak-font: -apple-system, system-ui, Menlo, Monaco, Consolas, 'Courier New';
 $line-space: 22px;
 $bg-color: rgba(224, 224, 224, 0.1);
 
-.#{$class} {
+.#{$prefix} {
   --bg-color: rgba(224, 224, 224, 0.1);
   --blue: #37b2ff;
   --yellow: #feea1e;
@@ -19,7 +19,7 @@ $bg-color: rgba(224, 224, 224, 0.1);
   --table-bg-color: #fff;
 }
 
-.#{$darkClass} {
+.#{$prefix}-dark {
   --bg-color: rgba(224, 224, 224, 0.1);
   --blue: #37b2ff;
   --yellow: #feea1e;
@@ -35,7 +35,7 @@ $bg-color: rgba(224, 224, 224, 0.1);
 }
 
 .arknights-theme {
-  @include commonStyle;
+  @include common-style;
 
   word-break: break-word;
   line-height: 1.75;
