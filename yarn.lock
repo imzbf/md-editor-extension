@@ -359,10 +359,10 @@ magic-string@^0.25.7:
   dependencies:
     sourcemap-codec "^1.4.8"
 
-md-editor-v3@^2.9.0-beta.1:
-  version "2.9.0-beta.1"
-  resolved "https://registry.npmjs.org/md-editor-v3/-/md-editor-v3-2.9.0-beta.1.tgz#4cb94aefc3ed6ebd0fdc9544943953635bdd1aad"
-  integrity sha512-B+gQQHDSQtrQsA2pyO5YX/uULR8JK7VOAGRk4AeDmEY164MCG1nT5kA3P4GArLlMCvHgo5Wem3xUjoqaR10eIw==
+md-editor-v3@^2.9.0:
+  version "2.9.0"
+  resolved "https://registry.npmjs.org/md-editor-v3/-/md-editor-v3-2.9.0.tgz#9df986a474841baa5c6d5e81e3c0d9cfded585b5"
+  integrity sha512-mpnB368J3LPj0VFCP9SdO5JH7gHS/IDD9j31dQc/OttInjxDhhAm8aY5Fda1ZiiXpGTQgzIHQVTqLiKO8J3ekg==
 
 nanoid@^3.3.4:
   version "3.3.4"
