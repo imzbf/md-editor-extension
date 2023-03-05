@@ -89,6 +89,8 @@ export default () => {
 - Write code based on existing templates.
 - Submit a pull request to the project owner.
 
+> Please note that the development environment has automatically introduced your language configuration and theme. You do not need to manually reference it in the 'dev' directory. Regardless of the production or development environment, you only need to pay attention to the content of the language configuration and theme itself.
+
 ### Language
 
 Create a file named as `[language name].js`, and export in the following template.
@@ -191,8 +193,11 @@ export default EN_US;
 
 Create a file named as `[theme name].scss`, then write your theme code:
 
-```css
+```scss
+@import '../../common/index.scss';
+
 .xxx-theme {
+  @include common-style;
   color: red;
 }
 ```

@@ -83,11 +83,13 @@ export default () => {
 };
 ```
 
-## 贡献
+## 参与贡献
 
 - Fork 这个仓库；
 - 按照仓库的模板编写你的配置代码；
 - 提交 pull request 到本仓库。
+
+> 请注意，开发环境已经自动引入你的语言配置和主题，不需要在`dev`目录下手动引用，无论生产还是开发环境，都只需要关注语言配置和主题的内容本身。
 
 ### 语言
 
@@ -191,8 +193,11 @@ export default ZH_CN;
 
 在 previewTheme 文件夹下新增你的预览主题，通过 `[name].scss` 导出
 
-```css
+```scss
+@import '../../common/index.scss';
+
 .xxx-theme {
+  @include common-style;
   color: red;
 }
 ```
