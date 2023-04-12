@@ -1,6 +1,6 @@
 {
   "name": "@vavt/md-editor-extension",
-  "version": "2.0.0",
+  "version": "3.0.0-beta.0",
   "license": "MIT",
   "description": "Extensions for md-editor-rt and md-editor-v3.",
   "author": {
