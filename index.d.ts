@@ -10,6 +10,7 @@ export interface StaticTextDefaultValue {
     quote?: string;
     unorderedList?: string;
     orderedList?: string;
+    task?: string;
     codeRow?: string;
     code?: string;
     link?: string;
@@ -44,11 +45,12 @@ export interface StaticTextDefaultValue {
     clip2upload: string;
   };
   linkModalTips?: {
-    title?: string;
-    descLable?: string;
-    descLablePlaceHolder?: string;
-    urlLable?: string;
-    UrlLablePlaceHolder?: string;
+    linkTitle?: string;
+    imageTitle?: string;
+    descLabel?: string;
+    descLabelPlaceHolder?: string;
+    urlLabel?: string;
+    urlLabelPlaceHolder?: string;
     buttonOK?: string;
   };
   clipModalTips?: {

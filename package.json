@@ -1,7 +1,8 @@
 {
   "name": "@vavt/md-editor-extension",
-  "version": "1.0.0-beta.0",
+  "version": "2.0.0",
   "license": "MIT",
+  "description": "Extensions for md-editor-rt and md-editor-v3.",
   "author": {
     "name": "zbf",
     "url": "https://imzbf.cc"
@@ -14,14 +15,20 @@
     "url": "https://github.com/imzbf/md-editor-extension/issues"
   },
   "files": [
-    "dist"
+    "dist",
+    "index.d.ts"
   ],
   "types": "index.d.ts",
   "scripts": {
-    "build": "tsc & node scripts/build-style"
+    "dev": "vite",
+    "build": "tsc && node scripts/build-style"
   },
   "devDependencies": {
+    "@vitejs/plugin-vue": "^4.0.0",
+    "md-editor-v3": "^2.9.0",
     "sass": "^1.55.0",
-    "typescript": "^4.8.4"
+    "typescript": "^4.8.4",
+    "vite": "^4.1.4",
+    "vue": "^3.2.47"
   }
 }

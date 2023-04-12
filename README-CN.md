@@ -6,15 +6,17 @@
 
 语言
 
-| 语言名称 | 描述 | 作者                               |
-| -------- | ---- | ---------------------------------- |
-| zh_TW    | 暂无 | [@imzbf](https://github.com/imzbf) |
+| 语言名称 | 描述         | 作者                                         |
+| -------- | ------------ | -------------------------------------------- |
+| zh_TW    | 中文（繁体） | [@imzbf](https://github.com/imzbf)           |
+| fr_FR    | 法语         | [@tofandel](https://github.com/tofandel)     |
+| jp_JP    | 日语         | [@xj89959853](https://github.com/xj89959853) |
 
 预览主题
 
-| 主题名称   | 描述                                                                                                                                        | 作者                               |
-| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- |
-| devui-blue | 来自[juejin-markdown-theme-devui-blue](https://github.com/kagol/juejin-markdown-theme-devui-blue)，原作者[@kagol](https://github.com/kagol) | [@imzbf](https://github.com/imzbf) |
+| 主题名称  | 描述                                                                                                                                                    | 作者                               |
+| --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- |
+| arknights | 来自[juejin-markdown-theme-arknights](https://github.com/viewweiwu/juejin-markdown-theme-arknights)，原作者：[@viewweiwu](https://github.com/viewweiwu) | [@imzbf](https://github.com/imzbf) |
 
 ## 使用
 
@@ -30,13 +32,13 @@ yarn add md-editor-v3 @vavt/md-editor-extension
 
 ```vue
 <template>
-  <md-editor language="zh-TW" preview-theme="devui-blue" />
+  <md-editor language="zh-TW" preview-theme="arknights" />
 </template>
 
 <script setup>
 import MdEditor from 'md-editor-v3';
 // 引入公共库中的预览主题
-import '@vavt/md-editor-extension/dist/previewTheme/devui-blue.css';
+import '@vavt/md-editor-extension/dist/previewTheme/arknights.css';
 // 引入公共库中的语言配置
 import ZH_TW from '@vavt/md-editor-extension/dist/locale/zh-TW';
 
@@ -64,7 +66,7 @@ yarn add md-editor-rt @vavt/md-editor-extension
 import React from 'react';
 import MdEditor from 'md-editor-rt';
 // 引入公共库中的预览主题
-import '@vavt/md-editor-extension/dist/previewTheme/devui-blue.css';
+import '@vavt/md-editor-extension/dist/previewTheme/arknights.css';
 // 引入公共库中的语言配置
 import ZH_TW from '@vavt/md-editor-extension/dist/locale/zh-TW';
 
@@ -77,15 +79,17 @@ MdEditor.config({
 });
 
 export default () => {
-  return <MdEditor language="zh-TW" previewTheme="devui-blue" />;
+  return <MdEditor language="zh-TW" previewTheme="arknights" />;
 };
 ```
 
-## 贡献
+## 参与贡献
 
 - Fork 这个仓库；
 - 按照仓库的模板编写你的配置代码；
 - 提交 pull request 到本仓库。
+
+> 请注意，开发环境已经自动引入你的语言配置和主题，不需要在`dev`目录下手动引用，无论生产还是开发环境，都只需要关注语言配置和主题的内容本身。
 
 ### 语言
 
@@ -113,6 +117,7 @@ const ZH_CN: StaticTextDefaultValue = {
     quote: '引用',
     unorderedList: '无序列表',
     orderedList: '有序列表',
+    task: '任务列表',
     codeRow: '行内代码',
     code: '块级代码',
     link: '链接',
@@ -146,10 +151,10 @@ const ZH_CN: StaticTextDefaultValue = {
   },
   linkModalTips: {
     title: '添加',
-    descLable: '链接描述：',
-    descLablePlaceHolder: '请输入描述...',
-    urlLable: '链接地址：',
-    UrlLablePlaceHolder: '请输入链接...',
+    descLabel: '链接描述：',
+    descLabelPlaceHolder: '请输入描述...',
+    urlLabel: '链接地址：',
+    urlLabelPlaceHolder: '请输入链接...',
     buttonOK: '确定',
   },
   clipModalTips: {
@@ -188,10 +193,15 @@ export default ZH_CN;
 
 在 previewTheme 文件夹下新增你的预览主题，通过 `[name].scss` 导出
 
-```css
+```scss
+@import '../../common/index.scss';
+
 .xxx-theme {
+  @include common-style;
   color: red;
 }
 ```
 
 `xxx` 即是你的主题名称，通过 `previewTheme="xxx"` 来使用。
+
+你可以充分的利用编辑器已提供的[css 变量](https://github.com/imzbf/md-editor-v3#change-styles)来设置你的主题。

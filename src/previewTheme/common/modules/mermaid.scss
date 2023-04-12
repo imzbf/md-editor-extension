@@ -1,0 +1,9 @@
+.#{$prefix}-mermaid {
+  overflow-x: auto;
+  display: none;
+  text-align: center;
+}
+
+[class='#{$prefix}-mermaid'][data-processed] {
+  display: block;
+}

@@ -1,0 +1,198 @@
+@import './scss-vars.scss';
+@import './css-vars.scss';
+
+@import './modules/scrn.scss';
+@import './modules/admonition.scss';
+@import './modules/mermaid.scss';
+@import './modules/katex.scss';
+
+@mixin common-style {
+  color: var(--md-theme-color);
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-corner,
+  ::-webkit-scrollbar-track {
+    background-color: var(--md-theme-bg-color-scrollbar-track);
+    border-radius: 2px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background-color: var(--md-theme-bg-color-scrollbar-thumb);
+  }
+
+  ::-webkit-scrollbar-button:vertical {
+    display: none;
+  }
+
+  ::-webkit-scrollbar-thumb:vertical:hover {
+    background-color: var(--md-theme-bg-color-scrollbar-thumb-hover);
+  }
+
+  ::-webkit-scrollbar-thumb:vertical:active {
+    background-color: var(--md-theme-bg-color-scrollbar-thumb-active);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    position: relative;
+    word-break: break-all;
+
+    a {
+      color: inherit;
+
+      &:hover {
+        color: inherit;
+      }
+    }
+  }
+
+  ol {
+    > li {
+      list-style: decimal;
+    }
+  }
+
+  ul {
+    > li {
+      list-style: disc;
+    }
+  }
+
+  ol,
+  ul {
+    .task-list-item {
+      list-style-type: none;
+
+      input {
+        margin-left: -1.5em;
+        margin-right: 0.1em;
+      }
+    }
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  pre,
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+    font-size: 14px;
+    // color: rgb(36, 41, 47);
+  }
+
+  pre {
+    margin: 20px 0;
+
+    code {
+      display: block;
+      line-height: 1;
+      overflow: auto;
+
+      .code-block {
+        display: inline-block;
+        width: 100%;
+        overflow: auto;
+        vertical-align: bottom;
+      }
+    }
+
+    // 显示代码类型
+    code[language] {
+      &::before {
+        content: attr(language);
+        font-size: 12px;
+        position: absolute;
+        top: 11px;
+        right: 40px;
+        line-height: 1;
+      }
+    }
+  }
+
+  .copy-button {
+    position: absolute;
+    font-size: 12px;
+    top: 5px;
+    right: 7px;
+    cursor: pointer;
+    line-height: 1;
+
+    &::before {
+      content: attr(data-tips);
+      color: var(--md-theme-code-copy-tips-color);
+      background-color: var(--md-theme-code-copy-tips-bg-color);
+      position: absolute;
+      font-size: 12px;
+      font-family: sans-serif;
+      width: max-content;
+      text-align: center;
+      padding: 4px;
+      border-radius: 2px;
+      box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+      left: 0;
+      top: 50%;
+      transform: translate(-100%, -50%);
+    }
+
+    &::after {
+      content: '';
+      color: var(--md-theme-code-copy-tips-bg-color);
+      position: absolute;
+      width: 0;
+      height: 0;
+      border: 5px solid transparent;
+      border-right-width: 0;
+      border-left-color: currentColor;
+      left: -2px;
+      top: 50%;
+      transform: translate(0, -50%);
+      filter: drop-shadow(4px 0 2px rgba(0, 0, 0, 0.2));
+    }
+
+    &::before,
+    &::after {
+      visibility: hidden;
+      transition: 0.3s;
+    }
+
+    &:hover::before,
+    &:hover::after {
+      visibility: visible;
+    }
+  }
+
+  hr {
+    height: 1px;
+    margin: 10px 0;
+    border: none;
+    border-top: 1px solid var(--md-theme-border-color);
+  }
+
+  figure {
+    margin: 0 0 1em 0;
+    display: inline-flex;
+    flex-direction: column;
+    text-align: center;
+
+    figcaption {
+      color: var(--md-theme-color);
+      font-size: 0.875em;
+      margin-top: 5px;
+    }
+  }
+
+  // 覆盖图的外部样式，否则字体会受p定义的行高下沉
+  .#{$prefix}-mermaid {
+    line-height: 1;
+  }
+}
