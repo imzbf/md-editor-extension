@@ -2,7 +2,7 @@
 @import './css-vars.scss';
 
 @import './modules/scrn.scss';
-@import './modules/alert.scss';
+@import './modules/admonition.scss';
 @import './modules/mermaid.scss';
 @import './modules/katex.scss';
 
@@ -69,7 +69,7 @@
 
   ol,
   ul {
-    .li-task {
+    .task-list-item {
       list-style-type: none;
 
       input {
@@ -178,25 +178,13 @@
     border-top: 1px solid var(--md-theme-border-color);
   }
 
-  // 包裹的图片按照行显示
-  div[inline] {
-    & > .figure {
-      padding-right: 0.5em;
-
-      img {
-        padding: 0;
-        border: none;
-      }
-    }
-  }
-
-  .figure {
+  figure {
     margin: 0 0 1em 0;
     display: inline-flex;
     flex-direction: column;
     text-align: center;
 
-    .figcaption {
+    figcaption {
       color: var(--md-theme-color);
       font-size: 0.875em;
       margin-top: 5px;

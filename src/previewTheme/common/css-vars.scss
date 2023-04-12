@@ -1,7 +1,7 @@
 @mixin common-vars($isDark) {
   .#{$prefix}-preview {
     // 文字
-    --md-theme-color: #{if($isDark, #999, #222)};
+    --md-theme-color: var(--md-color);
     --md-theme-color-reverse: #{if($isDark, #222, #eee)};
     --md-theme-color-hover: #{if($isDark, #191919, #eee)};
     --md-theme-color-hover-inset: #{if($isDark, #444, #ddd)};
