@@ -5,6 +5,7 @@
 @import './modules/admonition.scss';
 @import './modules/mermaid.scss';
 @import './modules/katex.scss';
+@import './modules/codeTabs.scss';
 
 @mixin common-style {
   color: var(--md-theme-color);
@@ -85,7 +86,8 @@
 
   pre,
   code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
     font-size: 14px;
     // color: rgb(36, 41, 47);
   }

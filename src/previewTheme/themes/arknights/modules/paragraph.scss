@@ -1,0 +1,7 @@
+.#{$theme-name} {
+  p {
+    line-height: inherit;
+    margin-top: $line-space;
+    margin-bottom: $line-space;
+  }
+}

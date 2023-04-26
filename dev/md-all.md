@@ -31,6 +31,20 @@ flowchart TD
 
 这是一个普通段落
 
+```javascript [g1:yarn]
+import { createApp } from 'vue';
+import App from './App.vue';
+
+createApp(App).mount('#app');
+```
+
+```css [g1:npm]
+margin-bottom: 0;
+border-top-left-radius: 5px;
+border-top-right-radius: 5px;
+background-position: 10px 10px;
+```
+
 ---
 
 > 多段落引用
@@ -228,8 +242,13 @@ export default defineComponent({
   name: 'MdEditor',
   setup() {
     const text = ref('');
-    return () => <MdEditor modelValue={text.value} onChange={(v: string) => (text.value = v)} />;
-  }
+    return () => (
+      <MdEditor
+        modelValue={text.value}
+        onChange={(v: string) => (text.value = v)}
+      />
+    );
+  },
 });
 ```
 
@@ -242,8 +261,13 @@ export default defineComponent({
   name: 'MdEditor',
   setup() {
     const text = ref('');
-    return () => <MdEditor modelValue={text.value} onChange={(v: string) => (text.value = v)} />;
-  }
+    return () => (
+      <MdEditor
+        modelValue={text.value}
+        onChange={(v: string) => (text.value = v)}
+      />
+    );
+  },
 });
 ```
 

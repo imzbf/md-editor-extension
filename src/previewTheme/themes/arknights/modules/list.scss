@@ -1,0 +1,37 @@
+.#{$theme-name} {
+  ol,
+  ul {
+    padding-left: 28px;
+    li {
+      line-height: 2em;
+      margin-bottom: 0;
+      list-style: inherit;
+
+      & .task-list-item {
+        list-style: none;
+        ul,
+        ol {
+          margin-top: 0;
+        }
+      }
+
+      &::marker {
+        color: var(--blue);
+      }
+    }
+
+    ul,
+    ol {
+      margin-top: 3px;
+
+      li {
+        border-bottom: none;
+      }
+    }
+  }
+
+  ol li {
+    padding-left: 6px;
+    list-style: decimal-leading-zero;
+  }
+}
