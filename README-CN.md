@@ -64,7 +64,7 @@ yarn add md-editor-rt @vavt/md-editor-extension
 
 ```jsx
 import React from 'react';
-import { MdEditor, config } from 'md-editor-v3';
+import { MdEditor, config } from 'md-editor-rt';
 // 引入公共库中的预览主题
 import '@vavt/md-editor-extension/dist/previewTheme/arknights.css';
 // 引入公共库中的语言配置
