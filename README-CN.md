@@ -36,13 +36,13 @@ yarn add md-editor-v3 @vavt/md-editor-extension
 </template>
 
 <script setup>
-import MdEditor from 'md-editor-v3';
+import { MdEditor, config } from 'md-editor-v3';
 // 引入公共库中的预览主题
 import '@vavt/md-editor-extension/dist/previewTheme/arknights.css';
 // 引入公共库中的语言配置
 import ZH_TW from '@vavt/md-editor-extension/dist/locale/zh-TW';
 
-MdEditor.config({
+config({
   editorConfig: {
     languageUserDefined: {
       'zh-TW': ZH_TW,
@@ -64,13 +64,13 @@ yarn add md-editor-rt @vavt/md-editor-extension
 
 ```jsx
 import React from 'react';
-import MdEditor from 'md-editor-rt';
+import { MdEditor, config } from 'md-editor-v3';
 // 引入公共库中的预览主题
 import '@vavt/md-editor-extension/dist/previewTheme/arknights.css';
 // 引入公共库中的语言配置
 import ZH_TW from '@vavt/md-editor-extension/dist/locale/zh-TW';
 
-MdEditor.config({
+config({
   editorConfig: {
     languageUserDefined: {
       'zh-TW': ZH_TW,
