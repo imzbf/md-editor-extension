@@ -7,7 +7,7 @@ import { fileURLToPath } from 'url';
 const __dirname = fileURLToPath(new URL('..', import.meta.url));
 const LOCAL_IMG_PATH = path.resolve(__dirname, '../dev/public/temp.local');
 
-export default (): Plugin => {
+export const nodeService = (): Plugin => {
   return {
     name: 'node-service',
     configureServer: (server: ViteDevServer) => {
@@ -42,3 +42,5 @@ export default (): Plugin => {
     }
   };
 };
+
+export default { nodeService };

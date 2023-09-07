@@ -4,6 +4,4 @@ dist
 *.local
 .idea
 *.log*
-package-lock.json
 lib
-

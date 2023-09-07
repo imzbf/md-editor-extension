@@ -1,11 +1,12 @@
 {
-  "name": "@vavt/md-editor-extension",
-  "version": "3.0.0",
+  "name": "md-editor-extension",
+  "version": "4.0.0",
   "license": "MIT",
   "description": "Extensions for md-editor-rt and md-editor-v3.",
+  "keywords": [],
   "author": {
     "name": "zbf",
-    "url": "https://imzbf.cc"
+    "url": "https://imzbf.top"
   },
   "repository": {
     "type": "git",
@@ -14,21 +15,38 @@
   "bugs": {
     "url": "https://github.com/imzbf/md-editor-extension/issues"
   },
-  "files": [
-    "dist",
-    "index.d.ts"
-  ],
-  "types": "index.d.ts",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && node scripts/build-style"
+    "dev:cm": "pnpm --filter=@md-editor-extension/common run dev",
+    "dev:v3": "pnpm --filter=@md-editor-extension/v3 run dev",
+    "dev:rt": "pnpm --filter=@md-editor-extension/rt run dev",
+    "build:cm": "pnpm --filter=@md-editor-extension/common run build",
+    "build:v3": "pnpm --filter=@md-editor-extension/v3 run build",
+    "build:rt": "pnpm --filter=@md-editor-extension/rt run build",
+    "build": "pnpm build:cm & pnpm build:v3 & pnpm build:rt"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^4.0.0",
-    "md-editor-v3": "^3.0.0-beta.5",
-    "sass": "^1.62.1",
-    "typescript": "^4.8.4",
-    "vite": "^4.1.4",
-    "vue": "^3.2.47"
+    "@types/multiparty": "^0.0.33",
+    "@types/node": "^20.4.2",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "@vavt/vite-plugin-import-markdown": "^1.0.0",
+    "@vitejs/plugin-vue": "^4.3.4",
+    "@vue/eslint-config-prettier": "^7.1.0",
+    "@vue/eslint-config-typescript": "^11.0.3",
+    "axios": "^1.4.0",
+    "eslint": "^8.45.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-vue": "^9.15.1",
+    "md-editor-v3": "^4.6.1",
+    "multiparty": "^4.2.3",
+    "prettier": "^2.8.8",
+    "sass": "^1.66.1",
+    "tsx": "^3.12.7",
+    "typescript": "^5.1.6",
+    "vite": "^4.4.4",
+    "vite-plugin-dts": "^3.3.1",
+    "vue": "^3.3.4"
   }
 }
