@@ -1,0 +1,16 @@
+{
+  "name": "@md-editor-extension/v3",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "tsx ./scripts/dev",
+    "local": "tsx ./.local/dev",
+    "build": "tsx ./scripts/build"
+  },
+  "type": "module",
+  "devDependencies": {
+    "@md-editor-extension/utils": "workspace:^0.0.0",
+    "@md-editor-extension/data": "workspace:^0.0.0",
+    "@vitejs/plugin-vue-jsx": "^3.0.1",
+    "vue-tsc": "^1.8.5"
+  }
+}
