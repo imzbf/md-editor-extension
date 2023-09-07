@@ -1,0 +1,7 @@
+{
+  "name": "@md-editor-extension/utils",
+  "version": "0.0.0",
+  "files": [
+    "src"
+  ]
+}
