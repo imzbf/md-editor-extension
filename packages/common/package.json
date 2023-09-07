@@ -1,0 +1,16 @@
+{
+  "name": "@md-editor-extension/common",
+  "version": "3.0.0",
+  "files": [
+    "dist",
+    "index.d.ts"
+  ],
+  "types": "index.d.ts",
+  "scripts": {
+    "dev": "tsx ./scripts/dev",
+    "build": "tsc && tsx scripts/build-style"
+  },
+  "devDependencies": {
+    "@md-editor-extension/utils": "workspace:^0.0.0"
+  }
+}

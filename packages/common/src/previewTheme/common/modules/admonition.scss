@@ -1,0 +1,114 @@
+@mixin admonition-vars($isDark) {
+  .#{$prefix}-admonition {
+    &-note {
+      --md-admonition-color: #{if($isDark, #1262e7, #448aff)};
+      --md-admonition-bg-color: #{if($isDark, #021d4c, #d5e2f9)};
+    }
+    &-abstract {
+      --md-admonition-color: #{if($isDark, #058dc9, #02b1ff)};
+      --md-admonition-bg-color: #{if($isDark, #002433, #d1eefb)};
+    }
+    &-info {
+      --md-admonition-color: #{if($isDark, #999, #333)};
+      --md-admonition-bg-color: #{if($isDark, #212121, #e3e3e3)};
+    }
+    &-tip {
+      --md-admonition-color: #{if($isDark, #888, #666)};
+      --md-admonition-bg-color: #{if($isDark, #191818, #e6e6e6)};
+    }
+    &-success {
+      --md-admonition-color: #{if($isDark, #00c551, #00c852)};
+      --md-admonition-bg-color: #{if($isDark, #003014, #c1f1d5)};
+    }
+    &-question {
+      --md-admonition-color: #{if($isDark, #cd9a00, #f0b400)};
+      --md-admonition-bg-color: #{if($isDark, #311d00, #fff1dd)};
+    }
+    &-warning {
+      --md-admonition-color: #{if($isDark, #ed8500, #ff9104)};
+      --md-admonition-bg-color: #{if($isDark, #3c2200, #ffe9cc)};
+    }
+    &-failure {
+      --md-admonition-color: #{if($isDark, #d5125f, #c2185b)};
+      --md-admonition-bg-color: #{if($isDark, #3f0000, #ffd9d9)};
+    }
+    &-danger {
+      --md-admonition-color: #{if($isDark, #d80505, #ff5252)};
+      --md-admonition-bg-color: #{if($isDark, #390000, #ffe4e4)};
+    }
+    &-bug {
+      --md-admonition-color: #{if($isDark, #da0d54, #f60357)};
+      --md-admonition-bg-color: #{if($isDark, #390013, #ffd3e2)};
+    }
+    &-example {
+      --md-admonition-color: #{if($isDark, #7443ff, #7c4dff)};
+      --md-admonition-bg-color: #{if($isDark, #140045, #e3d8ff)};
+    }
+    &-quote {
+      --md-admonition-color: #{if($isDark, #9e9e9e, #9e9e9e)};
+      --md-admonition-bg-color: #{if($isDark, #2b2b2b, #f0f0f0)};
+    }
+    &-hint {
+      --md-admonition-color: #{if($isDark, #00ae9e, #009688)};
+      --md-admonition-bg-color: #{if($isDark, #00423b, #cdf4f0)};
+    }
+    &-caution {
+      --md-admonition-color: #{if($isDark, #db8609, #ffa726)};
+      --md-admonition-bg-color: #{if($isDark, #573300, #ffe7c4)};
+    }
+    &-error {
+      --md-admonition-color: #{if($isDark, #df1a1a, #d32f2f)};
+      --md-admonition-bg-color: #{if($isDark, #440000, #ffd8d8)};
+    }
+    &-attention {
+      --md-admonition-color: #{if($isDark, #0f8bc7, #455a64)};
+      --md-admonition-bg-color: #{if($isDark, #00354d, #cbefff)};
+    }
+  }
+}
+
+.#{$prefix} {
+  @include admonition-vars(false);
+}
+
+.#{$prefix}-dark {
+  @include admonition-vars(true);
+}
+
+.#{$prefix}-preview {
+  .#{$prefix}-admonition {
+    background-color: var(--md-admonition-bg-color);
+    border: 1px solid var(--md-admonition-color);
+    border-radius: 0.5rem;
+    color: var(--md-admonition-color);
+    display: flow-root;
+    font-size: 14px;
+    font-weight: 400;
+    margin: 1rem 0;
+    padding: 1em 1em 0.5em;
+    page-break-inside: avoid;
+
+    &-title {
+      border-top-left-radius: 0.5rem;
+      border-top-right-radius: 0.5rem;
+      margin: 0;
+      padding: 0;
+      position: relative;
+      font-weight: 700;
+    }
+
+    p {
+      margin: 0.5em 0;
+      padding: 0;
+
+      &:first-of-type {
+        margin-top: 0;
+      }
+    }
+
+    & + p:empty,
+    & + p:empty + p:empty {
+      display: none;
+    }
+  }
+}
