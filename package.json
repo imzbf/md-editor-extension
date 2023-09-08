@@ -3,7 +3,10 @@
   "version": "4.0.0",
   "license": "MIT",
   "description": "Extensions for md-editor-rt and md-editor-v3.",
-  "keywords": [],
+  "keywords": [
+    "md-editor-v3",
+    "md-editor-rt"
+  ],
   "author": {
     "name": "zbf",
     "url": "https://imzbf.top"
@@ -46,7 +49,7 @@
     "tsx": "^3.12.7",
     "typescript": "^5.1.6",
     "vite": "^4.4.4",
-    "vite-plugin-dts": "^3.3.1",
+    "vite-plugin-dts": "^3.5.3",
     "vue": "^3.3.4"
   }
 }

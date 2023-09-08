@@ -52,10 +52,11 @@ const resolvePath = (p: string) => path.resolve(__dirname, p);
         },
         plugins: [
           vueJsx(),
-          dts({
-            outDir: resolvePath('../lib/types'),
-            include: [resolvePath('../components')]
-          })
+          t === 'es' &&
+            dts({
+              outDir: resolvePath('../lib/types'),
+              include: [resolvePath('../components')]
+            })
         ],
         css: {
           modules: {

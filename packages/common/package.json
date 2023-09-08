@@ -1,6 +1,22 @@
 {
   "name": "@vavt/cm-extension",
   "version": "1.0.0",
+  "license": "MIT",
+  "keywords": [
+    "md-editor-v3",
+    "md-editor-rt"
+  ],
+  "description": "Extensions for md-editor-rt and md-editor-v3.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imzbf/md-editor-extension.git"
+  },
+  "bugs": {
+    "url": "https://github.com/imzbf/md-editor-extension/issues"
+  },
+  "sideEffects": [
+    "**/*.css"
+  ],
   "files": [
     "dist",
     "index.d.ts"

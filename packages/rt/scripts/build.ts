@@ -52,11 +52,11 @@ const resolvePath = (p: string) => path.resolve(__dirname, p);
         },
         plugins: [
           react(),
-          dts({
-            outDir: resolvePath('../lib/types'),
-            include: [resolvePath('../components')],
-            logLevel: 'info'
-          })
+          t === 'es' &&
+            dts({
+              outDir: resolvePath('../lib/types'),
+              include: [resolvePath('../components')]
+            })
         ],
         css: {
           modules: {

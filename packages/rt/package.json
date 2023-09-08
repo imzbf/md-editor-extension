@@ -1,6 +1,27 @@
 {
   "name": "@vavt/rt-extension",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "license": "MIT",
+  "keywords": [
+    "md-editor-rt"
+  ],
+  "description": "Extensions for md-editor-rt.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imzbf/md-editor-extension.git"
+  },
+  "bugs": {
+    "url": "https://github.com/imzbf/md-editor-extension/issues"
+  },
+  "files": [
+    "lib"
+  ],
+  "types": "./lib/types/index.d.ts",
+  "main": "./lib/cjs/index.cjs",
+  "module": "./lib/es/index.mjs",
+  "sideEffects": [
+    "**/*.css"
+  ],
   "scripts": {
     "dev": "tsx ./scripts/dev",
     "local": "tsx ./.local/dev",
