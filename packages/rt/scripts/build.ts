@@ -35,12 +35,18 @@ const resolvePath = (p: string) => path.resolve(__dirname, p);
 
       componentsNames.forEach((name) => {
         entry[name] = resolvePath(`../components/${name}/${t === 'cjs' ? name : ''}`);
+
+        const scssPath = resolvePath(`../styles/${name}.scss`);
+        if (t === 'es' && fs.existsSync(scssPath)) {
+          // 这里是每个组件的样式
+          entry[`${name}-style`] = scssPath;
+        }
       });
 
-      // 样式只打包一次
-      // if (t === 'es') {
-      //   entry['index'] = resolvePath('styles/index.scss');
-      // }
+      // 样式只打包一次，这里是总的样式
+      if (t === 'es') {
+        entry['style'] = resolvePath('../styles/style.scss');
+      }
 
       return build({
         publicDir: false,
@@ -85,7 +91,7 @@ const resolvePath = (p: string) => path.resolve(__dirname, p);
             external: ['react', 'md-editor-rt'],
             output: {
               chunkFileNames: `${t}/chunks/[name].${extnames[t]}`,
-              assetFileNames: '[name][extname]'
+              assetFileNames: 'asset/[name][extname]'
             }
           }
         }

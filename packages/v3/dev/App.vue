@@ -74,5 +74,5 @@ const changeTheme = () => {
 </script>
 
 <style lang="scss">
-@import '../styles/index.scss';
+@import '../styles/style.scss';
 </style>
