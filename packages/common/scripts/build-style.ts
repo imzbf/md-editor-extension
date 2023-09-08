@@ -2,7 +2,7 @@ import sass from 'sass';
 import fs from 'fs';
 import path from 'path';
 
-import folder from '@md-editor-extension/utils/src/node/folder';
+import folder from '@vavt/utils/src/node/folder';
 const { removeDir } = folder;
 
 const themeFolder = '../src/previewTheme/themes';

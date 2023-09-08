@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { DropdownToolbar, Insert } from 'md-editor-rt';
 import type { InsertContentGenerator } from 'md-editor-rt';
-import { emojis as defaultEmoji } from '@md-editor-extension/data/src/default-emojis';
+import { emojis as defaultEmoji } from '@vavt/data/src/default-emojis';
 
 interface EmojiProps {
   /**

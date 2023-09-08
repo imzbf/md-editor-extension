@@ -22,7 +22,7 @@ import { MdEditor } from 'md-editor-v3';
 import type { ToolbarNames, Themes } from 'md-editor-v3';
 import 'md-editor-v3/lib/style.css';
 
-import data from '@md-editor-extension/data/src/markdown-demo.md';
+import data from '@vavt/data/src/markdown-demo.md';
 
 import Mark from '../components/Mark';
 import Emoji from '../components/Emoji';

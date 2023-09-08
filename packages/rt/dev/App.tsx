@@ -2,7 +2,7 @@ import React, { useState, StrictMode } from 'react';
 import { MdEditor, Themes, ToolbarNames } from 'md-editor-rt';
 import 'md-editor-rt/lib/style.css';
 
-import data from '@md-editor-extension/data/src/markdown-demo.md';
+import data from '@vavt/data/src/markdown-demo.md';
 
 import Mark from '../components/Mark';
 import Emoji from '../components/Emoji';

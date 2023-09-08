@@ -5,7 +5,7 @@ import { build, LibraryFormats } from 'vite';
 import react from '@vitejs/plugin-react';
 import dts from 'vite-plugin-dts';
 
-import folder from '@md-editor-extension/utils/src/node/folder';
+import folder from '@vavt/utils/src/node/folder';
 const { removeDir } = folder;
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
@@ -42,8 +42,6 @@ const resolvePath = (p: string) => path.resolve(__dirname, p);
       //   entry['index'] = resolvePath('styles/index.scss');
       // }
 
-      console.log('t === "es"', t === 'es');
-
       return build({
         publicDir: false,
         resolve: {
@@ -54,12 +52,11 @@ const resolvePath = (p: string) => path.resolve(__dirname, p);
         },
         plugins: [
           react(),
-          t === 'es' &&
-            dts({
-              outDir: resolvePath('../lib/types'),
-              include: [resolvePath('../components')],
-              logLevel: 'info'
-            })
+          dts({
+            outDir: resolvePath('../lib/types'),
+            include: [resolvePath('../components')],
+            logLevel: 'info'
+          })
         ],
         css: {
           modules: {

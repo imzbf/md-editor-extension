@@ -5,7 +5,7 @@ import vue from '@vitejs/plugin-vue';
 import markdown from '@vavt/vite-plugin-import-markdown';
 
 // 默认的导出在import的时候会提示不存在
-import nodeServicePlugins from '@md-editor-extension/utils/src/node/vite-plugins/nodeService';
+import nodeServicePlugins from '@vavt/utils/src/node/vite-plugins/nodeService';
 const { nodeService } = nodeServicePlugins;
 
 // vite的兼容

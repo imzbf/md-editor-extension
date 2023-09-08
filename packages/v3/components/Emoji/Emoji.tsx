@@ -2,8 +2,8 @@ import { defineComponent, reactive } from 'vue';
 import type { PropType } from 'vue';
 import { DropdownToolbar, Insert } from 'md-editor-v3';
 import type { InsertContentGenerator } from 'md-editor-v3';
-import { getSlot } from '@md-editor-extension/utils/src/vue-tsx';
-import { emojis } from '@md-editor-extension/data/src/default-emojis';
+import { getSlot } from '@vavt/utils/src/vue-tsx';
+import { emojis } from '@vavt/data/src/default-emojis';
 
 const Emoji = defineComponent({
   props: {

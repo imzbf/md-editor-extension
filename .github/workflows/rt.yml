@@ -1,9 +1,9 @@
-name: Npm Latest Publish
+name: Npm RT Publish
 
 on:
   push:
     tags:
-      - v*
+      - v**-rt
 
 jobs:
   publish:
@@ -19,17 +19,16 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Install
-        uses: borales/actions-yarn@v3.0.0
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
         with:
-          cmd: install
+          version: 7
+          run_install: true
 
       - name: Build
-        uses: borales/actions-yarn@v3.0.0
-        with:
-          cmd: build
+        run: npm run build:rt
 
       - name: Publish
-        run: npm publish --access public
+        run: cd packages/rt && npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}

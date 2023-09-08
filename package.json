@@ -1,5 +1,5 @@
 {
-  "name": "md-editor-extension",
+  "name": "@vavt/md-editor-extension",
   "version": "4.0.0",
   "license": "MIT",
   "description": "Extensions for md-editor-rt and md-editor-v3.",
@@ -16,12 +16,12 @@
     "url": "https://github.com/imzbf/md-editor-extension/issues"
   },
   "scripts": {
-    "dev:cm": "pnpm --filter=@md-editor-extension/common run dev",
-    "dev:v3": "pnpm --filter=@md-editor-extension/v3 run dev",
-    "dev:rt": "pnpm --filter=@md-editor-extension/rt run dev",
-    "build:cm": "pnpm --filter=@md-editor-extension/common run build",
-    "build:v3": "pnpm --filter=@md-editor-extension/v3 run build",
-    "build:rt": "pnpm --filter=@md-editor-extension/rt run build",
+    "dev:cm": "pnpm --filter=@vavt/cm-extension run dev",
+    "dev:v3": "pnpm --filter=@vavt/v3-extension run dev",
+    "dev:rt": "pnpm --filter=@vavt/rt-extension run dev",
+    "build:cm": "pnpm --filter=@vavt/cm-extension run build",
+    "build:v3": "pnpm --filter=@vavt/v3-extension run build",
+    "build:rt": "pnpm --filter=@vavt/rt-extension run build",
     "build": "pnpm build:cm & pnpm build:v3 & pnpm build:rt"
   },
   "devDependencies": {

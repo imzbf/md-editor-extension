@@ -2,7 +2,7 @@ import { defineComponent } from 'vue';
 import type { PropType } from 'vue';
 import { NormalToolbar, Insert } from 'md-editor-v3';
 import type { InsertContentGenerator } from 'md-editor-v3';
-import { getSlot } from '@md-editor-extension/utils/src/vue-tsx';
+import { getSlot } from '@vavt/utils/src/vue-tsx';
 
 const Mark = defineComponent({
   props: {

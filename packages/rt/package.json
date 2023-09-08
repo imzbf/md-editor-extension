@@ -1,5 +1,5 @@
 {
-  "name": "@md-editor-extension/rt",
+  "name": "@vavt/rt-extension",
   "version": "0.0.0",
   "scripts": {
     "dev": "tsx ./scripts/dev",
@@ -8,13 +8,16 @@
   },
   "type": "module",
   "devDependencies": {
-    "@md-editor-extension/data": "workspace:^0.0.0",
-    "@md-editor-extension/utils": "workspace:^0.0.0",
+    "@vavt/data": "workspace:^0.0.0",
+    "@vavt/utils": "workspace:^0.0.0",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@vitejs/plugin-react": "^4.0.3",
     "md-editor-rt": "4.3.0-beta.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
+  },
+  "peerDependencies": {
+    "md-editor-rt": "^4.3.0"
   }
 }

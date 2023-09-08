@@ -1,6 +1,6 @@
 {
-  "name": "@md-editor-extension/common",
-  "version": "3.0.0",
+  "name": "@vavt/cm-extension",
+  "version": "1.0.0",
   "files": [
     "dist",
     "index.d.ts"
@@ -11,6 +11,6 @@
     "build": "tsc && tsx scripts/build-style"
   },
   "devDependencies": {
-    "@md-editor-extension/utils": "workspace:^0.0.0"
+    "@vavt/utils": "workspace:^0.0.0"
   }
 }

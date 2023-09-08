@@ -5,7 +5,7 @@ import { build, LibraryFormats } from 'vite';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import dts from 'vite-plugin-dts';
 
-import folder from '@md-editor-extension/utils/src/node/folder';
+import folder from '@vavt/utils/src/node/folder';
 const { removeDir } = folder;
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
@@ -52,11 +52,10 @@ const resolvePath = (p: string) => path.resolve(__dirname, p);
         },
         plugins: [
           vueJsx(),
-          t === 'es' &&
-            dts({
-              outDir: resolvePath('../lib/types'),
-              include: [resolvePath('../components')]
-            })
+          dts({
+            outDir: resolvePath('../lib/types'),
+            include: [resolvePath('../components')]
+          })
         ],
         css: {
           modules: {
