@@ -83,37 +83,12 @@ export default () => {
 yarn add @vavt/v3-extension
 ```
 
-使用示例
+#### components
 
-```vue
-<template>
-  <MdEditor v-model="text" :toolbars="toolbars">
-    <template #defToolbars>
-      <Emoji>
-        <template #trigger> Emoji </template>
-      </Emoji>
-    </template>
-  </MdEditor>
-</template>
-
-<script setup>
-import { ref } from 'vue';
-import { MdEditor } from 'md-editor-v3';
-import 'md-editor-v3/lib/style.css';
-
-import { Emoji } from '@vavt/v3-extension';
-// 此扩展库的全部css
-// import '@vavt/v3-extension/lib/asset/style.css';
-// Emoji单独的样式
-import '@vavt/v3-extension/lib/asset/Emoji.css';
-
-const text = ref('');
-
-const toolbars = ['bold', 0, 'underline'];
-</script>
-```
-
-更多组件及其文档：[TODO]()
+| Name | Description |
+| --- | --- |
+| [Emoji](https://github.com/imzbf/md-editor-extension/blob/main/packages/v3/components/Emoji/README.md) | 向编辑器插入小表情 |
+| [Mark](https://github.com/imzbf/md-editor-extension/blob/main/packages/v3/components/Mark/README.md) | 文本标记`<mark>` |
 
 ### @vavt/rt-extension
 
@@ -125,38 +100,12 @@ const toolbars = ['bold', 0, 'underline'];
 yarn add @vavt/rt-extension
 ```
 
-使用示例
+#### components
 
-```jsx
-import React, { useState } from 'react';
-import { MdEditor } from 'md-editor-rt';
-import 'md-editor-rt/lib/style.css';
-
-import { Emoji } from '@vavt/v3-extension';
-// 此扩展库的全部css
-// import '@vavt/rt-extension/lib/asset/style.css';
-// Emoji单独的样式
-import '@vavt/rt-extension/lib/asset/Emoji.css';
-
-const toolbars = ['bold', 0, 'underline'];
-
-const App = () => {
-  const [text, setText] = useState('');
-
-  return (
-    <MdEditor
-      modelValue={text}
-      onChange={setText}
-      toolbars={toolbars}
-      defToolbars={[<Emoji key="emoji" trigger={<span>表情</span>}></Emoji>]}
-    />
-  );
-};
-
-export default App;
-```
-
-更多组件及其文档：[TODO]()
+| Name | Description |
+| --- | --- |
+| [Emoji](https://github.com/imzbf/md-editor-extension/blob/main/packages/rt/components/Emoji/README.md) | 向编辑器插入小表情 |
+| [Mark](https://github.com/imzbf/md-editor-extension/blob/main/packages/rt/components/Mark/README.md) | 文本标记`<mark>` |
 
 ## 参与贡献
 

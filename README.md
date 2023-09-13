@@ -83,37 +83,12 @@ This is the extension component library for `md-editor-v3`
 yarn add @vavt/v3-extension
 ```
 
-Usage
+#### components
 
-```vue
-<template>
-  <MdEditor v-model="text" :toolbars="toolbars">
-    <template #defToolbars>
-      <Emoji>
-        <template #trigger> Emoji </template>
-      </Emoji>
-    </template>
-  </MdEditor>
-</template>
-
-<script setup>
-import { ref } from 'vue';
-import { MdEditor } from 'md-editor-v3';
-import 'md-editor-v3/lib/style.css';
-
-import { Emoji } from '@vavt/v3-extension';
-// All CSS for this extension library
-// import '@vavt/v3-extension/lib/asset/style.css';
-// Or individual style for Emoji
-import '@vavt/v3-extension/lib/asset/Emoji.css';
-
-const text = ref('');
-
-const toolbars = ['bold', 0, 'underline'];
-</script>
-```
-
-More components and documentation: [TODO]()
+| Name | Description |
+| --- | --- |
+| [Emoji](https://github.com/imzbf/md-editor-extension/blob/main/packages/v3/components/Emoji/README.md) | Insert emoji into the editor |
+| [Mark](https://github.com/imzbf/md-editor-extension/blob/main/packages/v3/components/Mark/README.md) | Text markers`<mark>` |
 
 ### @vavt/rt-extension
 
@@ -123,38 +98,12 @@ This is the extension component library for `md-editor-rt`
 yarn add @vavt/rt-extension
 ```
 
-Usage
+#### components
 
-```jsx
-import React, { useState } from 'react';
-import { MdEditor } from 'md-editor-rt';
-import 'md-editor-rt/lib/style.css';
-
-import { Emoji } from '@vavt/v3-extension';
-// All CSS for this extension library
-// import '@vavt/rt-extension/lib/asset/style.css';
-// Or individual style for Emoji
-import '@vavt/rt-extension/lib/asset/Emoji.css';
-
-const toolbars = ['bold', 0, 'underline'];
-
-const App = () => {
-  const [text, setText] = useState('');
-
-  return (
-    <MdEditor
-      modelValue={text}
-      onChange={setText}
-      toolbars={toolbars}
-      defToolbars={[<Emoji key="emoji" trigger={<span>Emoji</span>}></Emoji>]}
-    />
-  );
-};
-
-export default App;
-```
-
-More components and documentation: [TODO]()
+| Name | Description |
+| --- | --- |
+| [Emoji](https://github.com/imzbf/md-editor-extension/blob/main/packages/rt/components/Emoji/README.md) | Insert emoji into the editor |
+| [Mark](https://github.com/imzbf/md-editor-extension/blob/main/packages/rt/components/Mark/README.md) | Text markers`<mark>` |
 
 ## Contribute
 
