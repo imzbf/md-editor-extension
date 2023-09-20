@@ -2,6 +2,11 @@ import sass from 'sass';
 import fs from 'fs';
 import path from 'path';
 
+import { writeFile } from 'node:fs';
+import { Buffer } from 'node:buffer';
+
+import packageJson from '../package.json';
+
 import folder from '@vavt/utils/src/node/folder';
 const { removeDir } = folder;
 
@@ -36,3 +41,28 @@ themeEntryList.forEach((themeName) => {
 
   fs.writeFileSync(`${targetDir}/${themeName}.css`, result.css);
 });
+
+// 移除package.json中的workspace
+const devDependencies = Object.keys(packageJson.devDependencies).reduce((p, key) => {
+  if (/^workspace:/.test(packageJson.devDependencies[key])) {
+    return p;
+  }
+
+  return {
+    ...p,
+    [key]: packageJson.devDependencies[key]
+  };
+}, {});
+
+const newPackageJson = {
+  ...packageJson,
+  devDependencies
+};
+
+writeFile(
+  path.resolve(__dirname, '../package.json'),
+  new Uint8Array(Buffer.from(JSON.stringify(newPackageJson, null, 2))),
+  (err) => {
+    console.log(err);
+  }
+);

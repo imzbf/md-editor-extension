@@ -1,9 +1,13 @@
 import path from 'path';
 import fs from 'fs';
+import { writeFile } from 'node:fs';
+import { Buffer } from 'node:buffer';
 import { fileURLToPath } from 'url';
 import { build, LibraryFormats } from 'vite';
 import react from '@vitejs/plugin-react';
 import dts from 'vite-plugin-dts';
+
+import packageJson from '../package.json';
 
 import folder from '@vavt/utils/src/node/folder';
 const { removeDir } = folder;
@@ -97,5 +101,30 @@ const resolvePath = (p: string) => path.resolve(__dirname, p);
         }
       });
     })
+  );
+
+  // 移除package.json中的workspace
+  const devDependencies = Object.keys(packageJson.devDependencies).reduce((p, key) => {
+    if (/^workspace:/.test(packageJson.devDependencies[key])) {
+      return p;
+    }
+
+    return {
+      ...p,
+      [key]: packageJson.devDependencies[key]
+    };
+  }, {});
+
+  const newPackageJson = {
+    ...packageJson,
+    devDependencies
+  };
+
+  writeFile(
+    resolvePath('../package.json'),
+    new Uint8Array(Buffer.from(JSON.stringify(newPackageJson, null, 2))),
+    (err) => {
+      console.log(err);
+    }
   );
 })();
