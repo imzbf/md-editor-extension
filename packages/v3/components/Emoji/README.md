@@ -34,13 +34,14 @@ const toolbars = ['bold', 0, 'underline'];
 
 ## Props
 
-| name              | type            | default | description                       |
-| ----------------- | --------------- | ------- | --------------------------------- |
-| emojis            | `Array<string>` | emojis  | Alternative emojis                |
-| selectAfterInsert | `boolean`       | true    | Select content after inserting it |
+| name | type | default | description |
+| --- | --- | --- | --- |
+| title | `string` | 'emoji' | Shown as a tooltip text when the mouse moves over |
+| emojis | `Array<string>` | emojis | Alternative emojis |
+| selectAfterInsert | `boolean` | true | Select content after inserting it |
 
 ## Slots
 
 | name | type | default | description |
 | --- | --- | --- | --- |
-| trigger | `Array<string \| VNode \| JSX.Element>` | '' | Content displayed in the toolbar |
+| trigger | `string \| VNode \| JSX.Element` | '' | Content displayed in the toolbar |

@@ -33,6 +33,7 @@ export default () => {
 
 | name | type | default | description |
 | --- | --- | --- | --- |
+| title | `string` | 'emoji' | Shown as a tooltip text when the mouse moves over |
 | emojis | `Array<string>` | emojis | Alternative emojis |
 | selectAfterInsert | `boolean` | true | Select content after inserting it |
-| trigger | `Array<string \| JSX.Element>` | '' | Content displayed in the toolbar |
+| trigger | `string \| ReactElement` | '' | Content displayed in the toolbar |

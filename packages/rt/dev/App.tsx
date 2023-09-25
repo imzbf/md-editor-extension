@@ -4,8 +4,7 @@ import 'md-editor-rt/lib/style.css';
 
 import data from '@vavt/data/src/markdown-demo.md';
 
-import Mark from '../components/Mark';
-import Emoji from '../components/Emoji';
+import { Mark, Emoji, OriginalImg } from '../components';
 
 import './style.scss';
 
@@ -32,6 +31,7 @@ const toolbars: ToolbarNames[] = [
   'katex',
   0,
   1,
+  2,
   '-',
   'revoke',
   'next',
@@ -63,8 +63,9 @@ const App = () => {
         onChange={setText}
         toolbars={toolbars}
         defToolbars={[
-          <Mark key="mark" trigger={<span>标记</span>}></Mark>,
-          <Emoji key="emoji" trigger={<span>表情</span>}></Emoji>
+          <Mark key="mark" trigger={<span>标记</span>} />,
+          <Emoji key="emoji" trigger={<span>表情</span>} />,
+          <OriginalImg key="originalImg" trigger={<span>图片</span>} />
         ]}
       />
     </StrictMode>

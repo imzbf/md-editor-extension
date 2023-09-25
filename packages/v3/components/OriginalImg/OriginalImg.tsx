@@ -5,18 +5,18 @@ import { getSlot } from '@vavt/utils/src/vue-tsx';
 
 import { commomProps } from '../../common/props';
 
-const Mark = defineComponent({
+const OriginalImg = defineComponent({
   props: {
     ...commomProps
   },
   setup(props, ctx) {
-    const markHandler = () => {
-      const generator: InsertContentGenerator = (selectedText) => {
+    const onClick = () => {
+      const generator: InsertContentGenerator = () => {
         return {
-          targetValue: `==${selectedText}==`,
+          targetValue: '<img src="" alt="" width="100%">',
           select: true,
-          deviationStart: 2,
-          deviationEnd: -2
+          deviationStart: 10,
+          deviationEnd: -22
         };
       };
 
@@ -28,8 +28,8 @@ const Mark = defineComponent({
 
       return (
         <NormalToolbar
-          title={props.title || 'mark'}
-          onClick={markHandler}
+          title={props.title || 'image'}
+          onClick={onClick}
           trigger={trigger}
         />
       );
@@ -37,4 +37,4 @@ const Mark = defineComponent({
   }
 });
 
-export default Mark;
+export default OriginalImg;

@@ -5,14 +5,14 @@ import { CommomProps } from '../../common/props';
 
 interface Props extends CommomProps {}
 
-const Mark = ({ title = 'mark', insert = () => {}, trigger }: Props) => {
+const OriginalImg = ({ title = 'mark', insert = () => {}, trigger }: Props) => {
   const onClick = useCallback(() => {
-    const generator: InsertContentGenerator = (selectedText) => {
+    const generator: InsertContentGenerator = () => {
       return {
-        targetValue: `==${selectedText}==`,
+        targetValue: '<img src="" alt="" width="100%">',
         select: true,
-        deviationStart: 2,
-        deviationEnd: -2
+        deviationStart: 10,
+        deviationEnd: -22
       };
     };
 
@@ -22,4 +22,4 @@ const Mark = ({ title = 'mark', insert = () => {}, trigger }: Props) => {
   return <NormalToolbar title={title} onClick={onClick} trigger={trigger} />;
 };
 
-export default Mark;
+export default OriginalImg;

@@ -12,6 +12,17 @@
           <span>表情</span>
         </template>
       </Emoji>
+      <OriginalImg>
+        <template #trigger>
+          <span>图片</span>
+        </template>
+      </OriginalImg>
+
+      <!-- <Image modalTitle="添加图片" @onUpload="onUpload">
+        <template #trigger>
+          <span>上传</span>
+        </template>
+      </Image> -->
     </template>
   </MdEditor>
 </template>
@@ -24,8 +35,7 @@ import 'md-editor-v3/lib/style.css';
 
 import data from '@vavt/data/src/markdown-demo.md';
 
-import Mark from '../components/Mark';
-import Emoji from '../components/Emoji';
+import { Mark, Emoji, OriginalImg } from '../components';
 
 const text = ref(data);
 
@@ -54,6 +64,7 @@ const toolbars: ToolbarNames[] = [
   'katex',
   0,
   1,
+  2,
   '-',
   'revoke',
   'next',

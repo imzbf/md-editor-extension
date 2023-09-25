@@ -1,30 +1,15 @@
-## Mark
+## OriginalImg
 
-Text markers
+Append `<img >`.
 
 ## Usage
 
-First
-
-```shell
-yarn add markdown-it-mark
-```
-
-Second
-
 ```jsx
 import { useState } from 'react';
-import { MdEditor, config } from 'md-editor-rt';
+import { MdEditor } from 'md-editor-rt';
 import 'md-editor-rt/lib/style.css';
 
-import { Mark } from '@vavt/rt-extension';
-import MarkExtension from 'markdown-it-mark';
-
-config({
-  markdownItConfig(md) {
-    md.use(MarkExtension);
-  }
-});
+import { OriginalImg } from '@vavt/rt-extension';
 
 export default () => {
   const [value, setValue] = useState('');
@@ -34,13 +19,13 @@ export default () => {
       modelValue={value}
       onChange={setValue}
       toolbars={['bold', 0, '=', 'github']}
-      defToolbars={[<Mark trigger={<span>mark</span>} />]}
+      defToolbars={[<OriginalImg trigger={<span>mark</span>} />]}
     />
   );
 };
 ```
 
-## Slots
+## Props
 
 | name | type | default | description |
 | --- | --- | --- | --- |

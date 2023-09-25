@@ -85,10 +85,11 @@ yarn add @vavt/v3-extension
 
 #### components
 
-| Name | Description |
+| 名称 | 描述 |
 | --- | --- |
 | [Emoji](https://github.com/imzbf/md-editor-extension/blob/main/packages/v3/components/Emoji/README.md) | 向编辑器插入小表情 |
 | [Mark](https://github.com/imzbf/md-editor-extension/blob/main/packages/v3/components/Mark/README.md) | 文本标记`<mark>` |
+| [OriginalImg](https://github.com/imzbf/md-editor-extension/blob/main/packages/v3/components/OriginalImg/README.md) | 添加`<img src="" alt="" width="100%">`标签 |
 
 ### @vavt/rt-extension
 
@@ -102,10 +103,11 @@ yarn add @vavt/rt-extension
 
 #### components
 
-| Name | Description |
+| 名称 | 描述 |
 | --- | --- |
 | [Emoji](https://github.com/imzbf/md-editor-extension/blob/main/packages/rt/components/Emoji/README.md) | 向编辑器插入小表情 |
 | [Mark](https://github.com/imzbf/md-editor-extension/blob/main/packages/rt/components/Mark/README.md) | 文本标记`<mark>` |
+| [OriginalImg](https://github.com/imzbf/md-editor-extension/blob/main/packages/rt/components/OriginalImg/README.md) | 添加`<img src="" alt="" width="100%">`标签 |
 
 ## 参与贡献
 

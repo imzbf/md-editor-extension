@@ -89,6 +89,7 @@ yarn add @vavt/v3-extension
 | --- | --- |
 | [Emoji](https://github.com/imzbf/md-editor-extension/blob/main/packages/v3/components/Emoji/README.md) | Insert emoji into the editor |
 | [Mark](https://github.com/imzbf/md-editor-extension/blob/main/packages/v3/components/Mark/README.md) | Text markers`<mark>` |
+| [OriginalImg](https://github.com/imzbf/md-editor-extension/blob/main/packages/v3/components/OriginalImg/README.md) | Insert `<img src="" alt="" width="100%">` |
 
 ### @vavt/rt-extension
 
@@ -104,6 +105,7 @@ yarn add @vavt/rt-extension
 | --- | --- |
 | [Emoji](https://github.com/imzbf/md-editor-extension/blob/main/packages/rt/components/Emoji/README.md) | Insert emoji into the editor |
 | [Mark](https://github.com/imzbf/md-editor-extension/blob/main/packages/rt/components/Mark/README.md) | Text markers`<mark>` |
+| [OriginalImg](https://github.com/imzbf/md-editor-extension/blob/main/packages/rt/components/OriginalImg/README.md) | Insert `<img src="" alt="" width="100%">` |
 
 ## Contribute
 

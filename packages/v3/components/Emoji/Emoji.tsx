@@ -1,12 +1,14 @@
 import { defineComponent, reactive } from 'vue';
 import type { PropType } from 'vue';
-import { DropdownToolbar, Insert } from 'md-editor-v3';
+import { DropdownToolbar } from 'md-editor-v3';
 import type { InsertContentGenerator } from 'md-editor-v3';
 import { getSlot } from '@vavt/utils/src/vue-tsx';
 import { emojis } from '@vavt/data/src/default-emojis';
+import { commomProps } from '../../common/props';
 
 const Emoji = defineComponent({
   props: {
+    ...commomProps,
     /**
      * 可选的表情
      */
@@ -20,20 +22,6 @@ const Emoji = defineComponent({
     selectAfterInsert: {
       type: Boolean as PropType<boolean>,
       default: true
-    },
-    /**
-     * 这个默认注入，不用提供
-     */
-    insert: {
-      type: Function as PropType<Insert>,
-      default: () => () => null
-    },
-    /**
-     * 触发的组件
-     */
-    trigger: {
-      type: [String, Object] as PropType<string | JSX.Element>,
-      default: ''
     }
   },
   setup(props, ctx) {
@@ -63,7 +51,7 @@ const Emoji = defineComponent({
 
       return (
         <DropdownToolbar
-          title="emoji"
+          title={props.title || 'emoji'}
           visible={state.visible}
           onChange={onChange}
           trigger={trigger}

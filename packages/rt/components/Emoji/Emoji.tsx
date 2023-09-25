@@ -1,9 +1,10 @@
 import React, { useCallback, useState } from 'react';
-import { DropdownToolbar, Insert } from 'md-editor-rt';
+import { DropdownToolbar } from 'md-editor-rt';
 import type { InsertContentGenerator } from 'md-editor-rt';
 import { emojis as defaultEmoji } from '@vavt/data/src/default-emojis';
+import { CommomProps } from '../../common/props';
 
-interface EmojiProps {
+interface Props extends CommomProps {
   /**
    * 可选的表情
    */
@@ -12,18 +13,11 @@ interface EmojiProps {
    * 插入后是否选中内容
    */
   selectAfterInsert?: boolean;
-  /**
-   * 这个默认注入，不用提供
-   */
-  insert?: Insert;
-  /**
-   * 触发的组件
-   */
-  trigger: string | JSX.Element;
 }
 
-const Emoji = (props: EmojiProps) => {
+const Emoji = (props: Props) => {
   const {
+    title = 'emoji',
     emojis = defaultEmoji,
     insert = () => null,
     trigger,
@@ -32,7 +26,7 @@ const Emoji = (props: EmojiProps) => {
 
   const [visible, setVisible] = useState(false);
 
-  const emojiHandler = useCallback(
+  const onClick = useCallback(
     (emoji: string) => {
       const generator: InsertContentGenerator = () => {
         return {
@@ -50,7 +44,7 @@ const Emoji = (props: EmojiProps) => {
 
   return (
     <DropdownToolbar
-      title="emoji"
+      title={title}
       visible={visible}
       onChange={setVisible}
       trigger={trigger}
@@ -62,7 +56,7 @@ const Emoji = (props: EmojiProps) => {
                 <li
                   key={`emoji-${emoji}`}
                   onClick={() => {
-                    emojiHandler(emoji);
+                    onClick(emoji);
                   }}
                   dangerouslySetInnerHTML={{
                     __html: emoji
@@ -73,7 +67,7 @@ const Emoji = (props: EmojiProps) => {
           </ol>
         </div>
       }
-    ></DropdownToolbar>
+    />
   );
 };
 
