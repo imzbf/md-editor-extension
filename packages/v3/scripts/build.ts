@@ -65,7 +65,7 @@ const resolvePath = (p: string) => path.resolve(__dirname, p);
           t === 'es' &&
             dts({
               outDir: resolvePath('../lib/types'),
-              include: [resolvePath('../components')]
+              include: [resolvePath('../components'), resolvePath('../common')]
             })
         ],
         css: {
