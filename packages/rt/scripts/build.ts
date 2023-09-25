@@ -92,7 +92,7 @@ const resolvePath = (p: string) => path.resolve(__dirname, p);
             }
           },
           rollupOptions: {
-            external: ['react', 'md-editor-rt'],
+            external: ['react', 'md-editor-rt', 'html2pdf.js'],
             output: {
               chunkFileNames: `${t}/chunks/[name].${extnames[t]}`,
               assetFileNames: 'asset/[name][extname]'
