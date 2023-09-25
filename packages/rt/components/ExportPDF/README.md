@@ -10,6 +10,10 @@ import { MdEditor, config } from 'md-editor-rt';
 import 'md-editor-rt/lib/style.css';
 
 import { ExportPDF } from '@vavt/rt-extension';
+// All CSS for this extension library
+// import '@vavt/rt-extension/lib/asset/style.css';
+// Or individual style for Emoji
+import '@vavt/rt-extension/lib/asset/ExportPDF.css';
 
 export default () => {
   const [value, setValue] = useState('');

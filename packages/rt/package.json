@@ -16,7 +16,7 @@
   "files": [
     "lib"
   ],
-  "types": "./lib/types/index.d.ts",
+  "types": "./lib/types/components/index.d.ts",
   "main": "./lib/cjs/index.cjs",
   "module": "./lib/es/index.mjs",
   "sideEffects": [

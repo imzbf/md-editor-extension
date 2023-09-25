@@ -21,6 +21,10 @@ import { MdEditor } from 'md-editor-v3';
 import 'md-editor-v3/lib/style.css';
 
 import { ExportPDF } from '@vavt/v3-extension';
+// All CSS for this extension library
+// import '@vavt/v3-extension/lib/asset/style.css';
+// Or individual style for Emoji
+import '@vavt/v3-extension/lib/asset/ExportPDF.css';
 
 const text = ref('# PDF');
 const toolbars = ['bold', 0, 'underline'];
