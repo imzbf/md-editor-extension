@@ -34,7 +34,7 @@ export default () => {
       modelValue={value}
       onChange={setValue}
       toolbars={['bold', 0, '=', 'github']}
-      defToolbars={[<Mark trigger={<span>mark</span>} />]}
+      defToolbars={[<Mark key="Mark" trigger={<span>mark</span>} />]}
     />
   );
 };

@@ -10,3 +10,5 @@ declare module '*.md' {
   const Component: ComponentOptions;
   export default Component;
 }
+
+declare module 'html2pdf.js';

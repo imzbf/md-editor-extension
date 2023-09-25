@@ -23,7 +23,7 @@ export default () => {
       modelValue={value}
       onChange={setValue}
       toolbars={['bold', 0, '=', 'github']}
-      defToolbars={[<Emoji trigger={<span>emoji</span>} />]}
+      defToolbars={[<Emoji key="Emoji" trigger={<span>emoji</span>} />]}
     />
   );
 };

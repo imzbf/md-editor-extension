@@ -1,0 +1,9 @@
+.export-pdf-content {
+  height: calc(100% - 52px);
+  margin-bottom: 20px;
+  overflow: auto;
+
+  .md-editor-preview-wrapper {
+    padding: 10px;
+  }
+}

@@ -19,7 +19,7 @@ export default () => {
       modelValue={value}
       onChange={setValue}
       toolbars={['bold', 0, '=', 'github']}
-      defToolbars={[<OriginalImg trigger={<span>mark</span>} />]}
+      defToolbars={[<OriginalImg key="OriginalImg" trigger={<span>mark</span>} />]}
     />
   );
 };

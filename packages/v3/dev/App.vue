@@ -18,6 +18,12 @@
         </template>
       </OriginalImg>
 
+      <ExportPDF :modelValue="text" exportBtnText="导出">
+        <template #trigger>
+          <span>pdf</span>
+        </template>
+      </ExportPDF>
+
       <!-- <Image modalTitle="添加图片" @onUpload="onUpload">
         <template #trigger>
           <span>上传</span>
@@ -35,7 +41,7 @@ import 'md-editor-v3/lib/style.css';
 
 import data from '@vavt/data/src/markdown-demo.md';
 
-import { Mark, Emoji, OriginalImg } from '../components';
+import { Mark, Emoji, OriginalImg, ExportPDF } from '../components';
 
 const text = ref(data);
 
@@ -65,6 +71,7 @@ const toolbars: ToolbarNames[] = [
   0,
   1,
   2,
+  3,
   '-',
   'revoke',
   'next',
