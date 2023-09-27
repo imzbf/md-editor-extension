@@ -16,11 +16,13 @@ yarn add @vavt/cm-extension
 
 Language
 
-| name  | description            | author                                       |
-| ----- | ---------------------- | -------------------------------------------- |
-| zh_TW | Chinese ( Traditional) | [@imzbf](https://github.com/imzbf)           |
-| fr_FR | French                 | [@tofandel](https://github.com/tofandel)     |
-| jp_JP | Japanese               | [@xj89959853](https://github.com/xj89959853) |
+| name  | description            | author                                             |
+| ----- | ---------------------- | -------------------------------------------------- |
+| zh_TW | Chinese ( Traditional) | [@imzbf](https://github.com/imzbf)                 |
+| fr_FR | French                 | [@tofandel](https://github.com/tofandel)           |
+| jp_JP | Japanese               | [@xj89959853](https://github.com/xj89959853)       |
+| id_ID | Bahasa Indonesia       | [@vallerydelexy](https://github.com/vallerydelexy) |
+| jv_ID | Basa Jawa              | [@vallerydelexy](https://github.com/vallerydelexy) |
 
 PreviewTheme
 

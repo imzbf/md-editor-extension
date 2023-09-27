@@ -16,11 +16,13 @@ yarn add @vavt/cm-extension
 
 语言
 
-| 语言名称 | 描述         | 作者                                         |
-| -------- | ------------ | -------------------------------------------- |
-| zh_TW    | 中文（繁体） | [@imzbf](https://github.com/imzbf)           |
-| fr_FR    | 法语         | [@tofandel](https://github.com/tofandel)     |
-| jp_JP    | 日语         | [@xj89959853](https://github.com/xj89959853) |
+| 语言名称 | 描述 | 作者 |
+| --- | --- | --- |
+| zh_TW | 中文（繁体） | [@imzbf](https://github.com/imzbf) |
+| fr_FR | 法语 | [@tofandel](https://github.com/tofandel) |
+| jp_JP | 日语 | [@xj89959853](https://github.com/xj89959853) |
+| id_ID | 印尼语 | [@vallerydelexy](https://github.com/vallerydelexy) |
+| jv_ID | Basa Jawa(?不太清楚中文是啥) | [@vallerydelexy](https://github.com/vallerydelexy) |
 
 预览主题
 

@@ -39,7 +39,7 @@ const ZH_TW: StaticTextDefaultValue = {
     preview: '預覽',
     htmlPreview: 'html代碼預覽',
     catalog: '目錄',
-    github: '源碼地址',
+    github: '源碼地址'
   },
   titleItem: {
     h1: '一級標題',
@@ -47,12 +47,12 @@ const ZH_TW: StaticTextDefaultValue = {
     h3: '三級標題',
     h4: '四級標題',
     h5: '五級標題',
-    h6: '六級標題',
+    h6: '六級標題'
   },
   imgTitleItem: {
     link: '添加鏈接',
     upload: '上傳圖片',
-    clip2upload: '裁剪上傳',
+    clip2upload: '裁剪上傳'
   },
   linkModalTips: {
     linkTitle: '添加鏈接',
@@ -61,16 +61,16 @@ const ZH_TW: StaticTextDefaultValue = {
     descLabelPlaceHolder: '請輸入描述...',
     urlLabel: '鏈接地址：',
     urlLabelPlaceHolder: '請輸入链接...',
-    buttonOK: '確定',
+    buttonOK: '確定'
   },
   clipModalTips: {
     title: '裁剪圖片上傳',
-    buttonUpload: '上傳',
+    buttonUpload: '上傳'
   },
   copyCode: {
     text: '複製代碼',
     successTips: '已複製！',
-    failTips: '複製失敗！',
+    failTips: '複製失敗！'
   },
   mermaid: {
     flow: '流程圖',
@@ -80,16 +80,16 @@ const ZH_TW: StaticTextDefaultValue = {
     state: '狀態圖',
     pie: '餅圖',
     relationship: '關係圖',
-    journey: '旅程圖',
+    journey: '旅程圖'
   },
   katex: {
     inline: '行內公式',
-    block: '塊級公式',
+    block: '塊級公式'
   },
   footer: {
     markdownTotal: '字數',
-    scrollAuto: '同步滾動',
-  },
+    scrollAuto: '同步滾動'
+  }
 };
 
 export default ZH_TW;
