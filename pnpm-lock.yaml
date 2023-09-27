@@ -55,7 +55,10 @@ importers:
       vue: 3.3.4
 
   packages/common:
-    specifiers: {}
+    specifiers:
+      '@vavt/utils': workspace:^0.0.0
+    devDependencies:
+      '@vavt/utils': link:../utils
 
   packages/data:
     specifiers: {}

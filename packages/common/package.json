@@ -26,5 +26,7 @@
     "dev": "tsx ./scripts/dev",
     "build": "tsc && tsx scripts/build-style"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@vavt/utils": "workspace:^0.0.0"
+  }
 }
