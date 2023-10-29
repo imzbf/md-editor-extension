@@ -23,6 +23,7 @@ Language
 | jp_JP | Japanese               | [@xj89959853](https://github.com/xj89959853)       |
 | id_ID | Bahasa Indonesia       | [@vallerydelexy](https://github.com/vallerydelexy) |
 | jv_ID | Basa Jawa              | [@vallerydelexy](https://github.com/vallerydelexy) |
+|  ru   | Russian                | [@gorgulenkozxc](https://github.com/gorgulenkozxc) |
 
 PreviewTheme
 
