@@ -19,6 +19,14 @@ interface Props extends CommomProps {
   exportBtnText?: string;
 }
 
+/**
+ * modal-toolbar组件不会再关闭时销毁子组件，这时需要区别预览扩展组件的标题ID生成方式和编辑器的标题ID生成方式
+ *
+ * @see https://github.com/imzbf/md-editor-v3/issues/207
+ **/
+const headingId = (_text: string, _level: number, index: number) =>
+  `pdf-ex-heading-${index}`;
+
 const ExportPDF = (props: Props) => {
   const { width = '870px', height = '600px', fileName = 'md' } = props;
 
@@ -71,6 +79,7 @@ const ExportPDF = (props: Props) => {
           theme={props.theme}
           language={props.language}
           modelValue={props.modelValue}
+          mdHeadingId={headingId}
         />
       </div>
 

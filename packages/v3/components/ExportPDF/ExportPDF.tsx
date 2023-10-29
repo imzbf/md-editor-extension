@@ -60,6 +60,14 @@ const ExportPDF = defineComponent({
       enableLinks: true
     };
 
+    /**
+     * modal-toolbar组件不会再关闭时销毁子组件，这时需要区别预览扩展组件的标题ID生成方式和编辑器的标题ID生成方式
+     *
+     * @see https://github.com/imzbf/md-editor-v3/issues/207
+     **/
+    const headingId = (_text: string, _level: number, index: number) =>
+      `pdf-ex-heading-${index}`;
+
     const onClick = () => {
       html2pdf(content.value, opt).then(console.log).catch(console.error);
     };
@@ -94,6 +102,7 @@ const ExportPDF = defineComponent({
               theme={props.theme}
               language={props.language}
               modelValue={props.modelValue}
+              mdHeadingId={headingId}
             />
           </div>
 
