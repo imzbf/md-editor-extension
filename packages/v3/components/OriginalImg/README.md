@@ -24,6 +24,11 @@ import 'md-editor-v3/lib/style.css';
 
 import { OriginalImg } from '@vavt/v3-extension';
 
+// All CSS for this extension library
+// import '@vavt/v3-extension/lib/asset/style.css';
+// Or individual style for Emoji
+import '@vavt/v3-extension/lib/asset/OriginalImg.css';
+
 const text = ref('');
 const toolbars = ['bold', 0, 'underline'];
 </script>
@@ -39,4 +44,4 @@ const toolbars = ['bold', 0, 'underline'];
 
 | name | type | default | description |
 | --- | --- | --- | --- |
-| trigger | `string \| VNode \| JSX.Element` | '' | Content displayed in the toolbar |
+| trigger | `string \| VNode \| JSX.Element` | `<span className="mee-iconfont icon-mee-tupian" />` | Content displayed in the toolbar |

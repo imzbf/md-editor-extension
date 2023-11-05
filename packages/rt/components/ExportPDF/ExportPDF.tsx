@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useRef, useState } from 'react';
+import React, { useCallback, CSSProperties, useRef, useState } from 'react';
 import { MdPreview, ModalToolbar } from 'md-editor-rt';
 import html2pdf from 'html2pdf.js';
 import { prefix } from '@vavt/utils/src/static';
@@ -10,6 +10,8 @@ const DEFAULT_TITLE_CN = '导出为PDF';
 const EXPORT_BTN_TEXT = 'Export';
 const EXPORT_BTN_TEXT_CN = '导出';
 
+const EDITOR_ID = 'export-pdf-preview';
+
 interface Props extends CommomProps {
   width?: string;
   height?: string;
@@ -17,6 +19,10 @@ interface Props extends CommomProps {
   modelValue: string;
   fileName?: string;
   exportBtnText?: string;
+  style?: CSSProperties;
+  onStart?: () => void;
+  onSuccess?: () => void;
+  onError?: (err: unknown) => void;
 }
 
 /**
@@ -28,25 +34,18 @@ const headingId = (_text: string, _level: number, index: number) =>
   `pdf-ex-heading-${index}`;
 
 const ExportPDF = (props: Props) => {
-  const { width = '870px', height = '600px', fileName = 'md' } = props;
+  const {
+    width = '870px',
+    height = '600px',
+    trigger,
+    fileName = 'md',
+    style = {
+      padding: '10mm'
+    }
+  } = props;
 
   const [visible, setVisible] = useState(false);
   const content = useRef<HTMLDivElement>(null);
-
-  const opt = useMemo(() => {
-    return {
-      margin: 10,
-      filename: `${fileName}.pdf`,
-      html2canvas: {
-        scale: 2,
-        useCORS: true
-      },
-      // 智能分页，防止图片被截断
-      pagebreak: { mode: 'avoid-all', after: '.avoidThisRow' },
-      // 支持文本中放链接，可点击跳转
-      enableLinks: true
-    };
-  }, [fileName]);
 
   const open = useCallback(() => {
     setVisible(true);
@@ -57,8 +56,33 @@ const ExportPDF = (props: Props) => {
   }, []);
 
   const onClick = useCallback(() => {
-    html2pdf(content.current, opt).then(console.log).catch(console.error);
-  }, [opt]);
+    // https://ekoopmans.github.io/html2pdf.js/
+    const opt = {
+      // margin: 10,
+      filename: `${fileName}.pdf`,
+      // https://html2canvas.hertzen.com/configuration
+      html2canvas: {
+        scale: 2,
+        useCORS: true
+      },
+      // 智能分页，防止图片被截断
+      pagebreak: { mode: 'avoid-all' }
+      // 支持文本中放链接，可点击跳转，默认true
+      // enableLinks: true
+    };
+
+    props.onStart && props.onStart();
+    html2pdf()
+      .set(opt)
+      .from(content.current)
+      .save()
+      .then(() => {
+        props.onSuccess && props.onSuccess();
+      })
+      .catch((error: unknown) => {
+        props.onError && props.onError(error);
+      });
+  }, [fileName, props]);
 
   return (
     <ModalToolbar
@@ -71,15 +95,16 @@ const ExportPDF = (props: Props) => {
       }
       onClick={open}
       onClose={close}
-      trigger={props.trigger}
+      trigger={trigger || <span className="mee-iconfont icon-mee-pdf" />}
     >
       <div className="export-pdf-content" ref={content}>
         <MdPreview
-          editorId="export-pdf-preview"
+          editorId={EDITOR_ID}
           theme={props.theme}
           language={props.language}
           modelValue={props.modelValue}
           mdHeadingId={headingId}
+          style={style}
         />
       </div>
 

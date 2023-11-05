@@ -2,27 +2,11 @@
   <button @click="changeTheme">{{ theme }}</button>
   <MdEditor v-model="text" :toolbars="toolbars" :theme="theme">
     <template #defToolbars>
-      <Mark>
-        <template #trigger>
-          <span>标记</span>
-        </template>
-      </Mark>
-      <Emoji>
-        <template #trigger>
-          <span>表情</span>
-        </template>
-      </Emoji>
-      <OriginalImg>
-        <template #trigger>
-          <span>图片</span>
-        </template>
-      </OriginalImg>
+      <Mark />
+      <Emoji />
+      <OriginalImg />
 
-      <ExportPDF :modelValue="text" exportBtnText="导出">
-        <template #trigger>
-          <span>pdf</span>
-        </template>
-      </ExportPDF>
+      <ExportPDF :modelValue="text" exportBtnText="导出" />
 
       <!-- <Image modalTitle="添加图片" @onUpload="onUpload">
         <template #trigger>

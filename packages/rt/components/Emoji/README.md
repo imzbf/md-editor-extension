@@ -36,4 +36,4 @@ export default () => {
 | title | `string` | 'emoji' | Shown as a tooltip text when the mouse moves over |
 | emojis | `Array<string>` | emojis | Alternative emojis |
 | selectAfterInsert | `boolean` | true | Select content after inserting it |
-| trigger | `string \| ReactElement` | '' | Content displayed in the toolbar |
+| trigger | `string \| ReactElement` | `<span className="mee-iconfont icon-mee-emoji" />` | Content displayed in the toolbar |

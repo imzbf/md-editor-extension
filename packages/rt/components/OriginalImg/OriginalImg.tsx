@@ -19,7 +19,13 @@ const OriginalImg = ({ title = 'mark', insert = () => {}, trigger }: Props) => {
     insert(generator);
   }, [insert]);
 
-  return <NormalToolbar title={title} onClick={onClick} trigger={trigger} />;
+  return (
+    <NormalToolbar
+      title={title}
+      onClick={onClick}
+      trigger={trigger || <span className="mee-iconfont icon-mee-tupian" />}
+    />
+  );
 };
 
 export default OriginalImg;

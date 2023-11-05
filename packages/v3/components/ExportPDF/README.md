@@ -8,9 +8,7 @@ Export content as a PDF file.
 <template>
   <MdEditor v-model="text" :toolbars="toolbars">
     <template #defToolbars>
-      <ExportPDF :modelValue="text">
-        <template #trigger> pdf </template>
-      </ExportPDF>
+      <ExportPDF :modelValue="text" />
     </template>
   </MdEditor>
 </template>
@@ -42,9 +40,18 @@ const toolbars = ['bold', 0, 'underline'];
 | modelValue | `string` | '' | Conten need to be exported |
 | fileName | `string` | 'md' | Exported file name |
 | exportBtnText | `string` | 'Export' or '导出' |  |
+| style | `string \| CSSProperties` | `{ padding: '10mm' }` |  |
 
 ## Slots
 
 | name | type | default | description |
 | --- | --- | --- | --- |
-| trigger | `string \| VNode \| JSX.Element` | '' | Content displayed in the toolbar |
+| trigger | `string \| VNode \| JSX.Element` | `<span className="mee-iconfont icon-mee-pdf" />` | Content displayed in the toolbar |
+
+## Events
+
+| name      | type                     |     | description |
+| --------- | ------------------------ | --- | ----------- |
+| onStart   | `() => void`             |     |             |
+| onSuccess | `() => void`             |     |             |
+| onError   | `(err: unknown) => void` |     |             |

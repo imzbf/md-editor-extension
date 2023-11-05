@@ -1,5 +1,7 @@
 @import './Emoji.scss';
 @import './ExportPDF.scss';
+@import './Mark.scss';
+@import './OriginalImg.scss';
 
 // 如果只有一个import，这个文件不会被构建
 // 需要该文件有css内容或者有多个import

@@ -10,6 +10,10 @@ import { MdEditor } from 'md-editor-rt';
 import 'md-editor-rt/lib/style.css';
 
 import { OriginalImg } from '@vavt/rt-extension';
+// All CSS for this extension library
+// import '@vavt/rt-extension/lib/asset/style.css';
+// Or individual style for Emoji
+import '@vavt/rt-extension/lib/asset/OriginalImg.css';
 
 export default () => {
   const [value, setValue] = useState('');
@@ -30,4 +34,4 @@ export default () => {
 | name | type | default | description |
 | --- | --- | --- | --- |
 | title | `string` | 'emoji' | Shown as a tooltip text when the mouse moves over |
-| trigger | `string \| VNode \| JSX.Element` | '' | Content displayed in the toolbar |
+| trigger | `string \| ReactElement` | `<span className="mee-iconfont icon-mee-tupian" />` | Content displayed in the toolbar |

@@ -47,7 +47,7 @@ const Emoji = (props: Props) => {
       title={title}
       visible={visible}
       onChange={setVisible}
-      trigger={trigger}
+      trigger={trigger || <span className="mee-iconfont icon-mee-emoji" />}
       overlay={
         <div className="emoji-container">
           <ol className="emojis">

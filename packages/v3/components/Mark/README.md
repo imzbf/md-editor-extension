@@ -31,6 +31,11 @@ import 'md-editor-v3/lib/style.css';
 import { Mark } from '@vavt/v3-extension';
 import MarkExtension from 'markdown-it-mark';
 
+// All CSS for this extension library
+// import '@vavt/v3-extension/lib/asset/style.css';
+// Or individual style for Emoji
+import '@vavt/v3-extension/lib/asset/Mark.css';
+
 config({
   markdownItConfig(md) {
     md.use(MarkExtension);
@@ -52,4 +57,4 @@ const toolbars = ['bold', 0, 'underline'];
 
 | name | type | default | description |
 | --- | --- | --- | --- |
-| trigger | `string \| VNode \| JSX.Element` | '' | Content displayed in the toolbar |
+| trigger | `string \| VNode \| JSX.Element` | `<span className="mee-iconfont icon-mee-mark" />` | Content displayed in the toolbar |

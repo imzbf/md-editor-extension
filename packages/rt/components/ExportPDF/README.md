@@ -23,9 +23,7 @@ export default () => {
       modelValue={value}
       onChange={setValue}
       toolbars={['bold', 0, '=', 'github']}
-      defToolbars={[
-        <ExportPDF key="ExportPDF" modelValue={value} trigger={<span>pdf</span>} />
-      ]}
+      defToolbars={[<ExportPDF key="ExportPDF" modelValue={value} />]}
     />
   );
 };
@@ -42,4 +40,8 @@ export default () => {
 | modelValue | `string` | '' | Conten need to be exported |
 | fileName | `string` | 'md' | Exported file name |
 | exportBtnText | `string` | 'Export' or '导出' |  |
-| trigger | `string \| VNode \| JSX.Element` | '' | Content displayed in the toolbar |
+| trigger | `string \| ReactElement` | `<span className="mee-iconfont icon-mee-pdf" />` | Content displayed in the toolbar |
+| style | `CSSProperties` | `{ padding: '10mm' }` |  |
+| onStart | `() => void` |  |  |
+| onSuccess | `() => void` |  |  |
+| onError | `(err: unknown) => void` |  |  |

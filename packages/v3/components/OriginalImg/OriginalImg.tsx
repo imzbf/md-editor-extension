@@ -30,7 +30,7 @@ const OriginalImg = defineComponent({
         <NormalToolbar
           title={props.title || 'image'}
           onClick={onClick}
-          trigger={trigger}
+          trigger={trigger || <span className="mee-iconfont icon-mee-tupian" />}
         />
       );
     };

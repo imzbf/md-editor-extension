@@ -64,10 +64,10 @@ const App = () => {
         onChange={setText}
         toolbars={toolbars}
         defToolbars={[
-          <Mark key="mark" trigger={<span>标记</span>} />,
-          <Emoji key="emoji" trigger={<span>表情</span>} />,
-          <OriginalImg key="originalImg" trigger={<span>图片</span>} />,
-          <ExportPDF key="exportPDF" modelValue={text} trigger={<span>pdf</span>} />
+          <Mark key="mark" />,
+          <Emoji key="emoji" />,
+          <OriginalImg key="originalImg" />,
+          <ExportPDF key="exportPDF" modelValue={text} />
         ]}
       />
     </StrictMode>

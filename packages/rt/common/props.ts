@@ -18,5 +18,5 @@ export interface CommomProps {
   /**
    * 显示在工具栏上的内容
    */
-  trigger: string | ReactElement<any, string | JSXElementConstructor<any>>;
+  trigger?: string | ReactElement<any, string | JSXElementConstructor<any>>;
 }
