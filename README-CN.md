@@ -24,6 +24,7 @@ yarn add @vavt/cm-extension
 | id_ID | 印尼语 | [@vallerydelexy](https://github.com/vallerydelexy) |
 | jv_ID | Basa Jawa(?不太清楚中文是啥) | [@vallerydelexy](https://github.com/vallerydelexy) |
 |  ru   | 俄语 | [@gorgulenkozxc](https://github.com/gorgulenkozxc) |
+| pt_BR | 巴西葡萄牙语  | [@kleberMRocha](https://github.com/kleberMRocha) |
 
 预览主题
 
