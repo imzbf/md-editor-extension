@@ -24,6 +24,7 @@ Language
 | id_ID | Bahasa Indonesia       | [@vallerydelexy](https://github.com/vallerydelexy) |
 | jv_ID | Basa Jawa              | [@vallerydelexy](https://github.com/vallerydelexy) |
 |  ru   | Russian                | [@gorgulenkozxc](https://github.com/gorgulenkozxc) |
+| pt_BR | Brazilian Portuguese   | [@kleberMRocha](https://github.com/kleberMRocha) |
 
 PreviewTheme
 
