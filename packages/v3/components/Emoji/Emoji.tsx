@@ -58,7 +58,7 @@ const Emoji = defineComponent({
           overlay={
             <div class="emoji-container">
               <ol class="emojis">
-                {emojis.map((emoji) => {
+                {props.emojis.map((emoji) => {
                   return (
                     <li
                       key={`emoji-${emoji}`}
