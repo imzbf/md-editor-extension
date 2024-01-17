@@ -1,7 +1,7 @@
 /* eslint-disable vue/require-default-prop */
 import { defineComponent, reactive, ref, CSSProperties } from 'vue';
 import type { PropType } from 'vue';
-import { MdPreview, ModalToolbar } from 'md-editor-v3';
+import { MdPreview, ModalToolbar, ExposePreviewParam } from 'md-editor-v3';
 import html2pdf from 'html2pdf.js';
 import { getSlot } from '@vavt/utils/src/vue-tsx';
 import { prefix } from '@vavt/utils/src/static';
@@ -63,6 +63,8 @@ const ExportPDF = defineComponent({
   setup(props, ctx) {
     const content = ref();
 
+    const previewRef = ref<ExposePreviewParam>();
+
     const state = reactive({
       visible: false
     });
@@ -101,6 +103,9 @@ const ExportPDF = defineComponent({
         })
         .catch((error: unknown) => {
           props.onError ? props.onError(error) : ctx.emit('onError', error);
+        })
+        .finally(() => {
+          previewRef.value?.rerender();
         });
     };
 
@@ -130,6 +135,7 @@ const ExportPDF = defineComponent({
         >
           <div class="export-pdf-content" ref={content}>
             <MdPreview
+              ref={previewRef}
               editorId={EDITOR_ID}
               theme={props.theme}
               language={props.language}

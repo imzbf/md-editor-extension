@@ -1,5 +1,5 @@
 import React, { useCallback, CSSProperties, useRef, useState } from 'react';
-import { MdPreview, ModalToolbar } from 'md-editor-rt';
+import { MdPreview, ModalToolbar, ExposePreviewParam } from 'md-editor-rt';
 import html2pdf from 'html2pdf.js';
 import { prefix } from '@vavt/utils/src/static';
 import { CommomProps } from '../../common/props';
@@ -46,6 +46,7 @@ const ExportPDF = (props: Props) => {
 
   const [visible, setVisible] = useState(false);
   const content = useRef<HTMLDivElement>(null);
+  const previewRef = useRef<ExposePreviewParam>(null);
 
   const open = useCallback(() => {
     setVisible(true);
@@ -81,6 +82,9 @@ const ExportPDF = (props: Props) => {
       })
       .catch((error: unknown) => {
         props.onError && props.onError(error);
+      })
+      .finally(() => {
+        previewRef.current?.rerender();
       });
   }, [fileName, props]);
 
@@ -99,6 +103,7 @@ const ExportPDF = (props: Props) => {
     >
       <div className="export-pdf-content" ref={content}>
         <MdPreview
+          ref={previewRef}
           editorId={EDITOR_ID}
           theme={props.theme}
           language={props.language}
