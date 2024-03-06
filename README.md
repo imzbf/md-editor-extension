@@ -25,6 +25,7 @@ Language
 | jv_ID | Basa Jawa              | [@vallerydelexy](https://github.com/vallerydelexy) |
 |  ru   | Russian                | [@gorgulenkozxc](https://github.com/gorgulenkozxc) |
 | pt_BR | Brazilian Portuguese   | [@kleberMRocha](https://github.com/kleberMRocha) |
+| en_US | English | [@XL-YiBai](https://github.com/XL-YiBai) |
 
 PreviewTheme
 
