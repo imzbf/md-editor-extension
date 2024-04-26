@@ -50,9 +50,8 @@ const Emoji = (props: Props) => {
       trigger={
         trigger || <span key="emoji-trigger" className="mee-iconfont icon-mee-emoji" />
       }
-      key="emoji-extension"
       overlay={
-        <div className="emoji-container" key="emoji-overlay">
+        <div className="emoji-container">
           <ol className="emojis">
             {emojis.map((emoji) => {
               return (

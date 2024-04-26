@@ -38,12 +38,14 @@ const resolvePath = (p: string) => path.resolve(__dirname, p);
       };
 
       componentsNames.forEach((name) => {
-        entry[name] = resolvePath(`../components/${name}/${t === 'cjs' ? name : ''}`);
+        entry[`${name}-c`] = resolvePath(
+          `../components/${name}/${t === 'cjs' ? name : ''}`
+        );
 
         const scssPath = resolvePath(`../styles/${name}.scss`);
         if (t === 'es' && fs.existsSync(scssPath)) {
           // 这里是每个组件的样式
-          entry[`${name}-style`] = scssPath;
+          entry[name] = scssPath;
         }
       });
 
