@@ -51,11 +51,11 @@ importers:
         specifier: ^9.25.0
         version: 9.25.0(eslint@9.1.1)
       md-editor-rt:
-        specifier: ^4.13.3
-        version: 4.13.3(@codemirror/view@6.26.3)(@lezer/common@1.2.1)(react-dom@18.3.0(react@18.3.0))(react@18.3.0)
+        specifier: ^4.13.4
+        version: 4.13.4(@codemirror/view@6.26.3)(@lezer/common@1.2.1)(react-dom@18.3.0(react@18.3.0))(react@18.3.0)
       md-editor-v3:
-        specifier: ^4.13.3
-        version: 4.13.3(@codemirror/view@6.26.3)(@lezer/common@1.2.1)(vue@3.4.25(typescript@5.4.5))
+        specifier: ^4.13.4
+        version: 4.13.4(@codemirror/view@6.26.3)(@lezer/common@1.2.1)(vue@3.4.25(typescript@5.4.5))
       multiparty:
         specifier: ^4.2.3
         version: 4.2.3
@@ -2003,14 +2003,14 @@ packages:
     resolution: {integrity: sha512-a54IwgWPaeBCAAsv13YgmALOF1elABB08FxO9i+r4VFk5Vl4pKokRPeX8u5TCgSsPi6ec1otfLjdOpVcgbpshg==}
     hasBin: true
 
-  md-editor-rt@4.13.3:
-    resolution: {integrity: sha512-z8eidRVwgqY3SowOHe0PQzeOw86mZIzQ148DqacksA1Y+irSZiDMAo8rYLEmLy6DDAnvPGUJfVXYJRIDJIQVfQ==}
+  md-editor-rt@4.13.4:
+    resolution: {integrity: sha512-wqan2G7Zr0FGCVtlt9K09AuTluY02PN5V97e2Pn/KwuCAh5S0ivcjK0UJ/MzXDFE4YdgcomkRGJS23k0fM5ayg==}
     peerDependencies:
       react: '>=16.9.0'
       react-dom: '>=16.9.0'
 
-  md-editor-v3@4.13.3:
-    resolution: {integrity: sha512-SERoUuDUhE+7kV+ApaJn4ZvbGbOhQsbnip1IN9HmIBXIt7T71pH4O4M1dvXxTHH4Fc7BruA1XxBbrSNvlLeWaA==}
+  md-editor-v3@4.13.4:
+    resolution: {integrity: sha512-Db53oV0Ei7s8orNkDOK+nsemqINf0cdY6aAjVOIX4ze+vCTVIdjq4To/6TbIcXPdRIaTcBYFHkP6uV+z0dnWXw==}
     peerDependencies:
       vue: ^3.2.47
 
@@ -4893,7 +4893,7 @@ snapshots:
       punycode.js: 2.3.1
       uc.micro: 2.1.0
 
-  md-editor-rt@4.13.3(@codemirror/view@6.26.3)(@lezer/common@1.2.1)(react-dom@18.3.0(react@18.3.0))(react@18.3.0):
+  md-editor-rt@4.13.4(@codemirror/view@6.26.3)(@lezer/common@1.2.1)(react-dom@18.3.0(react@18.3.0))(react@18.3.0):
     dependencies:
       '@codemirror/lang-markdown': 6.2.5
       '@codemirror/language-data': 6.5.1(@codemirror/view@6.26.3)
@@ -4914,7 +4914,7 @@ snapshots:
       - '@codemirror/view'
       - '@lezer/common'
 
-  md-editor-v3@4.13.3(@codemirror/view@6.26.3)(@lezer/common@1.2.1)(vue@3.4.25(typescript@5.4.5)):
+  md-editor-v3@4.13.4(@codemirror/view@6.26.3)(@lezer/common@1.2.1)(vue@3.4.25(typescript@5.4.5)):
     dependencies:
       '@codemirror/lang-markdown': 6.2.5
       '@codemirror/language-data': 6.5.1(@codemirror/view@6.26.3)
