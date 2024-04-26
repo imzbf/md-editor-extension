@@ -131,7 +131,7 @@ const ExportPDF = defineComponent({
           onClose={() => {
             state.visible = false;
           }}
-          trigger={trigger || <span className="mee-iconfont icon-mee-pdf" />}
+          trigger={trigger || <span class="mee-iconfont icon-mee-pdf" />}
         >
           <div class="export-pdf-content" ref={content}>
             <MdPreview

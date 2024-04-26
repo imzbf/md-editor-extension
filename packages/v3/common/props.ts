@@ -1,5 +1,5 @@
 import { Insert, Themes } from 'md-editor-v3';
-import type { PropType } from 'vue';
+import type { PropType, VNode } from 'vue';
 
 export const commomProps = {
   /**
@@ -30,7 +30,7 @@ export const commomProps = {
    * 显示在工具栏上的内容
    */
   trigger: {
-    type: [String, Object] as PropType<string | JSX.Element>,
+    type: [String, Object] as PropType<string | VNode>,
     default: ''
   }
 };
