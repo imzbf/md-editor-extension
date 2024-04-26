@@ -30,7 +30,7 @@ const Mark = defineComponent({
         <NormalToolbar
           title={props.title || 'mark'}
           onClick={markHandler}
-          trigger={trigger || <span class="mee-iconfont icon-mee-mark" />}
+          trigger={trigger || <span className="mee-iconfont icon-mee-mark" />}
         />
       );
     };
