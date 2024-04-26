@@ -1,4 +1,4 @@
-import { Insert, Themes } from 'md-editor-rt';
+import { Insert, PreviewThemes, Themes } from 'md-editor-rt';
 import { JSXElementConstructor, ReactElement } from 'react';
 
 export interface CommomProps {
@@ -7,6 +7,7 @@ export interface CommomProps {
    */
   insert?: Insert;
   theme?: Themes;
+  previewTheme?: PreviewThemes;
   language?: string;
   /**
    * ==结束

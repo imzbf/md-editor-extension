@@ -1,4 +1,4 @@
-import { Insert, Themes } from 'md-editor-v3';
+import { Insert, PreviewThemes, Themes } from 'md-editor-v3';
 import type { PropType, VNode } from 'vue';
 
 export const commomProps = {
@@ -11,6 +11,9 @@ export const commomProps = {
   },
   theme: {
     type: String as PropType<Themes>
+  },
+  previewTheme: {
+    type: String as PropType<PreviewThemes>
   },
   language: {
     type: String as PropType<string>,

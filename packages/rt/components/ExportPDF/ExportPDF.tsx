@@ -106,13 +106,13 @@ const ExportPDF = (props: Props) => {
           ref={previewRef}
           editorId={EDITOR_ID}
           theme={props.theme}
+          previewTheme={props.previewTheme}
           language={props.language}
           modelValue={props.modelValue}
           mdHeadingId={headingId}
           style={style}
         />
       </div>
-
       <div className={`${prefix}-form-item`}>
         <button className={`${prefix}-btn`} type="button" onClick={onClick}>
           {props.exportBtnText || props.language === 'zh-CN'

@@ -138,6 +138,7 @@ const ExportPDF = defineComponent({
               ref={previewRef}
               editorId={EDITOR_ID}
               theme={props.theme}
+              previewTheme={props.previewTheme}
               language={props.language}
               modelValue={props.modelValue}
               mdHeadingId={headingId}
