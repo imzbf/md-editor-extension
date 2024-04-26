@@ -44,4 +44,4 @@ const toolbars = ['bold', 0, 'underline'];
 
 | name | type | default | description |
 | --- | --- | --- | --- |
-| trigger | `string \| VNode \| JSX.Element` | `<span className="mee-iconfont icon-mee-emoji" />` | Content displayed in the toolbar |
+| trigger | `string \| VNode \| JSX.Element` | `<span class="mee-iconfont icon-mee-emoji" />` | Content displayed in the toolbar |
