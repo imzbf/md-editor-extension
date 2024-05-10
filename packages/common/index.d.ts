@@ -25,6 +25,7 @@ export interface StaticTextDefaultValue {
     pageFullscreen?: string;
     fullscreen?: string;
     preview?: string;
+    previewOnly?: string;
     htmlPreview?: string;
     catalog?: string;
     github?: string;

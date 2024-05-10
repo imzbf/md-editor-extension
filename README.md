@@ -18,13 +18,15 @@ Language
 
 | name  | description            | author                                             |
 | ----- | ---------------------- | -------------------------------------------------- |
-| zh_TW | Chinese ( Traditional) | [@imzbf](https://github.com/imzbf)                 |
-| fr_FR | French                 | [@tofandel](https://github.com/tofandel)           |
-| jp_JP | Japanese               | [@xj89959853](https://github.com/xj89959853)       |
-| id_ID | Bahasa Indonesia       | [@vallerydelexy](https://github.com/vallerydelexy) |
-| jv_ID | Basa Jawa              | [@vallerydelexy](https://github.com/vallerydelexy) |
-|  ru   | Russian                | [@gorgulenkozxc](https://github.com/gorgulenkozxc) |
-| pt_BR | Brazilian Portuguese   | [@kleberMRocha](https://github.com/kleberMRocha) |
+| zh-TW | Chinese ( Traditional) | [@imzbf](https://github.com/imzbf)                 |
+| fr-FR | French                 | [@tofandel](https://github.com/tofandel)           |
+| jp-JP | Japanese               | [@xj89959853](https://github.com/xj89959853)       |
+| id-ID | Bahasa Indonesia       | [@vallerydelexy](https://github.com/vallerydelexy) |
+| jv-ID | Basa Jawa              | [@vallerydelexy](https://github.com/vallerydelexy) |
+| ru    | Russian                | [@gorgulenkozxc](https://github.com/gorgulenkozxc) |
+| pt-BR | Brazilian Portuguese   | [@kleberMRocha](https://github.com/kleberMRocha)   |
+| de-DE | German                 | [@JehtJanich](https://github.com/JehtJanich)       |
+| it-IT | Italien                | [@JehtJanich](https://github.com/JehtJanich)       |
 
 PreviewTheme
 
@@ -125,7 +127,7 @@ yarn add @vavt/rt-extension
 
 Create a file named as `[language name].js`, and export in the following template.
 
-```js
+```ts
 import type { StaticTextDefaultValue } from '../../index';
 
 /**
@@ -162,6 +164,7 @@ const EN_US: StaticTextDefaultValue = {
     pageFullscreen: 'fullscreen in page',
     fullscreen: 'fullscreen',
     preview: 'preview',
+    previewOnly: 'preview only',
     htmlPreview: 'html preview',
     catalog: 'catalog',
     github: 'source code'

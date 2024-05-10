@@ -18,13 +18,15 @@ yarn add @vavt/cm-extension
 
 | 语言名称 | 描述 | 作者 |
 | --- | --- | --- |
-| zh_TW | 中文（繁体） | [@imzbf](https://github.com/imzbf) |
-| fr_FR | 法语 | [@tofandel](https://github.com/tofandel) |
-| jp_JP | 日语 | [@xj89959853](https://github.com/xj89959853) |
-| id_ID | 印尼语 | [@vallerydelexy](https://github.com/vallerydelexy) |
-| jv_ID | Basa Jawa(?不太清楚中文是啥) | [@vallerydelexy](https://github.com/vallerydelexy) |
-|  ru   | 俄语 | [@gorgulenkozxc](https://github.com/gorgulenkozxc) |
-| pt_BR | 巴西葡萄牙语  | [@kleberMRocha](https://github.com/kleberMRocha) |
+| zh-TW | 中文（繁体） | [@imzbf](https://github.com/imzbf) |
+| fr-FR | 法语 | [@tofandel](https://github.com/tofandel) |
+| jp-JP | 日语 | [@xj89959853](https://github.com/xj89959853) |
+| id-ID | 印尼语 | [@vallerydelexy](https://github.com/vallerydelexy) |
+| jv-ID | Basa Jawa(?不太清楚中文是啥) | [@vallerydelexy](https://github.com/vallerydelexy) |
+| ru | 俄语 | [@gorgulenkozxc](https://github.com/gorgulenkozxc) |
+| pt-BR | 巴西葡萄牙语 | [@kleberMRocha](https://github.com/kleberMRocha) |
+| de-DE | 德语 | [@JehtJanich](https://github.com/JehtJanich) |
+| it-IT | 意大利语 | [@JehtJanich](https://github.com/JehtJanich) |
 
 预览主题
 
@@ -127,7 +129,7 @@ yarn add @vavt/rt-extension
 
 创建一个以`[语言名称].js`命名的文件，使用下面的模板修改你的语言设置：
 
-```js
+```ts
 import type { StaticTextDefaultValue } from '../../index';
 
 /**
@@ -164,6 +166,7 @@ const ZH_CN: StaticTextDefaultValue = {
     pageFullscreen: '浏览器全屏',
     fullscreen: '屏幕全屏',
     preview: '预览',
+    previewOnly: '仅预览',
     htmlPreview: 'html代码预览',
     catalog: '目录',
     github: '源码地址'
