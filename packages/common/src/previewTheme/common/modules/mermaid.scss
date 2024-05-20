@@ -1,9 +1,13 @@
-.#{$prefix}-mermaid {
-  overflow-x: auto;
-  display: none;
-  text-align: center;
-}
+.#{$prefix}-preview {
+  .#{$prefix}-mermaid {
+    overflow-x: auto;
+    display: none;
+    text-align: center;
+    // 覆盖图的外部样式，否则字体会受p定义的行高下沉
+    line-height: 1;
+  }
 
-[class='#{$prefix}-mermaid'][data-processed] {
-  display: block;
+  [class='#{$prefix}-mermaid'][data-processed] {
+    display: block;
+  }
 }

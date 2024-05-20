@@ -1,0 +1,14 @@
+.#{$prefix}-preview {
+  figure {
+    margin: 0 0 1em 0;
+    display: inline-flex;
+    flex-direction: column;
+    text-align: center;
+
+    figcaption {
+      color: var(--md-theme-color);
+      font-size: 0.875em;
+      margin-top: 5px;
+    }
+  }
+}

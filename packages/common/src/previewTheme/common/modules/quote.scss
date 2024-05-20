@@ -1,0 +1,20 @@
+@mixin code-vars($isDark) {
+  .#{$prefix}-preview {
+    --md-theme-quote-color: var(--md-theme-color);
+    --md-theme-quote-border: none;
+    --md-theme-quote-bg-color: inherit;
+  }
+}
+
+.#{$prefix} {
+  @include code-vars(false);
+}
+
+.#{$prefix}-preview {
+  blockquote {
+    padding: 0 1em;
+    color: var(--md-theme-quote-color);
+    border-left: var(--md-theme-quote-border);
+    background-color: var(--md-theme-quote-bg-color);
+  }
+}

@@ -1,0 +1,72 @@
+@mixin code-vars($isDark) {
+  .#{$prefix}-preview {
+    --md-theme-heading-color: var(--md-theme-color);
+    --md-theme-heading-border: none;
+
+    @for $i from 1 through 6 {
+      --md-theme-heading-#{$i}-color: var(--md-theme-heading-color);
+      --md-theme-heading-#{$i}-border: var(--md-theme-heading-border);
+    }
+  }
+}
+
+.#{$prefix} {
+  @include code-vars(false);
+}
+
+.#{$prefix}-dark {
+  @include code-vars(true);
+}
+
+.#{$prefix}-preview {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    position: relative;
+    word-break: break-all;
+    margin: 1.4em 0 0.8em 0;
+    font-weight: bold;
+
+    a {
+      color: inherit;
+
+      &:hover {
+        color: inherit;
+      }
+    }
+  }
+
+  @for $i from 1 through 6 {
+    h#{$i} {
+      color: var(--md-theme-heading-#{$i}-color);
+      border-bottom: var(--md-theme-heading-#{$i}-border);
+    }
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+
+  h2 {
+    font-size: 1.5em;
+  }
+
+  h3 {
+    font-size: 1.25em;
+  }
+
+  h4 {
+    font-size: 1em;
+  }
+
+  h5 {
+    font-size: 0.875em;
+  }
+
+  h6 {
+    font-size: 0.85em;
+  }
+}

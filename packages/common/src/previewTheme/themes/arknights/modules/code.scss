@@ -24,19 +24,13 @@
     margin: 0 4px;
     word-break: break-word;
     overflow-x: auto;
-    background-color: var(--md-theme-code-inline-bg-color);
-    color: var(--md-theme-code-inline-color);
     position: relative;
     font-size: 0.87em;
     padding: 0.065em 0.4em;
   }
 
-  pre {
-    margin: 15px 8px;
+  .md-editor-code {
     border: 1px solid var(--border);
-    font-family: $ak-font;
-    position: relative;
-    line-height: 1.75 !important;
 
     &::before {
       top: -4px;
@@ -62,27 +56,32 @@
       position: absolute;
     }
 
-    code {
-      line-height: 1.75 !important;
-      font-size: 14px;
-      padding: 26px 12px;
-      overflow-x: auto;
+    pre {
       margin: 0;
-      word-break: normal;
-      display: block;
-      color: var(--md-theme-code-block-color);
-      background-color: var(--md-theme-code-block-bg-color);
-      position: unset !important;
-    }
+      font-family: $ak-font;
+      position: relative;
+      line-height: 1.75 !important;
 
-    &:nth-child(2n + 1) {
-      &::before {
-        border-top-color: var(--green);
-        border-left-color: var(--green);
+      code {
+        line-height: 1.75 !important;
+        font-size: 14px;
+        padding: 26px 12px;
+        overflow-x: auto;
+        margin: 0;
+        word-break: normal;
+        display: block;
+        position: unset !important;
       }
-      &::after {
-        border-right-color: var(--purple);
-        border-bottom-color: var(--purple);
+
+      &:nth-child(2n + 1) {
+        &::before {
+          border-top-color: var(--green);
+          border-left-color: var(--green);
+        }
+        &::after {
+          border-right-color: var(--purple);
+          border-bottom-color: var(--purple);
+        }
       }
     }
   }

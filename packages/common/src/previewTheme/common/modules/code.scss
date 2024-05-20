@@ -1,0 +1,243 @@
+@mixin code-vars($isDark) {
+  .#{$prefix}-preview {
+    --md-theme-code-inline-color: #3594f7;
+    --md-theme-code-inline-bg-color: rgba(59, 170, 250, 0.1);
+    // 圆角
+    --md-theme-code-inline-radius: 2px;
+
+    --md-theme-code-block-color: #a9b7c6;
+    // 代码背景
+    --md-theme-code-block-bg-color: #{if($isDark, #1a1a1a, #282c34)};
+    // 顶部背景
+    --md-theme-code-before-bg-color: var(--md-theme-code-block-bg-color);
+    // 圆角
+    --md-theme-code-block-radius: 5px;
+  }
+}
+
+.#{$prefix} {
+  @include code-vars(false);
+}
+
+.#{$prefix}-dark {
+  @include code-vars(true);
+}
+
+.#{$prefix}-preview {
+  // 行内
+  code {
+    color: var(--md-theme-code-inline-color);
+    background-color: var(--md-theme-code-inline-bg-color);
+    border-radius: var(--md-theme-code-inline-radius);
+    padding: 0 4px;
+    line-height: 22px;
+  }
+
+  // 块级
+  .#{$prefix}-code {
+    color: var(--md-theme-code-block-color);
+    font-size: 12px;
+    line-height: 1;
+    margin: 20px 0;
+    position: relative;
+
+    input[type='radio'],
+    input[type='radio'] + pre,
+    input[type='radio'] + span.#{$prefix}-code-lang {
+      display: none;
+    }
+
+    input:checked + pre,
+    input:checked + span.#{$prefix}-code-lang {
+      display: initial;
+    }
+
+    input:checked + label {
+      border-bottom: 1px solid;
+      color: var(--md-theme-code-active-color);
+    }
+
+    .#{$prefix}-code-head {
+      display: flex;
+      justify-content: space-between;
+      height: 32px;
+      width: 100%;
+      font-size: 12px;
+      font-weight: 600;
+      background-color: var(--md-theme-code-before-bg-color);
+      margin-bottom: 0;
+      border-top-left-radius: var(--md-theme-code-block-radius);
+      border-top-right-radius: var(--md-theme-code-block-radius);
+
+      .#{$prefix}-code-flag {
+        margin-left: 12px;
+
+        span {
+          display: inline-block;
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          margin-top: 11px;
+
+          &:nth-of-type(1) {
+            background-color: #ec6a5e;
+          }
+          &:nth-of-type(2) {
+            background-color: #f4bf4f;
+          }
+          &:nth-of-type(3) {
+            background-color: #61c554;
+          }
+        }
+
+        span + span {
+          margin-left: 4px;
+        }
+
+        ul.#{$prefix}-codetab-label {
+          // font-size: 0;
+          box-sizing: border-box;
+          white-space: nowrap;
+          // overflow: auto;
+          user-select: none;
+          // border-bottom: 1px solid rgb(240, 240, 240);
+
+          // position: absolute;
+          // top: 7px;
+          // left: 68px;
+
+          // width: 100%;
+          // background-size: 40px;
+          // background-repeat: no-repeat;
+          background-color: var(--md-theme-code-block-bg-color);
+          margin-top: 8px;
+          padding: 0;
+          // padding: 1em 1em 0;
+          // border-top-left-radius: 5px;
+          // border-top-right-radius: 5px;
+          // background-position: 10px 10px;
+
+          li {
+            line-height: 1;
+            list-style: none;
+            display: inline-block;
+            position: relative;
+            vertical-align: super;
+            margin: 0;
+
+            label {
+              cursor: pointer;
+              user-select: none;
+              display: inline-block;
+              // padding: 2px 5px;
+              // margin: 0 5px;
+              font-size: 14px;
+            }
+          }
+
+          li + li {
+            margin-left: 12px;
+          }
+        }
+      }
+
+      .#{$prefix}-code-lang {
+        margin-right: 12px;
+        line-height: 32px;
+      }
+
+      .#{$prefix}-copy-button {
+        cursor: pointer;
+        line-height: 32px;
+        margin-right: 12px;
+        position: initial;
+      }
+    }
+
+    pre {
+      position: relative;
+
+      code {
+        font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+        font-size: 14px;
+        color: var(--md-theme-code-block-color);
+        background-color: var(--md-theme-code-before-bg-color);
+        display: block;
+        line-height: 1.6;
+        overflow: auto;
+        padding: 1em;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        border-bottom-left-radius: var(--md-theme-code-block-radius);
+        border-bottom-right-radius: var(--md-theme-code-block-radius);
+
+        .#{$prefix}-code-block {
+          display: inline-block;
+          width: 100%;
+          overflow: auto;
+          vertical-align: bottom;
+          color: var(--md-theme-code-block-color);
+        }
+      }
+    }
+  }
+
+  // 展开收起模块
+  details.#{$prefix}-code {
+    .#{$prefix}-code-head {
+      cursor: pointer;
+    }
+    &:not(open) {
+      .#{$prefix}-code-head {
+        border-bottom-left-radius: var(--md-theme-code-block-radius);
+        border-bottom-right-radius: var(--md-theme-code-block-radius);
+      }
+
+      // &::after {
+      //   content: '展开';
+      // }
+    }
+
+    &[open] {
+      .#{$prefix}-code-head {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+    }
+  }
+}
+
+// show code row numer，显示代码行号
+.#{$prefix}-scrn {
+  span[rn-wrapper] {
+    position: absolute;
+    pointer-events: none;
+    top: 1em;
+    font-size: 100%;
+    left: 0;
+    width: 3em;
+    letter-spacing: -1px;
+    user-select: none;
+    counter-reset: linenumber;
+
+    & > span {
+      display: block;
+      pointer-events: none;
+      counter-increment: linenumber;
+
+      &::before {
+        color: #999;
+        display: block;
+        padding-right: 0.5em;
+        text-align: right;
+        content: counter(linenumber);
+      }
+    }
+  }
+
+  pre {
+    code {
+      padding-left: 3.5em !important;
+    }
+  }
+}

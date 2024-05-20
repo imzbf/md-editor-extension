@@ -37,8 +37,6 @@
 }
 
 .#{$theme-name} {
-  @include common-style;
-
   word-break: break-word;
   line-height: 1.75;
   font-weight: 400;

@@ -1,0 +1,34 @@
+@mixin table-vars($isDark) {
+  .#{$prefix}-preview {
+    // 斑马条纹
+    --md-theme-table-stripe-color: #{if($isDark, #0c0c0c, #fafafa)};
+    --md-theme-table-tr-bg-color: inherit;
+    // --md-theme-table-tr-border-color: var(--md-theme-border-color);
+    --md-theme-table-td-border-color: var(--md-theme-border-color);
+  }
+}
+
+.#{$prefix} {
+  @include table-vars(false);
+}
+
+.#{$prefix}-dark {
+  @include table-vars(true);
+}
+
+.#{$prefix}-preview {
+  table {
+    tr {
+      background-color: var(--md-theme-table-tr-bg-color);
+
+      th,
+      td {
+        border: 1px solid var(--md-theme-table-td-border-color);
+      }
+
+      &:nth-child(2n) {
+        background-color: var(--md-theme-table-stripe-color);
+      }
+    }
+  }
+}

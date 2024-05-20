@@ -22,11 +22,7 @@
     --md-theme-bg-color-scrollbar-track: #{if($isDark, #0f0f0f, #e2e2e2)};
     --md-theme-bg-color-scrollbar-thumb: #{if($isDark, #2d2d2d, #0000004d)};
     --md-theme-bg-color-scrollbar-thumb-hover: #{if($isDark, #3a3a3a, #00000059)};
-    --md-theme-bg-color-scrollbar-thumb-active: #{if(
-        $isDark,
-        #3a3a3a,
-        #00000061
-      )};
+    --md-theme-bg-color-scrollbar-thumb-active: #{if($isDark, #3a3a3a, #00000061)};
 
     // 代码
     --md-theme-code-copy-tips-color: inherit; // 复制文字

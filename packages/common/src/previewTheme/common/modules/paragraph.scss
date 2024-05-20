@@ -1,0 +1,7 @@
+.#{$prefix}-preview {
+  p {
+    &:empty {
+      display: none;
+    }
+  }
+}

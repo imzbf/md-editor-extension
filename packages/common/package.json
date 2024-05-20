@@ -22,6 +22,7 @@
     "index.d.ts"
   ],
   "types": "index.d.ts",
+  "type": "module",
   "scripts": {
     "dev": "tsx ./scripts/dev",
     "build": "tsc && tsx scripts/build-style"
