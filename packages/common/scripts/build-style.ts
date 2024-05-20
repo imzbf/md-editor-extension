@@ -1,7 +1,7 @@
-import sass from 'sass';
+import * as sass from 'sass';
 import fs from 'fs';
 import path from 'path';
-
+import { fileURLToPath } from 'url';
 import { writeFile } from 'node:fs';
 import { Buffer } from 'node:buffer';
 
@@ -9,6 +9,10 @@ import packageJson from '../package.json';
 
 import folder from '@vavt/utils/src/node/folder';
 const { removeDir } = folder;
+
+const __filename = fileURLToPath(import.meta.url);
+
+const __dirname = path.dirname(__filename);
 
 const themeFolder = '../src/previewTheme/themes';
 
