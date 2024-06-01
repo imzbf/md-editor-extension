@@ -82,7 +82,7 @@ const DE_DE: StaticTextDefaultValue = {
     block: 'Blockformel'
   },
   footer: {
-    markdownTotal: 'Wortanzahl',
+    markdownTotal: 'Zeichenanzahl',
     scrollAuto: 'Automatisches Scrollen'
   }
 };
