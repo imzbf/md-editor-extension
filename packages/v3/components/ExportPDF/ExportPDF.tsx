@@ -143,6 +143,7 @@ const ExportPDF = defineComponent({
               modelValue={props.modelValue}
               mdHeadingId={headingId}
               style={props.style}
+              codeFoldable={false}
             />
           </div>
 

@@ -111,6 +111,7 @@ const ExportPDF = (props: Props) => {
           modelValue={props.modelValue}
           mdHeadingId={headingId}
           style={style}
+          codeFoldable={false}
         />
       </div>
       <div className={`${prefix}-form-item`}>
