@@ -31,6 +31,7 @@ const RU: StaticTextDefaultValue = {
     pageFullscreen: 'на всю страницу',
     fullscreen: 'на весь экран',
     preview: 'превью',
+    previewOnly: 'только превью',
     htmlPreview: 'превью html',
     catalog: 'каталог',
     github: 'исходный код'
@@ -81,7 +82,7 @@ const RU: StaticTextDefaultValue = {
     block: 'блочная'
   },
   footer: {
-    markdownTotal: 'Кол-во слов',
+    markdownTotal: 'Кол-во символов',
     scrollAuto: 'Автопрокрутка'
   }
 };
