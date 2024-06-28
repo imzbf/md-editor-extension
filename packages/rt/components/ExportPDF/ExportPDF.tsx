@@ -93,9 +93,12 @@ const ExportPDF = (props: Props) => {
       width={width}
       height={height}
       visible={visible}
-      title={props.title || props.language === 'zh-CN' ? DEFAULT_TITLE_CN : DEFAULT_TITLE}
+      title={
+        props.title || (props.language === 'zh-CN' ? DEFAULT_TITLE_CN : DEFAULT_TITLE)
+      }
       modalTitle={
-        props.modalTitle || props.language === 'zh-CN' ? DEFAULT_TITLE_CN : DEFAULT_TITLE
+        props.modalTitle ||
+        (props.language === 'zh-CN' ? DEFAULT_TITLE_CN : DEFAULT_TITLE)
       }
       onClick={open}
       onClose={close}
@@ -116,9 +119,8 @@ const ExportPDF = (props: Props) => {
       </div>
       <div className={`${prefix}-form-item`}>
         <button className={`${prefix}-btn`} type="button" onClick={onClick}>
-          {props.exportBtnText || props.language === 'zh-CN'
-            ? EXPORT_BTN_TEXT_CN
-            : EXPORT_BTN_TEXT}
+          {props.exportBtnText ||
+            (props.language === 'zh-CN' ? EXPORT_BTN_TEXT_CN : EXPORT_BTN_TEXT)}
         </button>
       </div>
     </ModalToolbar>
