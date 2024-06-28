@@ -118,12 +118,11 @@ const ExportPDF = defineComponent({
           height={props.height}
           visible={state.visible}
           title={
-            props.title || props.language === 'zh-CN' ? DEFAULT_TITLE_CN : DEFAULT_TITLE
+            props.title || (props.language === 'zh-CN' ? DEFAULT_TITLE_CN : DEFAULT_TITLE)
           }
           modalTitle={
-            props.modalTitle || props.language === 'zh-CN'
-              ? DEFAULT_TITLE_CN
-              : DEFAULT_TITLE
+            props.modalTitle ||
+            (props.language === 'zh-CN' ? DEFAULT_TITLE_CN : DEFAULT_TITLE)
           }
           onClick={() => {
             state.visible = true;
@@ -149,9 +148,8 @@ const ExportPDF = defineComponent({
 
           <div class={`${prefix}-form-item`}>
             <button class={`${prefix}-btn`} type="button" onClick={onClick}>
-              {props.exportBtnText || props.language === 'zh-CN'
-                ? EXPORT_BTN_TEXT_CN
-                : EXPORT_BTN_TEXT}
+              {props.exportBtnText ||
+                (props.language === 'zh-CN' ? EXPORT_BTN_TEXT_CN : EXPORT_BTN_TEXT)}
             </button>
           </div>
         </ModalToolbar>
