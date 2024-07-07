@@ -1,6 +1,6 @@
 import React, { useCallback, CSSProperties, useRef, useState } from 'react';
 import { MdPreview, ModalToolbar, ExposePreviewParam } from 'md-editor-rt';
-import html2pdf from 'html2pdf.js';
+import html2pdf from 'html3pdf';
 import { prefix } from '@vavt/utils/src/static';
 import { CommomProps } from '../../common/props';
 
