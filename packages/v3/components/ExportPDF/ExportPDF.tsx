@@ -2,7 +2,7 @@
 import { defineComponent, reactive, ref, CSSProperties } from 'vue';
 import type { PropType } from 'vue';
 import { MdPreview, ModalToolbar, ExposePreviewParam } from 'md-editor-v3';
-import html2pdf from 'html2pdf.js';
+import html2pdf from 'html3pdf';
 import { getSlot } from '@vavt/utils/src/vue-tsx';
 import { prefix } from '@vavt/utils/src/static';
 import { commomProps } from '../../common/props';
