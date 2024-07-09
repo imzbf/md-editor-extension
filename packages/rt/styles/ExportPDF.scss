@@ -5,3 +5,7 @@
   margin-bottom: 20px;
   overflow: auto;
 }
+
+.export-pdf-content .md-editor-preview .md-editor-code pre code .md-editor-code-block {
+  text-wrap: wrap;
+}

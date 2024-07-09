@@ -123,6 +123,7 @@ const ExportPDF = (props: Props) => {
           mdHeadingId={headingId}
           style={style}
           codeFoldable={false}
+          showCodeRowNumber={false}
         />
       </div>
       <div className={`${prefix}-form-item`}>
