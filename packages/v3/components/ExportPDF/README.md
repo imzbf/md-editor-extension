@@ -8,7 +8,7 @@ Export content as a PDF file.
 <template>
   <MdEditor v-model="text" :toolbars="toolbars">
     <template #defToolbars>
-      <ExportPDF :modelValue="text" />
+      <ExportPDF :modelValue="text" @onProgress="handleProgress"/>
     </template>
   </MdEditor>
 </template>
@@ -26,6 +26,10 @@ import '@vavt/v3-extension/lib/asset/ExportPDF.css';
 
 const text = ref('# PDF');
 const toolbars = ['bold', 0, 'underline'];
+
+const handleProgress = (progress) => {
+  console.log(`Export progress: ${progress.ratio * 100}%`);
+}
 </script>
 ```
 
@@ -55,3 +59,4 @@ const toolbars = ['bold', 0, 'underline'];
 | onStart   | `() => void`             |     |             |
 | onSuccess | `() => void`             |     |             |
 | onError   | `(err: unknown) => void` |     |             |
+| onProgess | `(progress: { val: number, state: string, n: number, stack: string[], ratio: number }) => void`  |     |             |

@@ -52,5 +52,10 @@
     "vite": "^5.2.10",
     "vite-plugin-dts": "^3.9.0",
     "vue": "^3.4.25"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "html3pdf@0.12.2": "patches/html3pdf@0.12.2.patch"
+    }
   }
 }
