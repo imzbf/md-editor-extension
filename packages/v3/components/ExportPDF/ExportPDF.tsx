@@ -2,7 +2,7 @@
 import { defineComponent, reactive, ref, CSSProperties } from 'vue';
 import type { PropType } from 'vue';
 import { MdPreview, ModalToolbar, ExposePreviewParam } from 'md-editor-v3';
-import html2pdf from 'html2pdf.js';
+import  html2pdf from 'html3pdf';
 import { getSlot } from '@vavt/utils/src/vue-tsx';
 import { prefix } from '@vavt/utils/src/static';
 import { commomProps } from '../../common/props';
@@ -57,9 +57,12 @@ const ExportPDF = defineComponent({
     onError: {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       type: Function as PropType<(err: unknown) => void>
+    },
+    onProgress: {
+      type: Function as PropType<(progress: { val: number, state: string, n: number, stack: string[], ratio: number }) => void>
     }
   },
-  emits: ['onStart', 'onSuccess', 'onError'],
+  emits: ['onStart', 'onSuccess', 'onError', 'onProgress'],
   setup(props, ctx) {
     const content = ref();
 
@@ -69,6 +72,13 @@ const ExportPDF = defineComponent({
       visible: false
     });
 
+    const progressCallback = (progress: { val: number, state: string, n: number, stack: string[], ratio: number }) => {
+      if (props.onProgress) {
+        props.onProgress(progress);
+      } else {
+        ctx.emit('onProgress', progress);
+      }
+    };
     /**
      * modal-toolbar组件不会再关闭时销毁子组件，这时需要区别预览扩展组件的标题ID生成方式和编辑器的标题ID生成方式
      *
@@ -84,9 +94,11 @@ const ExportPDF = defineComponent({
         filename: `${props.fileName}.pdf`,
         // https://html2canvas.hertzen.com/configuration
         html2canvas: {
-          scale: 2,
+          scale: 3,
           useCORS: true
         },
+        // tested Firefox max 9 pages, Chromium max 19 pages
+        pagesPerCanvas: navigator.userAgent.includes('Chrome') ? 19 : 9,
         // 智能分页，防止图片被截断
         pagebreak: { mode: 'avoid-all' }
         // 支持文本中放链接，可点击跳转，默认true
@@ -106,7 +118,8 @@ const ExportPDF = defineComponent({
         })
         .finally(() => {
           previewRef.value?.rerender();
-        });
+        })
+        .listen(progressCallback);
     };
 
     return () => {
@@ -143,6 +156,7 @@ const ExportPDF = defineComponent({
               mdHeadingId={headingId}
               style={props.style}
               codeFoldable={false}
+              showCodeRowNumber={false}          
             />
           </div>
 

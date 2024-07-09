@@ -45,3 +45,4 @@ export default () => {
 | onStart | `() => void` |  |  |
 | onSuccess | `() => void` |  |  |
 | onError | `(err: unknown) => void` |  |  |
+| onProgess | `(progress: { val: number, state: string, n: number, stack: string[], ratio: number }) => void`  |  |  |

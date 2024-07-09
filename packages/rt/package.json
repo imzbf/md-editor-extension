@@ -38,6 +38,6 @@
     "react-dom": "^18.2.0"
   },
   "dependencies": {
-    "html2pdf.js": "^0.10.1"
+    "html3pdf": "^0.12.2"
   }
 }

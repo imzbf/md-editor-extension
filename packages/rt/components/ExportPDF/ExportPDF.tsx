@@ -1,6 +1,6 @@
 import React, { useCallback, CSSProperties, useRef, useState } from 'react';
 import { MdPreview, ModalToolbar, ExposePreviewParam } from 'md-editor-rt';
-import html2pdf from 'html2pdf.js';
+import html2pdf from 'html3pdf';
 import { prefix } from '@vavt/utils/src/static';
 import { CommomProps } from '../../common/props';
 
@@ -23,6 +23,7 @@ interface Props extends CommomProps {
   onStart?: () => void;
   onSuccess?: () => void;
   onError?: (err: unknown) => void;
+  onProgress?: (progress: { val: number, state: string, n: number, stack: string[], ratio: number }) => void;
 }
 
 /**
@@ -56,6 +57,10 @@ const ExportPDF = (props: Props) => {
     setVisible(false);
   }, []);
 
+  const progressCallback = (progress: { val: number, state: string, n: number, stack: string[], ratio: number }) => {
+      props.onProgress && props.onProgress(progress);
+  };
+
   const onClick = useCallback(() => {
     // https://ekoopmans.github.io/html2pdf.js/
     const opt = {
@@ -63,9 +68,11 @@ const ExportPDF = (props: Props) => {
       filename: `${fileName}.pdf`,
       // https://html2canvas.hertzen.com/configuration
       html2canvas: {
-        scale: 2,
+        scale: 3,
         useCORS: true
       },
+      // tested Firefox max 9 pages, Chromium max 19 pages
+      pagesPerCanvas: navigator.userAgent.includes('Chrome') ? 19 : 9,
       // 智能分页，防止图片被截断
       pagebreak: { mode: 'avoid-all' }
       // 支持文本中放链接，可点击跳转，默认true
@@ -85,7 +92,8 @@ const ExportPDF = (props: Props) => {
       })
       .finally(() => {
         previewRef.current?.rerender();
-      });
+      })
+      .listen(progressCallback);
   }, [fileName, props]);
 
   return (
@@ -115,6 +123,7 @@ const ExportPDF = (props: Props) => {
           mdHeadingId={headingId}
           style={style}
           codeFoldable={false}
+          showCodeRowNumber={false}
         />
       </div>
       <div className={`${prefix}-form-item`}>
