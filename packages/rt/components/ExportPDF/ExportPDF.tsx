@@ -71,8 +71,8 @@ const ExportPDF = (props: Props) => {
         scale: 3,
         useCORS: true
       },
-      //Firefox max 9 pages, Chromium max 19 pages
-      pagesPerCanvas: 19,
+      // tested Firefox max 9 pages, Chromium max 19 pages
+      pagesPerCanvas: navigator.userAgent.includes('Chrome') ? 19 : 9,
       // 智能分页，防止图片被截断
       pagebreak: { mode: 'avoid-all' }
       // 支持文本中放链接，可点击跳转，默认true
