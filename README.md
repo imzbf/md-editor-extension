@@ -17,8 +17,8 @@ yarn add @vavt/cm-extension
 Language
 
 | name  | description            | author                                             |
-| ----- | ---------------------- | -------------------------------------------------- |
-| zh-TW | Chinese ( Traditional) | [@imzbf](https://github.com/imzbf)                 |
+| ----- |------------------------| -------------------------------------------------- |
+| zh-TW | Chinese (Traditional)  | [@imzbf](https://github.com/imzbf)                 |
 | fr-FR | French                 | [@tofandel](https://github.com/tofandel)           |
 | jp-JP | Japanese               | [@xj89959853](https://github.com/xj89959853)       |
 | id-ID | Bahasa Indonesia       | [@vallerydelexy](https://github.com/vallerydelexy) |
@@ -27,6 +27,7 @@ Language
 | pt-BR | Brazilian Portuguese   | [@kleberMRocha](https://github.com/kleberMRocha)   |
 | de-DE | German                 | [@JehtJanich](https://github.com/JehtJanich)       |
 | it-IT | Italien                | [@JehtJanich](https://github.com/JehtJanich)       |
+| es-ES | Spanish                | [@mreysei](https://github.com/mreysei) |
 
 PreviewTheme
 
