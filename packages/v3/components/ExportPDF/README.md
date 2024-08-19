@@ -8,7 +8,7 @@ Export content as a PDF file.
 <template>
   <MdEditor v-model="text" :toolbars="toolbars">
     <template #defToolbars>
-      <ExportPDF :modelValue="text" @onProgress="handleProgress"/>
+      <ExportPDF :modelValue="text" @onProgress="handleProgress" />
     </template>
   </MdEditor>
 </template>
@@ -29,7 +29,7 @@ const toolbars = ['bold', 0, 'underline'];
 
 const handleProgress = (progress) => {
   console.log(`Export progress: ${progress.ratio * 100}%`);
-}
+};
 </script>
 ```
 
@@ -45,6 +45,11 @@ const handleProgress = (progress) => {
 | fileName | `string` | 'md' | Exported file name |
 | exportBtnText | `string` | 'Export' or '导出' |  |
 | style | `string \| CSSProperties` | `{ padding: '10mm' }` |  |
+| noIconfont | `boolean` |  | Not append iconfont script |
+| noHighlight | `boolean` |  | Highlight code or not |
+| noImgZoomIn | `boolean` |  | Enable the function of enlarging images |
+| noKatex | `boolean` |  | Use katex or not |
+| noMermaid | `boolean` |  | Use mermaid or not |
 
 ## Slots
 
@@ -54,9 +59,9 @@ const handleProgress = (progress) => {
 
 ## Events
 
-| name      | type                     |     | description |
-| --------- | ------------------------ | --- | ----------- |
-| onStart   | `() => void`             |     |             |
-| onSuccess | `() => void`             |     |             |
-| onError   | `(err: unknown) => void` |     |             |
-| onProgess | `(progress: { val: number, state: string, n: number, stack: string[], ratio: number }) => void`  |     |             |
+| name | type |  | description |
+| --- | --- | --- | --- |
+| onStart | `() => void` |  |  |
+| onSuccess | `() => void` |  |  |
+| onError | `(err: unknown) => void` |  |  |
+| onProgess | `(progress: { val: number, state: string, n: number, stack: string[], ratio: number }) => void` |  |  |

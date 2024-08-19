@@ -45,4 +45,9 @@ export default () => {
 | onStart | `() => void` |  |  |
 | onSuccess | `() => void` |  |  |
 | onError | `(err: unknown) => void` |  |  |
-| onProgess | `(progress: { val: number, state: string, n: number, stack: string[], ratio: number }) => void`  |  |  |
+| onProgess | `(progress: { val: number, state: string, n: number, stack: string[], ratio: number }) => void` |  |  |
+| noIconfont | `boolean` |  | Not append iconfont script |
+| noHighlight | `boolean` |  | Highlight code or not |
+| noImgZoomIn | `boolean` |  | Enable the function of enlarging images |
+| noKatex | `boolean` |  | Use katex or not |
+| noMermaid | `boolean` |  | Use mermaid or not |
