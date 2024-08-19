@@ -23,7 +23,18 @@ interface Props extends CommomProps {
   onStart?: () => void;
   onSuccess?: () => void;
   onError?: (err: unknown) => void;
-  onProgress?: (progress: { val: number, state: string, n: number, stack: string[], ratio: number }) => void;
+  onProgress?: (progress: {
+    val: number;
+    state: string;
+    n: number;
+    stack: string[];
+    ratio: number;
+  }) => void;
+  noIconfont?: boolean;
+  noHighlight?: boolean;
+  noImgZoomIn?: boolean;
+  noKatex?: boolean;
+  noMermaid?: boolean;
 }
 
 /**
@@ -57,8 +68,14 @@ const ExportPDF = (props: Props) => {
     setVisible(false);
   }, []);
 
-  const progressCallback = (progress: { val: number, state: string, n: number, stack: string[], ratio: number }) => {
-      props.onProgress && props.onProgress(progress);
+  const progressCallback = (progress: {
+    val: number;
+    state: string;
+    n: number;
+    stack: string[];
+    ratio: number;
+  }) => {
+    props.onProgress && props.onProgress(progress);
   };
 
   const onClick = useCallback(() => {
@@ -124,6 +141,11 @@ const ExportPDF = (props: Props) => {
           style={style}
           codeFoldable={false}
           showCodeRowNumber={false}
+          noIconfont={props.noIconfont}
+          noHighlight={props.noHighlight}
+          noImgZoomIn={props.noImgZoomIn}
+          noKatex={props.noKatex}
+          noMermaid={props.noMermaid}
         />
       </div>
       <div className={`${prefix}-form-item`}>

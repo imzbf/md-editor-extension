@@ -2,7 +2,7 @@
 import { defineComponent, reactive, ref, CSSProperties } from 'vue';
 import type { PropType } from 'vue';
 import { MdPreview, ModalToolbar, ExposePreviewParam } from 'md-editor-v3';
-import  html2pdf from 'html3pdf';
+import html2pdf from 'html3pdf';
 import { getSlot } from '@vavt/utils/src/vue-tsx';
 import { prefix } from '@vavt/utils/src/static';
 import { commomProps } from '../../common/props';
@@ -59,7 +59,30 @@ const ExportPDF = defineComponent({
       type: Function as PropType<(err: unknown) => void>
     },
     onProgress: {
-      type: Function as PropType<(progress: { val: number, state: string, n: number, stack: string[], ratio: number }) => void>
+      type: Function as PropType<
+        (progress: {
+          val: number;
+          state: string;
+          n: number;
+          stack: string[];
+          ratio: number;
+        }) => void
+      >
+    },
+    noIconfont: {
+      type: Boolean as PropType<boolean>
+    },
+    noHighlight: {
+      type: Boolean as PropType<boolean>
+    },
+    noImgZoomIn: {
+      type: Boolean as PropType<boolean>
+    },
+    noKatex: {
+      type: Boolean as PropType<boolean>
+    },
+    noMermaid: {
+      type: Boolean as PropType<boolean>
     }
   },
   emits: ['onStart', 'onSuccess', 'onError', 'onProgress'],
@@ -72,7 +95,13 @@ const ExportPDF = defineComponent({
       visible: false
     });
 
-    const progressCallback = (progress: { val: number, state: string, n: number, stack: string[], ratio: number }) => {
+    const progressCallback = (progress: {
+      val: number;
+      state: string;
+      n: number;
+      stack: string[];
+      ratio: number;
+    }) => {
       if (props.onProgress) {
         props.onProgress(progress);
       } else {
@@ -156,7 +185,12 @@ const ExportPDF = defineComponent({
               mdHeadingId={headingId}
               style={props.style}
               codeFoldable={false}
-              showCodeRowNumber={false}          
+              showCodeRowNumber={false}
+              noIconfont={props.noIconfont}
+              noHighlight={props.noHighlight}
+              noImgZoomIn={props.noImgZoomIn}
+              noKatex={props.noKatex}
+              noMermaid={props.noMermaid}
             />
           </div>
 
