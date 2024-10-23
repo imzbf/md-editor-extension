@@ -1,6 +1,5 @@
 import React, { useCallback, CSSProperties, useRef, useState } from 'react';
 import { MdPreview, ModalToolbar, ExposePreviewParam } from 'md-editor-rt';
-import html2pdf from 'html3pdf';
 import { prefix } from '@vavt/utils/src/static';
 import { CommomProps } from '../../common/props';
 
@@ -97,20 +96,23 @@ const ExportPDF = (props: Props) => {
     };
 
     props.onStart && props.onStart();
-    html2pdf()
-      .set(opt)
-      .from(content.current)
-      .save()
-      .then(() => {
-        props.onSuccess && props.onSuccess();
-      })
-      .catch((error: unknown) => {
-        props.onError && props.onError(error);
-      })
-      .finally(() => {
-        previewRef.current?.rerender();
-      })
-      .listen(progressCallback);
+    import('html3pdf').then((ins) => {
+      ins
+        .default()
+        .set(opt)
+        .from(content.current)
+        .save()
+        .then(() => {
+          props.onSuccess && props.onSuccess();
+        })
+        .catch((error: unknown) => {
+          props.onError && props.onError(error);
+        })
+        .finally(() => {
+          previewRef.current?.rerender();
+        })
+        .listen(progressCallback);
+    });
   }, [fileName, props]);
 
   return (

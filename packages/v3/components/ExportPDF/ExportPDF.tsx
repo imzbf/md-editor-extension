@@ -2,7 +2,7 @@
 import { defineComponent, reactive, ref, CSSProperties } from 'vue';
 import type { PropType } from 'vue';
 import { MdPreview, ModalToolbar, ExposePreviewParam } from 'md-editor-v3';
-import html2pdf from 'html3pdf';
+// import html2pdf from 'html3pdf';
 import { getSlot } from '@vavt/utils/src/vue-tsx';
 import { prefix } from '@vavt/utils/src/static';
 import { commomProps } from '../../common/props';
@@ -135,20 +135,23 @@ const ExportPDF = defineComponent({
       };
 
       props.onStart ? props.onStart() : ctx.emit('onStart');
-      html2pdf()
-        .set(opt)
-        .from(content.value)
-        .save()
-        .then(() => {
-          props.onSuccess ? props.onSuccess() : ctx.emit('onSuccess');
-        })
-        .catch((error: unknown) => {
-          props.onError ? props.onError(error) : ctx.emit('onError', error);
-        })
-        .finally(() => {
-          previewRef.value?.rerender();
-        })
-        .listen(progressCallback);
+      import('html3pdf').then((ins) => {
+        ins
+          .default()
+          .set(opt)
+          .from(content.value)
+          .save()
+          .then(() => {
+            props.onSuccess ? props.onSuccess() : ctx.emit('onSuccess');
+          })
+          .catch((error: unknown) => {
+            props.onError ? props.onError(error) : ctx.emit('onError', error);
+          })
+          .finally(() => {
+            previewRef.value?.rerender();
+          })
+          .listen(progressCallback);
+      });
     };
 
     return () => {
