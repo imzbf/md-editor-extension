@@ -94,7 +94,13 @@ const resolvePath = (p: string) => path.resolve(__dirname, p);
             }
           },
           rollupOptions: {
-            external: ['react', 'md-editor-rt', 'html3pdf'],
+            external: [
+              'react',
+              'react-dom',
+              'react/jsx-runtime',
+              'md-editor-rt',
+              'html3pdf'
+            ],
             output: {
               chunkFileNames: `${t}/chunks/[name].${extnames[t]}`,
               assetFileNames: 'asset/[name][extname]'
