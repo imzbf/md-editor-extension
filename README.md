@@ -27,7 +27,8 @@ Language
 | pt-BR | Brazilian Portuguese   | [@kleberMRocha](https://github.com/kleberMRocha)   |
 | de-DE | German                 | [@JehtJanich](https://github.com/JehtJanich)       |
 | it-IT | Italien                | [@JehtJanich](https://github.com/JehtJanich)       |
-| es-ES | Spanish                | [@mreysei](https://github.com/mreysei) |
+| es-ES | Spanish                | [@mreysei](https://github.com/mreysei)             |
+| pl-PL | Polish                 | [@pperzyna](https://github.com/pperzyna)           |
 
 PreviewTheme
 
