@@ -136,6 +136,7 @@ const ExportPDF = (props: Props) => {
           ref={previewRef}
           editorId={EDITOR_ID}
           theme={props.theme}
+          codeTheme={props.codeTheme}
           previewTheme={props.previewTheme}
           language={props.language}
           modelValue={props.modelValue}

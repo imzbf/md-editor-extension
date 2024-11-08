@@ -10,10 +10,16 @@ export const commomProps = {
     default: () => null
   },
   theme: {
-    type: String as PropType<Themes>
+    type: String as PropType<Themes>,
+    default: undefined
+  },
+  codeTheme: {
+    type: String as PropType<string>,
+    default: undefined
   },
   previewTheme: {
-    type: String as PropType<PreviewThemes>
+    type: String as PropType<PreviewThemes>,
+    default: undefined
   },
   language: {
     type: String as PropType<string>,

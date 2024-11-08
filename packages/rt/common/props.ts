@@ -7,6 +7,7 @@ export interface CommomProps {
    */
   insert?: Insert;
   theme?: Themes;
+  codeTheme?: string;
   previewTheme?: PreviewThemes;
   language?: string;
   /**

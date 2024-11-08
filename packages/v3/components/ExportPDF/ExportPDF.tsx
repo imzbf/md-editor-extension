@@ -49,14 +49,17 @@ const ExportPDF = defineComponent({
       })
     },
     onStart: {
-      type: Function as PropType<() => void>
+      type: Function as PropType<() => void>,
+      default: undefined
     },
     onSuccess: {
-      type: Function as PropType<() => void>
+      type: Function as PropType<() => void>,
+      default: undefined
     },
     onError: {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      type: Function as PropType<(err: unknown) => void>
+      type: Function as PropType<(err: unknown) => void>,
+      default: undefined
     },
     onProgress: {
       type: Function as PropType<
@@ -67,22 +70,28 @@ const ExportPDF = defineComponent({
           stack: string[];
           ratio: number;
         }) => void
-      >
+      >,
+      default: undefined
     },
     noIconfont: {
-      type: Boolean as PropType<boolean>
+      type: Boolean as PropType<boolean>,
+      default: undefined
     },
     noHighlight: {
-      type: Boolean as PropType<boolean>
+      type: Boolean as PropType<boolean>,
+      default: undefined
     },
     noImgZoomIn: {
-      type: Boolean as PropType<boolean>
+      type: Boolean as PropType<boolean>,
+      default: undefined
     },
     noKatex: {
-      type: Boolean as PropType<boolean>
+      type: Boolean as PropType<boolean>,
+      default: undefined
     },
     noMermaid: {
-      type: Boolean as PropType<boolean>
+      type: Boolean as PropType<boolean>,
+      default: undefined
     }
   },
   emits: ['onStart', 'onSuccess', 'onError', 'onProgress'],
@@ -182,6 +191,7 @@ const ExportPDF = defineComponent({
               ref={previewRef}
               editorId={EDITOR_ID}
               theme={props.theme}
+              codeTheme={props.codeTheme}
               previewTheme={props.previewTheme}
               language={props.language}
               modelValue={props.modelValue}
