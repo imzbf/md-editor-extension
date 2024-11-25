@@ -1,5 +1,7 @@
+@use '../scss-vars.scss' as vars;
+
 @mixin admonition-vars($isDark) {
-  .#{$prefix}-admonition {
+  .#{vars.$prefix}-admonition {
     &-note {
       --md-admonition-color: #{if($isDark, #1262e7, #448aff)};
       --md-admonition-bg-color: #{if($isDark, #021d4c, #d5e2f9)};
@@ -67,16 +69,16 @@
   }
 }
 
-.#{$prefix} {
+.#{vars.$prefix} {
   @include admonition-vars(false);
 }
 
-.#{$prefix}-dark {
+.#{vars.$prefix}-dark {
   @include admonition-vars(true);
 }
 
-.#{$prefix}-preview {
-  .#{$prefix}-admonition {
+.#{vars.$prefix}-preview {
+  .#{vars.$prefix}-admonition {
     background-color: var(--md-admonition-bg-color);
     border: 1px solid var(--md-admonition-color);
     border-radius: 0.5rem;

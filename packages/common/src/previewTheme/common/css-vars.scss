@@ -1,5 +1,7 @@
+@use './scss-vars' as vars;
+
 @mixin common-vars($isDark) {
-  .#{$prefix}-preview {
+  .#{vars.$prefix}-preview {
     // 文字
     --md-theme-color: var(--md-color);
     --md-theme-color-reverse: #{if($isDark, #222, #eee)};
@@ -31,10 +33,10 @@
   }
 }
 
-.#{$prefix} {
+.#{vars.$prefix} {
   @include common-vars(false);
 }
 
-.#{$prefix}-dark {
+.#{vars.$prefix}-dark {
   @include common-vars(true);
 }

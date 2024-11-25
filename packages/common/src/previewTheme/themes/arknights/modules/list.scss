@@ -1,4 +1,6 @@
-.#{$theme-name} {
+@use '../scss-vars.scss' as themeVars;
+
+.#{themeVars.$theme-name} {
   ol,
   ul {
     padding-left: 28px;

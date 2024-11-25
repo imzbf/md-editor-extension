@@ -1,5 +1,8 @@
+@use '../../../common/scss-vars.scss' as vars;
+@use '../scss-vars.scss' as themeVars;
+
 @mixin code-vars($isDark) {
-  .#{$theme-name} {
+  .#{themeVars.$theme-name} {
     // 行内
     --md-theme-code-inline-color: #f06;
     --md-theme-code-inline-bg-color: var(--area);
@@ -11,15 +14,15 @@
   }
 }
 
-.#{$prefix} {
+.#{vars.$prefix} {
   @include code-vars(false);
 }
 
-.#{$prefix}-dark {
+.#{vars.$prefix}-dark {
   @include code-vars(true);
 }
 
-.#{$theme-name} {
+.#{themeVars.$theme-name} {
   code {
     margin: 0 4px;
     word-break: break-word;
@@ -58,7 +61,7 @@
 
     pre {
       margin: 0;
-      font-family: $ak-font;
+      font-family: themeVars.$ak-font;
       position: relative;
       line-height: 1.75 !important;
 

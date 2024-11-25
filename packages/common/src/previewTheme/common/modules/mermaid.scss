@@ -1,5 +1,7 @@
-.#{$prefix}-preview {
-  .#{$prefix}-mermaid {
+@use '../scss-vars.scss' as vars;
+
+.#{vars.$prefix}-preview {
+  .#{vars.$prefix}-mermaid {
     overflow-x: auto;
     display: none;
     text-align: center;
@@ -7,7 +9,7 @@
     line-height: 1;
   }
 
-  [class='#{$prefix}-mermaid'][data-processed] {
+  [class='#{vars.$prefix}-mermaid'][data-processed] {
     display: block;
   }
 }

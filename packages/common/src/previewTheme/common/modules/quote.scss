@@ -1,16 +1,18 @@
+@use '../scss-vars.scss' as vars;
+
 @mixin code-vars($isDark) {
-  .#{$prefix}-preview {
+  .#{vars.$prefix}-preview {
     --md-theme-quote-color: var(--md-theme-color);
     --md-theme-quote-border: none;
     --md-theme-quote-bg-color: inherit;
   }
 }
 
-.#{$prefix} {
+.#{vars.$prefix} {
   @include code-vars(false);
 }
 
-.#{$prefix}-preview {
+.#{vars.$prefix}-preview {
   blockquote {
     padding: 0 1em;
     color: var(--md-theme-quote-color);

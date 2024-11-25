@@ -60,7 +60,7 @@ const App = () => {
       <button onClick={changeTheme}>{theme}</button>
       <MdEditor
         theme={theme}
-        modelValue={text}
+        value={text}
         onChange={setText}
         toolbars={toolbars}
         defToolbars={[

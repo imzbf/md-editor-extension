@@ -1,4 +1,6 @@
-.#{$prefix}-preview {
+@use '../scss-vars.scss' as vars;
+
+.#{vars.$prefix}-preview {
   a {
     color: var(--md-theme-link-color);
     text-decoration: none;

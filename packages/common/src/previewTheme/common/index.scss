@@ -1,21 +1,21 @@
-@import './scss-vars.scss';
-@import './css-vars.scss';
+@use './scss-vars.scss' as vars;
+@use './css-vars.scss';
 
-@import './modules/admonition.scss';
-@import './modules/mermaid.scss';
-@import './modules/katex.scss';
-@import './modules/code.scss';
-@import './modules/figure.scss';
-@import './modules/heading.scss';
-@import './modules/hr.scss';
-@import './modules/link.scss';
-@import './modules/list.scss';
-@import './modules/image.scss';
-@import './modules/paragraph.scss';
-@import './modules/quote.scss';
-@import './modules/table.scss';
+@use './modules/admonition.scss';
+@use './modules/mermaid.scss';
+@use './modules/katex.scss';
+@use './modules/code.scss';
+@use './modules/figure.scss';
+@use './modules/heading.scss';
+@use './modules/hr.scss';
+@use './modules/link.scss';
+@use './modules/list.scss';
+@use './modules/image.scss';
+@use './modules/paragraph.scss';
+@use './modules/quote.scss';
+@use './modules/table.scss';
 
-.#{$prefix}-preview {
+.#{vars.$prefix}-preview {
   color: var(--md-theme-color);
 
   ::-webkit-scrollbar {

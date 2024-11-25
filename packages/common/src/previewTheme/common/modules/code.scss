@@ -1,5 +1,7 @@
+@use '../scss-vars.scss' as vars;
+
 @mixin code-vars($isDark) {
-  .#{$prefix}-preview {
+  .#{vars.$prefix}-preview {
     --md-theme-code-inline-color: #3594f7;
     --md-theme-code-inline-bg-color: rgba(59, 170, 250, 0.1);
     // 圆角
@@ -15,15 +17,15 @@
   }
 }
 
-.#{$prefix} {
+.#{vars.$prefix} {
   @include code-vars(false);
 }
 
-.#{$prefix}-dark {
+.#{vars.$prefix}-dark {
   @include code-vars(true);
 }
 
-.#{$prefix}-preview {
+.#{vars.$prefix}-preview {
   // 行内
   code {
     color: var(--md-theme-code-inline-color);
@@ -34,7 +36,7 @@
   }
 
   // 块级
-  .#{$prefix}-code {
+  .#{vars.$prefix}-code {
     color: var(--md-theme-code-block-color);
     font-size: 12px;
     line-height: 1;
@@ -43,12 +45,12 @@
 
     input[type='radio'],
     input[type='radio'] + pre,
-    input[type='radio'] + span.#{$prefix}-code-lang {
+    input[type='radio'] + span.#{vars.$prefix}-code-lang {
       display: none;
     }
 
     input:checked + pre,
-    input:checked + span.#{$prefix}-code-lang {
+    input:checked + span.#{vars.$prefix}-code-lang {
       display: initial;
     }
 
@@ -57,7 +59,7 @@
       color: var(--md-theme-code-active-color);
     }
 
-    .#{$prefix}-code-head {
+    .#{vars.$prefix}-code-head {
       display: flex;
       justify-content: space-between;
       height: 32px;
@@ -69,7 +71,7 @@
       border-top-left-radius: var(--md-theme-code-block-radius);
       border-top-right-radius: var(--md-theme-code-block-radius);
 
-      .#{$prefix}-code-flag {
+      .#{vars.$prefix}-code-flag {
         margin-left: 12px;
 
         span {
@@ -94,7 +96,7 @@
           margin-left: 4px;
         }
 
-        ul.#{$prefix}-codetab-label {
+        ul.#{vars.$prefix}-codetab-label {
           // font-size: 0;
           box-sizing: border-box;
           white-space: nowrap;
@@ -141,12 +143,12 @@
         }
       }
 
-      .#{$prefix}-code-lang {
+      .#{vars.$prefix}-code-lang {
         // margin-right: 12px;
         line-height: 32px;
       }
 
-      .#{$prefix}-copy-button {
+      .#{vars.$prefix}-copy-button {
         cursor: pointer;
         line-height: 32px;
         margin-right: 12px;
@@ -171,7 +173,7 @@
         border-bottom-left-radius: var(--md-theme-code-block-radius);
         border-bottom-right-radius: var(--md-theme-code-block-radius);
 
-        .#{$prefix}-code-block {
+        .#{vars.$prefix}-code-block {
           display: inline-block;
           width: 100%;
           overflow: auto;
@@ -183,12 +185,12 @@
   }
 
   // 展开收起模块
-  details.#{$prefix}-code {
-    .#{$prefix}-code-head {
+  details.#{vars.$prefix}-code {
+    .#{vars.$prefix}-code-head {
       cursor: pointer;
     }
     &:not(open) {
-      .#{$prefix}-code-head {
+      .#{vars.$prefix}-code-head {
         border-bottom-left-radius: var(--md-theme-code-block-radius);
         border-bottom-right-radius: var(--md-theme-code-block-radius);
       }
@@ -199,7 +201,7 @@
     }
 
     &[open] {
-      .#{$prefix}-code-head {
+      .#{vars.$prefix}-code-head {
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
       }
@@ -208,7 +210,7 @@
 }
 
 // show code row numer，显示代码行号
-.#{$prefix}-scrn {
+.#{vars.$prefix}-scrn {
   span[rn-wrapper] {
     position: absolute;
     pointer-events: none;

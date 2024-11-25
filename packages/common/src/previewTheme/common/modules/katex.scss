@@ -1,17 +1,19 @@
-.#{prefix}-katex-block {
+@use '../scss-vars.scss' as vars;
+
+.#{vars.$prefix}-katex-block {
   text-align: center;
   margin: 20px;
 }
 
-.#{prefix}-katex-inline,
-.#{prefix}-katex-block {
+.#{vars.$prefix}-katex-inline,
+.#{vars.$prefix}-katex-block {
   display: none;
 }
 
-.#{prefix}-katex-inline[data-processed] {
+.#{vars.$prefix}-katex-inline[data-processed] {
   display: initial;
 }
 
-.#{prefix}-katex-block[data-processed] {
+.#{vars.$prefix}-katex-block[data-processed] {
   display: block;
 }

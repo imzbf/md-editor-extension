@@ -199,7 +199,6 @@ const ExportPDF = defineComponent({
               style={props.style}
               codeFoldable={false}
               showCodeRowNumber={false}
-              noIconfont={props.noIconfont}
               noHighlight={props.noHighlight}
               noImgZoomIn={props.noImgZoomIn}
               noKatex={props.noKatex}

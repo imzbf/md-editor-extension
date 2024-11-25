@@ -144,7 +144,6 @@ const ExportPDF = (props: Props) => {
           style={style}
           codeFoldable={false}
           showCodeRowNumber={false}
-          noIconfont={props.noIconfont}
           noHighlight={props.noHighlight}
           noImgZoomIn={props.noImgZoomIn}
           noKatex={props.noKatex}

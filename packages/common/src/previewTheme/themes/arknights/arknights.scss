@@ -1,16 +1,17 @@
-@import './scss-vars.scss';
+@use './scss-vars.scss' as themeVars;
+@use '../../common/scss-vars.scss' as vars;
 
-@import './modules/code.scss';
-@import './modules/heading.scss';
-@import './modules/image.scss';
-@import './modules/link.scss';
-@import './modules/list.scss';
-@import './modules/paragraph.scss';
-@import './modules/quote.scss';
-@import './modules/table.scss';
+@use './modules/code.scss';
+@use './modules/heading.scss';
+@use './modules/image.scss';
+@use './modules/link.scss';
+@use './modules/list.scss';
+@use './modules/paragraph.scss';
+@use './modules/quote.scss';
+@use './modules/table.scss';
 
 @mixin theme-vars($isDark) {
-  .#{$theme-name} {
+  .#{themeVars.$theme-name} {
     --bg-color: rgba(224, 224, 224, 0.1);
     --blue: #37b2ff;
     --yellow: #feea1e;
@@ -27,16 +28,16 @@
 }
 
 // 亮模式
-.#{$prefix} {
+.#{vars.$prefix} {
   @include theme-vars(false);
 }
 
 // 暗模式
-.#{$prefix}-dark {
+.#{vars.$prefix}-dark {
   @include theme-vars(true);
 }
 
-.#{$theme-name} {
+.#{themeVars.$theme-name} {
   word-break: break-word;
   line-height: 1.75;
   font-weight: 400;
@@ -44,11 +45,7 @@
   overflow-x: hidden;
   color: var(--text);
   position: relative;
-  background-image: linear-gradient(
-      90deg,
-      rgba(217, 234, 251, 0.25) 3%,
-      transparent 0
-    ),
+  background-image: linear-gradient(90deg, rgba(217, 234, 251, 0.25) 3%, transparent 0),
     linear-gradient(360deg, rgba(217, 234, 251, 0.25) 3%, transparent 0);
   background-size: 20px 20px;
   background-position: 50%;
@@ -114,7 +111,7 @@
   }
 }
 
-[class*='arknights-theme #{$prefix}-scrn'] {
+[class*='arknights-theme #{vars.$prefix}-scrn'] {
   span[rn-wrapper] {
     top: 26px;
   }

@@ -1,5 +1,7 @@
+@use '../scss-vars.scss' as vars;
+
 @mixin code-vars($isDark) {
-  .#{$prefix}-preview {
+  .#{vars.$prefix}-preview {
     --md-theme-heading-color: var(--md-theme-color);
     --md-theme-heading-border: none;
 
@@ -10,15 +12,15 @@
   }
 }
 
-.#{$prefix} {
+.#{vars.$prefix} {
   @include code-vars(false);
 }
 
-.#{$prefix}-dark {
+.#{vars.$prefix}-dark {
   @include code-vars(true);
 }
 
-.#{$prefix}-preview {
+.#{vars.$prefix}-preview {
   h1,
   h2,
   h3,

@@ -24,7 +24,7 @@
     <div class="container">
       <MdEditorV3
         v-model="state.text"
-        editorId="locale-develop"
+        id="locale-develop"
         :theme="state.theme"
         :language="state.language"
         :previewTheme="state.previewTheme"
@@ -35,7 +35,7 @@
 
       <MdEditorV3
         v-model="state.text"
-        editorId="preview-theme-develop"
+        id="preview-theme-develop"
         :theme="state.theme"
         :language="state.language"
         :previewTheme="state.previewTheme"

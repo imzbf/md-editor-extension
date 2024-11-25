@@ -1,4 +1,6 @@
-.#{$prefix}-preview {
+@use '../scss-vars.scss' as vars;
+
+.#{vars.$prefix}-preview {
   ol,
   ul {
     padding-left: 2.35em;

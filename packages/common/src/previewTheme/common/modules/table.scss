@@ -1,5 +1,7 @@
+@use '../scss-vars.scss' as vars;
+
 @mixin table-vars($isDark) {
-  .#{$prefix}-preview {
+  .#{vars.$prefix}-preview {
     // 斑马条纹
     --md-theme-table-stripe-color: #{if($isDark, #0c0c0c, #fafafa)};
     --md-theme-table-tr-bg-color: inherit;
@@ -8,15 +10,15 @@
   }
 }
 
-.#{$prefix} {
+.#{vars.$prefix} {
   @include table-vars(false);
 }
 
-.#{$prefix}-dark {
+.#{vars.$prefix}-dark {
   @include table-vars(true);
 }
 
-.#{$prefix}-preview {
+.#{vars.$prefix}-preview {
   table {
     tr {
       background-color: var(--md-theme-table-tr-bg-color);

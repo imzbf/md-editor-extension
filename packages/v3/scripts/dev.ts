@@ -35,13 +35,15 @@ globalThis.__name = __name;
     },
     plugins: [vue(), nodeService(), vueJsx(), markdown()],
     css: {
+      preprocessorOptions: {
+        scss: {
+          silenceDeprecations: ['legacy-js-api'],
+          // 可根据需要添加全局样式变量等
+          additionalData: ''
+        }
+      },
       modules: {
         localsConvention: 'camelCase' // 默认只支持驼峰，修改为同事支持横线和驼峰
-      },
-      preprocessorOptions: {
-        less: {
-          javascriptEnabled: true
-        }
       }
     }
   });

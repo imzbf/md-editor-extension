@@ -1,4 +1,6 @@
-.#{$prefix}-preview {
+@use '../scss-vars.scss' as vars;
+
+.#{vars.$prefix}-preview {
   img {
     max-width: 100%;
   }
