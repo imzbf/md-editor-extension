@@ -37,7 +37,7 @@
     "@vue/eslint-config-prettier": "^9.0.0",
     "@vue/eslint-config-typescript": "^13.0.0",
     "axios": "^1.6.8",
-    "eslint": "^9.1.1",
+    "eslint": "^8.56.0",
     "eslint-plugin-prettier": "^5.1.3",
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.1",
@@ -57,5 +57,8 @@
     "patchedDependencies": {
       "html3pdf@0.12.2": "patches/html3pdf@0.12.2.patch"
     }
+  },
+  "dependencies": {
+    "@vavt/message": "^2.0.1"
   }
 }

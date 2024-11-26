@@ -50,6 +50,8 @@ const handleProgress = (progress) => {
 | noImgZoomIn | `boolean` |  | Enable the function of enlarging images |
 | noKatex | `boolean` |  | Use katex or not |
 | noMermaid | `boolean` |  | Use mermaid or not |
+| options | `object` |  | [html2pdf.js](https://ekoopmans.github.io/html2pdf.js/) |
+| customize | `(ins: unknown) => void` |  | configure [jsPDF](https://raw.githack.com/MrRio/jsPDF/master/docs/index.html) |
 
 ## Slots
 
@@ -65,3 +67,31 @@ const handleProgress = (progress) => {
 | onSuccess | `() => void` |  |  |
 | onError | `(err: unknown) => void` |  |  |
 | onProgess | `(progress: { val: number, state: string, n: number, stack: string[], ratio: number }) => void` |  |  |
+
+## Demo
+
+### Set Page Number
+
+```vue
+<script setup>
+const customizePdf = (pdfIns) => {
+  const totalPages = pdfIns.internal.getNumberOfPages();
+  const pageWidth = pdfIns.internal.pageSize.getWidth();
+  const pageHeight = pdfIns.internal.pageSize.getHeight();
+
+  for (let i = 1; i <= totalPages; i++) {
+    pdfIns.setPage(i);
+    pdfIns.setFontSize(10);
+    // Using Chinese will result in garbled text
+    // refer to [this](https://github.com/parallax/jsPDF?tab=readme-ov-file#use-of-unicode-characters--utf-8) for font configuration.
+    pdfIns.text(`Page ${i}, Total ${totalPages}`, pageWidth / 2, pageHeight - 1, {
+      align: 'center'
+    });
+  }
+};
+</script>
+
+<template>
+  <ExportPDF modelValue="text" :customize="customizePdf" />
+</template>
+```

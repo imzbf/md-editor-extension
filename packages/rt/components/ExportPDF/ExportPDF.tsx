@@ -15,7 +15,11 @@ interface Props extends CommomProps {
   width?: string;
   height?: string;
   modalTitle?: string;
-  modelValue: string;
+  value?: string;
+  /**
+   * @deprecated replace with value
+   */
+  modelValue?: string;
   fileName?: string;
   exportBtnText?: string;
   style?: CSSProperties;
@@ -34,6 +38,19 @@ interface Props extends CommomProps {
   noImgZoomIn?: boolean;
   noKatex?: boolean;
   noMermaid?: boolean;
+  /**
+   * html2pdf配置项，它会覆盖默认配置！
+   *
+   * https://ekoopmans.github.io/html2pdf.js/
+   */
+  options?: object;
+  /**
+   * 自定义pdf
+   *
+   * @param ins html3pdf实例
+   * @returns
+   */
+  customize?: (ins: unknown) => void;
 }
 
 /**
@@ -52,7 +69,8 @@ const ExportPDF = (props: Props) => {
     fileName = 'md',
     style = {
       padding: '10mm'
-    }
+    },
+    options = {}
   } = props;
 
   const [visible, setVisible] = useState(false);
@@ -67,15 +85,18 @@ const ExportPDF = (props: Props) => {
     setVisible(false);
   }, []);
 
-  const progressCallback = (progress: {
-    val: number;
-    state: string;
-    n: number;
-    stack: string[];
-    ratio: number;
-  }) => {
-    props.onProgress && props.onProgress(progress);
-  };
+  const progressCallback = useCallback(
+    (progress: {
+      val: number;
+      state: string;
+      n: number;
+      stack: string[];
+      ratio: number;
+    }) => {
+      props.onProgress?.(progress);
+    },
+    [props]
+  );
 
   const onClick = useCallback(() => {
     // https://ekoopmans.github.io/html2pdf.js/
@@ -90,30 +111,38 @@ const ExportPDF = (props: Props) => {
       // tested Firefox max 9 pages, Chromium max 19 pages
       pagesPerCanvas: navigator.userAgent.includes('Chrome') ? 19 : 9,
       // 智能分页，防止图片被截断
-      pagebreak: { mode: 'avoid-all' }
+      pagebreak: { mode: 'avoid-all' },
       // 支持文本中放链接，可点击跳转，默认true
       // enableLinks: true
+      ...options
     };
 
-    props.onStart && props.onStart();
+    props.onStart?.();
     import('html3pdf').then((ins) => {
-      ins
-        .default()
-        .set(opt)
-        .from(content.current)
-        .save()
+      const pdf = ins.default().set(opt).from(content.current);
+
+      pdf
+        .toPdf()
+        .get('pdf')
+        .then((pdfInstance: any) => {
+          props.customize?.(pdfInstance);
+        })
         .then(() => {
-          props.onSuccess && props.onSuccess();
-        })
-        .catch((error: unknown) => {
-          props.onError && props.onError(error);
-        })
-        .finally(() => {
-          previewRef.current?.rerender();
-        })
-        .listen(progressCallback);
+          pdf
+            .save()
+            .listen(progressCallback)
+            .then(() => {
+              props.onSuccess?.();
+            })
+            .catch((error: unknown) => {
+              props.onError?.(error);
+            })
+            .finally(() => {
+              previewRef.current?.rerender();
+            });
+        });
     });
-  }, [fileName, props]);
+  }, [fileName, options, progressCallback, props]);
 
   return (
     <ModalToolbar
@@ -134,12 +163,12 @@ const ExportPDF = (props: Props) => {
       <div className="export-pdf-content" ref={content}>
         <MdPreview
           ref={previewRef}
-          editorId={EDITOR_ID}
+          id={EDITOR_ID}
           theme={props.theme}
           codeTheme={props.codeTheme}
           previewTheme={props.previewTheme}
           language={props.language}
-          modelValue={props.modelValue}
+          value={props.value || props.modelValue || ''}
           mdHeadingId={headingId}
           style={style}
           codeFoldable={false}

@@ -92,6 +92,24 @@ const ExportPDF = defineComponent({
     noMermaid: {
       type: Boolean as PropType<boolean>,
       default: undefined
+    },
+    /**
+     * html2pdf配置项，它会覆盖默认配置！
+     *
+     * https://ekoopmans.github.io/html2pdf.js/
+     */
+    options: {
+      type: Object as PropType<object>,
+      default: () => {}
+    },
+    /**
+     * 自定义pdf
+     *
+     * @param ins html3pdf实例
+     * @returns
+     */
+    customize: {
+      type: Function as PropType<(ins: unknown) => void>
     }
   },
   emits: ['onStart', 'onSuccess', 'onError', 'onProgress'],
@@ -138,28 +156,36 @@ const ExportPDF = defineComponent({
         // tested Firefox max 9 pages, Chromium max 19 pages
         pagesPerCanvas: navigator.userAgent.includes('Chrome') ? 19 : 9,
         // 智能分页，防止图片被截断
-        pagebreak: { mode: 'avoid-all' }
+        pagebreak: { mode: 'avoid-all' },
         // 支持文本中放链接，可点击跳转，默认true
         // enableLinks: true
+        ...props.options
       };
 
       props.onStart ? props.onStart() : ctx.emit('onStart');
       import('html3pdf').then((ins) => {
-        ins
-          .default()
-          .set(opt)
-          .from(content.value)
-          .save()
+        const pdf = ins.default().set(opt).from(content.value);
+
+        pdf
+          .toPdf()
+          .get('pdf')
+          .then((pdfInstance: any) => {
+            props.customize?.(pdfInstance);
+          })
           .then(() => {
-            props.onSuccess ? props.onSuccess() : ctx.emit('onSuccess');
-          })
-          .catch((error: unknown) => {
-            props.onError ? props.onError(error) : ctx.emit('onError', error);
-          })
-          .finally(() => {
-            previewRef.value?.rerender();
-          })
-          .listen(progressCallback);
+            pdf
+              .save()
+              .listen(progressCallback)
+              .then(() => {
+                props.onSuccess ? props.onSuccess() : ctx.emit('onSuccess');
+              })
+              .catch((error: unknown) => {
+                props.onError ? props.onError(error) : ctx.emit('onError', error);
+              })
+              .finally(() => {
+                previewRef.value?.rerender();
+              });
+          });
       });
     };
 
@@ -189,7 +215,7 @@ const ExportPDF = defineComponent({
           <div class="export-pdf-content" ref={content}>
             <MdPreview
               ref={previewRef}
-              editorId={EDITOR_ID}
+              id={EDITOR_ID}
               theme={props.theme}
               codeTheme={props.codeTheme}
               previewTheme={props.previewTheme}

@@ -20,10 +20,10 @@ export default () => {
 
   return (
     <MdEditor
-      modelValue={value}
+      value={value}
       onChange={setValue}
       toolbars={['bold', 0, '=', 'github']}
-      defToolbars={[<ExportPDF key="ExportPDF" modelValue={value} />]}
+      defToolbars={[<ExportPDF key="ExportPDF" value={value} />]}
     />
   );
 };
@@ -37,7 +37,8 @@ export default () => {
 | width | `string` | '870px' | Width of component `Modal` |
 | height | `string` | '600px' | Height of component `Modal` |
 | modalTitle | `string` | 'Export as PDF' or '导出为 PDF' | Title of component `Modal` |
-| modelValue | `string` | '' | Conten need to be exported |
+| value | `string` | '' | Conten need to be exported |
+| modelValue | `string` | '' | Deprecated since version 2.0.0, replace with `value` |
 | fileName | `string` | 'md' | Exported file name |
 | exportBtnText | `string` | 'Export' or '导出' |  |
 | trigger | `string \| ReactElement` | `<span className="mee-iconfont icon-mee-pdf" />` | Content displayed in the toolbar |
@@ -51,3 +52,31 @@ export default () => {
 | noImgZoomIn | `boolean` |  | Enable the function of enlarging images |
 | noKatex | `boolean` |  | Use katex or not |
 | noMermaid | `boolean` |  | Use mermaid or not |
+| options | `object` |  | [html2pdf.js](https://ekoopmans.github.io/html2pdf.js/) |
+| customize | `(ins: unknown) => void` |  | configure [jsPDF](https://raw.githack.com/MrRio/jsPDF/master/docs/index.html) |
+
+## Demo
+
+### Set Page Number
+
+```jsx
+const customizePdf = (pdfIns) => {
+  const totalPages = pdfIns.internal.getNumberOfPages();
+  const pageWidth = pdfIns.internal.pageSize.getWidth();
+  const pageHeight = pdfIns.internal.pageSize.getHeight();
+
+  for (let i = 1; i <= totalPages; i++) {
+    pdfIns.setPage(i);
+    pdfIns.setFontSize(10);
+    // Using Chinese will result in garbled text
+    // refer to [this](https://github.com/parallax/jsPDF?tab=readme-ov-file#use-of-unicode-characters--utf-8) for font configuration.
+    pdfIns.text(`Page ${i}, Total ${totalPages}`, pageWidth / 2, pageHeight - 1, {
+      align: 'center'
+    });
+  }
+};
+
+export default ({ text }) => {
+  return <ExportPDF value={text} customize={customizePdf} />;
+};
+```
