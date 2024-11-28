@@ -1,6 +1,6 @@
 {
   "name": "@vavt/v3-extension",
-  "version": "1.3.2",
+  "version": "2.0.0",
   "license": "MIT",
   "keywords": [
     "md-editor-v3"
@@ -34,5 +34,8 @@
   },
   "dependencies": {
     "html3pdf": "^0.12.2"
+  },
+  "peerDependencies": {
+    "md-editor-v3": ">=5.0.0"
   }
 }
