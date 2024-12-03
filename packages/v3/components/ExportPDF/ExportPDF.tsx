@@ -189,6 +189,10 @@ const ExportPDF = defineComponent({
       });
     };
 
+    ctx.expose({
+      trigger: onClick
+    });
+
     return () => {
       const trigger = getSlot({ props, ctx }, 'trigger');
 

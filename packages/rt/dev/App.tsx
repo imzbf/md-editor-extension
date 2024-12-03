@@ -1,4 +1,4 @@
-import React, { useState, StrictMode, useCallback } from 'react';
+import React, { useState, StrictMode, useCallback, useRef } from 'react';
 import { MdEditor, Themes, ToolbarNames } from 'md-editor-rt';
 import 'md-editor-rt/lib/style.css';
 
@@ -79,6 +79,7 @@ const onSuccess = () => {
 };
 
 const App = () => {
+  const pdfRef = useRef<any>();
   const [text, setText] = useState(data);
   const [theme, setTheme] = useState<Themes>('light');
 
@@ -113,6 +114,13 @@ const App = () => {
   return (
     <StrictMode>
       <button onClick={changeTheme}>{theme}</button>
+      <button
+        onClick={() => {
+          pdfRef.current?.trigger();
+        }}
+      >
+        导出
+      </button>
       <MdEditor
         theme={theme}
         value={text}
@@ -124,6 +132,7 @@ const App = () => {
           <OriginalImg key="originalImg" />,
           <ExportPDF
             key="exportPDF"
+            ref={pdfRef}
             value={text}
             customize={customizePdf}
             onProgress={onProgress}

@@ -55,6 +55,12 @@ export default () => {
 | options | `object` |  | [html2pdf.js](https://ekoopmans.github.io/html2pdf.js/) |
 | customize | `(ins: unknown) => void` |  | configure [jsPDF](https://raw.githack.com/MrRio/jsPDF/master/docs/index.html) |
 
+## Expose
+
+| name    | type         | description                                              |
+| ------- | ------------ | -------------------------------------------------------- |
+| trigger | `() => void` | The method to trigger export，`pdfRef.current.trigger()` |
+
 ## Demo
 
 ### Set Page Number

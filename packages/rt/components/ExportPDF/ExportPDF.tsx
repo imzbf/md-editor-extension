@@ -1,4 +1,12 @@
-import React, { useCallback, CSSProperties, useRef, useState } from 'react';
+import React, {
+  useCallback,
+  CSSProperties,
+  useRef,
+  useState,
+  useImperativeHandle,
+  forwardRef,
+  ForwardedRef
+} from 'react';
 import { MdPreview, ModalToolbar, ExposePreviewParam } from 'md-editor-rt';
 import { prefix } from '@vavt/utils/src/static';
 import { CommomProps } from '../../common/props';
@@ -61,7 +69,7 @@ interface Props extends CommomProps {
 const headingId = (_text: string, _level: number, index: number) =>
   `pdf-ex-heading-${index}`;
 
-const ExportPDF = (props: Props) => {
+const ExportPDF = forwardRef((props: Props, ref: ForwardedRef<unknown>) => {
   const {
     width = '870px',
     height = '600px',
@@ -144,6 +152,16 @@ const ExportPDF = (props: Props) => {
     });
   }, [fileName, options, progressCallback, props]);
 
+  useImperativeHandle(
+    ref,
+    () => {
+      return {
+        trigger: onClick
+      };
+    },
+    [onClick]
+  );
+
   return (
     <ModalToolbar
       width={width}
@@ -187,6 +205,6 @@ const ExportPDF = (props: Props) => {
       </div>
     </ModalToolbar>
   );
-};
+});
 
 export default ExportPDF;

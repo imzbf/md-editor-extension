@@ -1,5 +1,6 @@
 <template>
   <button @click="changeTheme">{{ theme }}</button>
+  <button @click="exportHandler">导出</button>
   <MdEditor v-model="text" :toolbars="toolbars" :theme="theme">
     <template #defToolbars>
       <Mark />
@@ -7,6 +8,7 @@
       <OriginalImg />
 
       <ExportPDF
+        ref="pdfRef"
         :modelValue="text"
         :customize="customizePdf"
         @onProgress="onProgress"
@@ -39,10 +41,9 @@ import data from '@vavt/data/src/markdown-demo.md';
 
 import { Mark, Emoji, OriginalImg, ExportPDF } from '../components';
 
+const pdfRef = ref();
 const text = ref(data);
-
 const theme = ref<Themes>('light');
-
 const toolbars: ToolbarNames[] = [
   'bold',
   'underline',
@@ -81,6 +82,10 @@ const toolbars: ToolbarNames[] = [
   'catalog',
   'github'
 ];
+
+const exportHandler = () => {
+  pdfRef.value.trigger();
+};
 
 const changeTheme = () => {
   theme.value = theme.value === 'dark' ? 'light' : 'dark';

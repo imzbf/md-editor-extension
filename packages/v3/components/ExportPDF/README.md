@@ -61,12 +61,18 @@ const handleProgress = (progress) => {
 
 ## Events
 
-| name | type |  | description |
-| --- | --- | --- | --- |
-| onStart | `() => void` |  |  |
-| onSuccess | `() => void` |  |  |
-| onError | `(err: unknown) => void` |  |  |
-| onProgess | `(progress: { val: number, state: string, n: number, stack: string[], ratio: number }) => void` |  |  |
+| name | type | description |
+| --- | --- | --- |
+| onStart | `() => void` |  |
+| onSuccess | `() => void` |  |
+| onError | `(err: unknown) => void` |  |
+| onProgess | `(progress: { val: number, state: string, n: number, stack: string[], ratio: number }) => void` |  |
+
+## Expose
+
+| name    | type         | description                                            |
+| ------- | ------------ | ------------------------------------------------------ |
+| trigger | `() => void` | The method to trigger export，`pdfRef.value.trigger()` |
 
 ## Demo
 
