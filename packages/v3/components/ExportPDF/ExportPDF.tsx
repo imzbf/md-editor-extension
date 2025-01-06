@@ -3,6 +3,7 @@ import { defineComponent, reactive, ref, CSSProperties } from 'vue';
 import type { PropType } from 'vue';
 import { MdPreview, ModalToolbar, ExposePreviewParam } from 'md-editor-v3';
 // import html2pdf from 'html3pdf';
+import { Printer } from 'lucide-vue-next';
 import { getSlot } from '@vavt/utils/src/vue-tsx';
 import { prefix } from '@vavt/utils/src/static';
 import { commomProps } from '../../common/props';
@@ -214,7 +215,7 @@ const ExportPDF = defineComponent({
           onClose={() => {
             state.visible = false;
           }}
-          trigger={trigger || <span class="mee-iconfont icon-mee-pdf" />}
+          trigger={trigger || <Printer class={`${prefix}-icon`} />}
         >
           <div class="export-pdf-content" ref={content}>
             <MdPreview

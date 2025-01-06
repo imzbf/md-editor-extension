@@ -1,7 +1,9 @@
 import { defineComponent } from 'vue';
 import { NormalToolbar } from 'md-editor-v3';
 import type { InsertContentGenerator } from 'md-editor-v3';
+import { ImagePlus } from 'lucide-vue-next';
 import { getSlot } from '@vavt/utils/src/vue-tsx';
+import { prefix } from '@vavt/utils/src/static';
 
 import { commomProps } from '../../common/props';
 
@@ -28,7 +30,7 @@ const OriginalImg = defineComponent({
 
       return (
         <NormalToolbar title={props.title || 'image'} onClick={onClick}>
-          {trigger || <span class="mee-iconfont icon-mee-tupian" />}
+          {trigger || <ImagePlus class={`${prefix}-icon`} />}
         </NormalToolbar>
       );
     };

@@ -2,8 +2,11 @@ import { defineComponent, reactive } from 'vue';
 import type { PropType } from 'vue';
 import { DropdownToolbar } from 'md-editor-v3';
 import type { InsertContentGenerator } from 'md-editor-v3';
+import { Smile } from 'lucide-vue-next';
 import { getSlot } from '@vavt/utils/src/vue-tsx';
 import { emojis } from '@vavt/data/src/default-emojis';
+import { prefix } from '@vavt/utils/src/static';
+
 import { commomProps } from '../../common/props';
 
 const Emoji = defineComponent({
@@ -72,7 +75,7 @@ const Emoji = defineComponent({
             </div>
           }
         >
-          {trigger || <span class="mee-iconfont icon-mee-emoji" />}
+          {trigger || <Smile class={`${prefix}-icon`} />}
         </DropdownToolbar>
       );
     };

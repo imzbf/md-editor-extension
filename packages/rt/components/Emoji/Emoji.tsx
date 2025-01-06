@@ -1,6 +1,8 @@
 import React, { useCallback, useState } from 'react';
 import { DropdownToolbar } from 'md-editor-rt';
 import type { InsertContentGenerator } from 'md-editor-rt';
+import { Smile } from 'lucide-react';
+import { prefix } from '@vavt/utils/src/static';
 import { emojis as defaultEmoji } from '@vavt/data/src/default-emojis';
 import { CommomProps } from '../../common/props';
 
@@ -67,7 +69,7 @@ const Emoji = (props: Props) => {
         </div>
       }
     >
-      {trigger || <span key="emoji-trigger" className="mee-iconfont icon-mee-emoji" />}
+      {trigger || <Smile className={`${prefix}-icon`} />}
     </DropdownToolbar>
   );
 };

@@ -39,6 +39,6 @@
     "html3pdf": "^0.12.2"
   },
   "peerDependencies": {
-    "md-editor-rt": ">=5.0.0"
+    "md-editor-rt": ">=5.2.0"
   }
 }

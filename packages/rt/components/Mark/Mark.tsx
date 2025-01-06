@@ -1,6 +1,9 @@
 import React, { useCallback } from 'react';
 import { NormalToolbar } from 'md-editor-rt';
 import type { InsertContentGenerator } from 'md-editor-rt';
+import { Highlighter } from 'lucide-react';
+import { prefix } from '@vavt/utils/src/static';
+
 import { CommomProps } from '../../common/props';
 
 interface Props extends CommomProps {}
@@ -21,7 +24,7 @@ const Mark = ({ title = 'mark', insert = () => {}, trigger }: Props) => {
 
   return (
     <NormalToolbar title={title} onClick={onClick}>
-      {trigger || <span className="mee-iconfont icon-mee-mark" />}
+      {trigger || <Highlighter className={`${prefix}-icon`} />}
     </NormalToolbar>
   );
 };

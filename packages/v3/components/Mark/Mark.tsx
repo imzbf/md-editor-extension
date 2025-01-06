@@ -1,7 +1,9 @@
 import { defineComponent } from 'vue';
 import { NormalToolbar } from 'md-editor-v3';
 import type { InsertContentGenerator } from 'md-editor-v3';
+import { Highlighter } from 'lucide-vue-next';
 import { getSlot } from '@vavt/utils/src/vue-tsx';
+import { prefix } from '@vavt/utils/src/static';
 
 import { commomProps } from '../../common/props';
 
@@ -28,7 +30,7 @@ const Mark = defineComponent({
 
       return (
         <NormalToolbar title={props.title || 'mark'} onClick={markHandler}>
-          {trigger || <span class="mee-iconfont icon-mee-mark" />}
+          {trigger || <Highlighter class={`${prefix}-icon`} />}
         </NormalToolbar>
       );
     };

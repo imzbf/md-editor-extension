@@ -8,6 +8,7 @@ import React, {
   ForwardedRef
 } from 'react';
 import { MdPreview, ModalToolbar, ExposePreviewParam } from 'md-editor-rt';
+import { Printer } from 'lucide-react';
 import { prefix } from '@vavt/utils/src/static';
 import { CommomProps } from '../../common/props';
 
@@ -176,7 +177,7 @@ const ExportPDF = forwardRef((props: Props, ref: ForwardedRef<unknown>) => {
       }
       onClick={open}
       onClose={close}
-      trigger={trigger || <span className="mee-iconfont icon-mee-pdf" />}
+      trigger={trigger || <Printer className={`${prefix}-icon`} />}
     >
       <div className="export-pdf-content" ref={content}>
         <MdPreview
