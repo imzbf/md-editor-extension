@@ -20,11 +20,9 @@ const Mark = ({ title = 'mark', insert = () => {}, trigger }: Props) => {
   }, [insert]);
 
   return (
-    <NormalToolbar
-      title={title}
-      onClick={onClick}
-      trigger={trigger || <span className="mee-iconfont icon-mee-mark" />}
-    />
+    <NormalToolbar title={title} onClick={onClick}>
+      {trigger || <span className="mee-iconfont icon-mee-mark" />}
+    </NormalToolbar>
   );
 };
 

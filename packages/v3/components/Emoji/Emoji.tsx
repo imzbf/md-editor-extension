@@ -54,7 +54,6 @@ const Emoji = defineComponent({
           title={props.title || 'emoji'}
           visible={state.visible}
           onChange={onChange}
-          trigger={trigger || <span class="mee-iconfont icon-mee-emoji" />}
           overlay={
             <div class="emoji-container">
               <ol class="emojis">
@@ -72,7 +71,9 @@ const Emoji = defineComponent({
               </ol>
             </div>
           }
-        ></DropdownToolbar>
+        >
+          {trigger || <span class="mee-iconfont icon-mee-emoji" />}
+        </DropdownToolbar>
       );
     };
   }
