@@ -32,6 +32,7 @@
     "@types/node": "^20.12.7",
     "@typescript-eslint/eslint-plugin": "^7.7.1",
     "@typescript-eslint/parser": "^7.7.1",
+    "@vavt/message": "^2.0.1",
     "@vavt/vite-plugin-import-markdown": "^1.0.1",
     "@vitejs/plugin-vue": "^5.0.4",
     "@vue/eslint-config-prettier": "^9.0.0",
@@ -42,8 +43,8 @@
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.1",
     "eslint-plugin-vue": "^9.25.0",
-    "md-editor-rt": "^5.0.2",
-    "md-editor-v3": "^5.0.2",
+    "md-editor-rt": "^5.2.0",
+    "md-editor-v3": "^5.2.0",
     "multiparty": "^4.2.3",
     "prettier": "^3.2.5",
     "sass": "1.81.0",
@@ -57,8 +58,5 @@
     "patchedDependencies": {
       "html3pdf@0.12.2": "patches/html3pdf@0.12.2.patch"
     }
-  },
-  "dependencies": {
-    "@vavt/message": "^2.0.1"
   }
 }
