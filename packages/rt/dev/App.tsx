@@ -1,12 +1,19 @@
 import React, { useState, StrictMode, useCallback, useRef } from 'react';
-import { MdEditor, Themes, ToolbarNames } from 'md-editor-rt';
+import { MdEditor, PreviewThemes, Themes, ToolbarNames } from 'md-editor-rt';
 import 'md-editor-rt/lib/style.css';
 
 import { message } from '@vavt/message';
 
 import data from '@vavt/data/src/markdown-demo.md';
 
-import { Mark, Emoji, OriginalImg, ExportPDF } from '../components';
+import {
+  Mark,
+  Emoji,
+  OriginalImg,
+  ExportPDF,
+  ThemeSwitch,
+  PreviewThemeSwitch
+} from '../components';
 
 import './style.scss';
 
@@ -35,6 +42,8 @@ const toolbars: ToolbarNames[] = [
   1,
   2,
   3,
+  4,
+  5,
   '-',
   'revoke',
   'next',
@@ -82,6 +91,7 @@ const App = () => {
   const pdfRef = useRef<any>();
   const [text, setText] = useState(data);
   const [theme, setTheme] = useState<Themes>('light');
+  const [previewTheme, setPreviewTheme] = useState<PreviewThemes>('default');
 
   const changeTheme = useCallback(() => {
     setTheme((_theme) => (_theme === 'dark' ? 'light' : 'dark'));
@@ -123,7 +133,9 @@ const App = () => {
       </button>
       <MdEditor
         theme={theme}
+        previewTheme={previewTheme}
         value={text}
+        showToolbarName
         onChange={setText}
         toolbars={toolbars}
         defToolbars={[
@@ -140,6 +152,15 @@ const App = () => {
               console.log('onStart');
             }}
             onSuccess={onSuccess}
+          />,
+
+          <ThemeSwitch value={theme} onChange={setTheme} key="ThemeSwitch" />,
+
+          <PreviewThemeSwitch
+            value={previewTheme}
+            onChange={setPreviewTheme}
+            closeAfterSelect={false}
+            key="PreviewThemeSwitch"
           />
         ]}
       />

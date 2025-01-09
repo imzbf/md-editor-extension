@@ -16,19 +16,19 @@ yarn add @vavt/cm-extension
 
 Language
 
-| name  | description            | author                                             |
-| ----- |------------------------| -------------------------------------------------- |
-| zh-TW | Chinese (Traditional)  | [@imzbf](https://github.com/imzbf)                 |
-| fr-FR | French                 | [@tofandel](https://github.com/tofandel)           |
-| jp-JP | Japanese               | [@xj89959853](https://github.com/xj89959853)       |
-| id-ID | Bahasa Indonesia       | [@vallerydelexy](https://github.com/vallerydelexy) |
-| jv-ID | Basa Jawa              | [@vallerydelexy](https://github.com/vallerydelexy) |
-| ru    | Russian                | [@gorgulenkozxc](https://github.com/gorgulenkozxc) |
-| pt-BR | Brazilian Portuguese   | [@kleberMRocha](https://github.com/kleberMRocha)   |
-| de-DE | German                 | [@JehtJanich](https://github.com/JehtJanich)       |
-| it-IT | Italien                | [@JehtJanich](https://github.com/JehtJanich)       |
-| es-ES | Spanish                | [@mreysei](https://github.com/mreysei)             |
-| pl-PL | Polish                 | [@pperzyna](https://github.com/pperzyna)           |
+| name  | description           | author                                             |
+| ----- | --------------------- | -------------------------------------------------- |
+| zh-TW | Chinese (Traditional) | [@imzbf](https://github.com/imzbf)                 |
+| fr-FR | French                | [@tofandel](https://github.com/tofandel)           |
+| jp-JP | Japanese              | [@xj89959853](https://github.com/xj89959853)       |
+| id-ID | Bahasa Indonesia      | [@vallerydelexy](https://github.com/vallerydelexy) |
+| jv-ID | Basa Jawa             | [@vallerydelexy](https://github.com/vallerydelexy) |
+| ru    | Russian               | [@gorgulenkozxc](https://github.com/gorgulenkozxc) |
+| pt-BR | Brazilian Portuguese  | [@kleberMRocha](https://github.com/kleberMRocha)   |
+| de-DE | German                | [@JehtJanich](https://github.com/JehtJanich)       |
+| it-IT | Italien               | [@JehtJanich](https://github.com/JehtJanich)       |
+| es-ES | Spanish               | [@mreysei](https://github.com/mreysei)             |
+| pl-PL | Polish                | [@pperzyna](https://github.com/pperzyna)           |
 
 PreviewTheme
 
@@ -99,6 +99,8 @@ yarn add @vavt/v3-extension
 | [Mark](https://github.com/imzbf/md-editor-extension/blob/main/packages/v3/components/Mark/README.md) | Text markers`<mark>` |
 | [OriginalImg](https://github.com/imzbf/md-editor-extension/blob/main/packages/v3/components/OriginalImg/README.md) | Insert `<img src="" alt="" width="100%">` |
 | [ExportPDF](https://github.com/imzbf/md-editor-extension/blob/main/packages/v3/components/ExportPDF/README.md) | Export content as a PDF file |
+| [ThemeSwitch](https://github.com/imzbf/md-editor-extension/blob/main/packages/v3/components/ThemeSwitch/README.md) | Standard tool for toggling the editor's theme |
+| [PreviewThemeSwitch](https://github.com/imzbf/md-editor-extension/blob/main/packages/v3/components/PreviewThemeSwitch/README.md) | Dropdown menu tool for switching the editor's preview theme |
 
 ### @vavt/rt-extension
 
@@ -116,6 +118,8 @@ yarn add @vavt/rt-extension
 | [Mark](https://github.com/imzbf/md-editor-extension/blob/main/packages/rt/components/Mark/README.md) | Text markers`<mark>` |
 | [OriginalImg](https://github.com/imzbf/md-editor-extension/blob/main/packages/rt/components/OriginalImg/README.md) | Insert `<img src="" alt="" width="100%">` |
 | [ExportPDF](https://github.com/imzbf/md-editor-extension/blob/main/packages/rt/components/ExportPDF/README.md) | Export content as a PDF file |
+| [ThemeSwitch](https://github.com/imzbf/md-editor-extension/blob/main/packages/rt/components/ThemeSwitch/README.md) | Standard tool for toggling the editor's theme |
+| [PreviewThemeSwitch](https://github.com/imzbf/md-editor-extension/blob/main/packages/rt/components/PreviewThemeSwitch/README.md) | Dropdown menu tool for switching the editor's preview theme |
 
 ## Contribute
 

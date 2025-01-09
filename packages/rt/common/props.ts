@@ -6,10 +6,12 @@ export interface CommomProps {
    * ==这个默认注入，不用提供
    */
   insert?: Insert;
-  theme?: Themes;
-  codeTheme?: string;
-  previewTheme?: PreviewThemes;
   language?: string;
+  theme?: Themes;
+  previewTheme?: PreviewThemes;
+  codeTheme?: string;
+  disabled?: boolean;
+  showToolbarName?: boolean;
   /**
    * ==结束
    */

@@ -9,21 +9,29 @@ export const commomProps = {
     type: Function as PropType<Insert>,
     default: () => null
   },
+  language: {
+    type: String as PropType<string>,
+    default: ''
+  },
   theme: {
     type: String as PropType<Themes>,
-    default: undefined
-  },
-  codeTheme: {
-    type: String as PropType<string>,
     default: undefined
   },
   previewTheme: {
     type: String as PropType<PreviewThemes>,
     default: undefined
   },
-  language: {
+  codeTheme: {
     type: String as PropType<string>,
-    default: ''
+    default: undefined
+  },
+  disabled: {
+    type: Boolean as PropType<boolean>,
+    default: undefined
+  },
+  showToolbarName: {
+    type: Boolean as PropType<boolean>,
+    default: undefined
   },
   /**
    * ==结束

@@ -22,7 +22,7 @@ import MarkExtension from 'markdown-it-mark';
 
 // All CSS for this extension library
 // import '@vavt/rt-extension/lib/asset/style.css';
-// Or individual style for Emoji
+// Or individual style for Mark
 import '@vavt/rt-extension/lib/asset/Mark.css';
 
 config({

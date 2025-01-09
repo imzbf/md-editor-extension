@@ -1,7 +1,13 @@
 <template>
   <button @click="changeTheme">{{ theme }}</button>
   <button @click="exportHandler">导出</button>
-  <MdEditor v-model="text" :toolbars="toolbars" :theme="theme">
+  <MdEditor
+    v-model="text"
+    :toolbars="toolbars"
+    :theme="theme"
+    :previewTheme="previewTheme"
+    :showToolbarName="true"
+  >
     <template #defToolbars>
       <Mark />
       <Emoji />
@@ -20,6 +26,10 @@
         @onSuccess="onSuccess"
       />
 
+      <ThemeSwitch v-model="theme" />
+
+      <PreviewThemeSwitch v-model="previewTheme" :closeAfterSelect="false" />
+
       <!-- <Image modalTitle="添加图片" @onUpload="onUpload">
         <template #trigger>
           <span>上传</span>
@@ -32,18 +42,26 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 import { MdEditor } from 'md-editor-v3';
-import type { ToolbarNames, Themes } from 'md-editor-v3';
+import type { ToolbarNames, Themes, PreviewThemes } from 'md-editor-v3';
 import 'md-editor-v3/lib/style.css';
 
 import { message } from '@vavt/message';
 
 import data from '@vavt/data/src/markdown-demo.md';
 
-import { Mark, Emoji, OriginalImg, ExportPDF } from '../components';
+import {
+  Mark,
+  Emoji,
+  OriginalImg,
+  ExportPDF,
+  PreviewThemeSwitch,
+  ThemeSwitch
+} from '../components';
 
 const pdfRef = ref();
 const text = ref(data);
 const theme = ref<Themes>('light');
+const previewTheme = ref<PreviewThemes>('default');
 const toolbars: ToolbarNames[] = [
   'bold',
   'underline',
@@ -69,6 +87,8 @@ const toolbars: ToolbarNames[] = [
   1,
   2,
   3,
+  4,
+  5,
   '-',
   'revoke',
   'next',

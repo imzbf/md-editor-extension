@@ -98,6 +98,8 @@ yarn add @vavt/v3-extension
 | [Mark](https://github.com/imzbf/md-editor-extension/blob/main/packages/v3/components/Mark/README.md) | 文本标记`<mark>` |
 | [OriginalImg](https://github.com/imzbf/md-editor-extension/blob/main/packages/v3/components/OriginalImg/README.md) | 添加`<img src="" alt="" width="100%">`标签 |
 | [ExportPDF](https://github.com/imzbf/md-editor-extension/blob/main/packages/v3/components/ExportPDF/README.md) | 导出为 PDF 文件 |
+| [ThemeSwitch](https://github.com/imzbf/md-editor-extension/blob/main/packages/v3/components/ThemeSwitch/README.md) | 用于切换编辑器主题的标准工具 |
+| [PreviewThemeSwitch](https://github.com/imzbf/md-editor-extension/blob/main/packages/v3/components/PreviewThemeSwitch/README.md) | 用于切换编辑器预览主题的下拉菜单工具 |
 
 ### @vavt/rt-extension
 
@@ -117,6 +119,8 @@ yarn add @vavt/rt-extension
 | [Mark](https://github.com/imzbf/md-editor-extension/blob/main/packages/rt/components/Mark/README.md) | 文本标记`<mark>` |
 | [OriginalImg](https://github.com/imzbf/md-editor-extension/blob/main/packages/rt/components/OriginalImg/README.md) | 添加`<img src="" alt="" width="100%">`标签 |
 | [ExportPDF](https://github.com/imzbf/md-editor-extension/blob/main/packages/rt/components/ExportPDF/README.md) | 导出为 PDF 文件 |
+| [ThemeSwitch](https://github.com/imzbf/md-editor-extension/blob/main/packages/rt/components/ThemeSwitch/README.md) | 用于切换编辑器主题的标准工具 |
+| [PreviewThemeSwitch](https://github.com/imzbf/md-editor-extension/blob/main/packages/rt/components/PreviewThemeSwitch/README.md) | 用于切换编辑器预览主题的下拉菜单工具 |
 
 ## 参与贡献
 
