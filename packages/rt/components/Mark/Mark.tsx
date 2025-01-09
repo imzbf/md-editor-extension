@@ -8,7 +8,13 @@ import { CommomProps } from '../../common/props';
 
 interface Props extends CommomProps {}
 
-const Mark = ({ title = 'mark', insert = () => {}, trigger }: Props) => {
+const Mark = ({
+  title = 'mark',
+  insert = () => {},
+  trigger,
+  disabled,
+  showToolbarName
+}: Props) => {
   const onClick = useCallback(() => {
     const generator: InsertContentGenerator = (selectedText) => {
       return {
@@ -23,8 +29,10 @@ const Mark = ({ title = 'mark', insert = () => {}, trigger }: Props) => {
   }, [insert]);
 
   return (
-    <NormalToolbar title={title} onClick={onClick}>
+    <NormalToolbar title={title} onClick={onClick} disabled={disabled}>
       {trigger || <Highlighter className={`${prefix}-icon`} />}
+
+      {showToolbarName && <div className={`${prefix}-toolbar-item-name`}>{title}</div>}
     </NormalToolbar>
   );
 };

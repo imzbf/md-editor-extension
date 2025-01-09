@@ -29,8 +29,16 @@ const Mark = defineComponent({
       const trigger = getSlot({ props, ctx }, 'trigger');
 
       return (
-        <NormalToolbar title={props.title || 'mark'} onClick={markHandler}>
+        <NormalToolbar
+          title={props.title || 'mark'}
+          onClick={markHandler}
+          disabled={props.disabled}
+        >
           {trigger || <Highlighter class={`${prefix}-icon`} />}
+
+          {props.showToolbarName && (
+            <div class={`${prefix}-toolbar-item-name`}>{props.title || 'mark'}</div>
+          )}
         </NormalToolbar>
       );
     };

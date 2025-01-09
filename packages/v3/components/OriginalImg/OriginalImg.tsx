@@ -29,8 +29,16 @@ const OriginalImg = defineComponent({
       const trigger = getSlot({ props, ctx }, 'trigger');
 
       return (
-        <NormalToolbar title={props.title || 'image'} onClick={onClick}>
+        <NormalToolbar
+          title={props.title || 'image'}
+          onClick={onClick}
+          disabled={props.disabled}
+        >
           {trigger || <ImagePlus class={`${prefix}-icon`} />}
+
+          {props.showToolbarName && (
+            <div class={`${prefix}-toolbar-item-name`}>{props.title || 'image'}</div>
+          )}
         </NormalToolbar>
       );
     };

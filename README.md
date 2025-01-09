@@ -102,6 +102,10 @@ yarn add @vavt/v3-extension
 | [ThemeSwitch](https://github.com/imzbf/md-editor-extension/blob/main/packages/v3/components/ThemeSwitch/README.md) | Standard tool for toggling the editor's theme |
 | [PreviewThemeSwitch](https://github.com/imzbf/md-editor-extension/blob/main/packages/v3/components/PreviewThemeSwitch/README.md) | Dropdown menu tool for switching the editor's preview theme |
 
+| @vavt/v3-extension | md-editor-v3 |
+| ------------------ | ------------ |
+| >=3.0.0            | >=5.2.0      |
+
 ### @vavt/rt-extension
 
 This is the extension component library for `md-editor-rt`
@@ -120,6 +124,10 @@ yarn add @vavt/rt-extension
 | [ExportPDF](https://github.com/imzbf/md-editor-extension/blob/main/packages/rt/components/ExportPDF/README.md) | Export content as a PDF file |
 | [ThemeSwitch](https://github.com/imzbf/md-editor-extension/blob/main/packages/rt/components/ThemeSwitch/README.md) | Standard tool for toggling the editor's theme |
 | [PreviewThemeSwitch](https://github.com/imzbf/md-editor-extension/blob/main/packages/rt/components/PreviewThemeSwitch/README.md) | Dropdown menu tool for switching the editor's preview theme |
+
+| @vavt/rt-extension | md-editor-rt |
+| ------------------ | ------------ |
+| >=3.0.0            | >=5.2.0      |
 
 ## Contribute
 

@@ -57,6 +57,7 @@ const Emoji = defineComponent({
           title={props.title || 'emoji'}
           visible={state.visible}
           onChange={onChange}
+          disabled={props.disabled}
           overlay={
             <div class="emoji-container">
               <ol class="emojis">
@@ -76,6 +77,10 @@ const Emoji = defineComponent({
           }
         >
           {trigger || <Smile class={`${prefix}-icon`} />}
+
+          {props.showToolbarName && (
+            <div class={`${prefix}-toolbar-item-name`}>{props.title || 'emoji'}</div>
+          )}
         </DropdownToolbar>
       );
     };

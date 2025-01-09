@@ -26,7 +26,7 @@ import { OriginalImg } from '@vavt/v3-extension';
 
 // All CSS for this extension library
 // import '@vavt/v3-extension/lib/asset/style.css';
-// Or individual style for Emoji
+// Or individual style for OriginalImg
 import '@vavt/v3-extension/lib/asset/OriginalImg.css';
 
 const text = ref('');

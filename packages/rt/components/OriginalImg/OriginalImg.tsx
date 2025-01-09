@@ -8,7 +8,13 @@ import { CommomProps } from '../../common/props';
 
 interface Props extends CommomProps {}
 
-const OriginalImg = ({ title = 'mark', insert = () => {}, trigger }: Props) => {
+const OriginalImg = ({
+  title = 'image',
+  insert = () => {},
+  trigger,
+  disabled,
+  showToolbarName
+}: Props) => {
   const onClick = useCallback(() => {
     const generator: InsertContentGenerator = () => {
       return {
@@ -23,8 +29,9 @@ const OriginalImg = ({ title = 'mark', insert = () => {}, trigger }: Props) => {
   }, [insert]);
 
   return (
-    <NormalToolbar title={title} onClick={onClick}>
+    <NormalToolbar title={title} onClick={onClick} disabled={disabled}>
       {trigger || <ImagePlus className={`${prefix}-icon`} />}
+      {showToolbarName && <div className={`${prefix}-toolbar-item-name`}>{title}</div>}
     </NormalToolbar>
   );
 };

@@ -79,7 +79,9 @@ const ExportPDF = forwardRef((props: Props, ref: ForwardedRef<unknown>) => {
     style = {
       padding: '10mm'
     },
-    options = {}
+    options = {},
+    disabled,
+    showToolbarName
   } = props;
 
   const [visible, setVisible] = useState(false);
@@ -177,7 +179,18 @@ const ExportPDF = forwardRef((props: Props, ref: ForwardedRef<unknown>) => {
       }
       onClick={open}
       onClose={close}
-      trigger={trigger || <Printer className={`${prefix}-icon`} />}
+      trigger={
+        <>
+          {trigger || <Printer className={`${prefix}-icon`} />}
+          {showToolbarName && (
+            <div className={`${prefix}-toolbar-item-name`}>
+              {props.title ||
+                (props.language === 'zh-CN' ? DEFAULT_TITLE_CN : DEFAULT_TITLE)}
+            </div>
+          )}
+        </>
+      }
+      disabled={disabled}
     >
       <div className="export-pdf-content" ref={content}>
         <MdPreview

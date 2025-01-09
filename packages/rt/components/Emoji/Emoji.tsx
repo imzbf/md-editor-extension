@@ -49,6 +49,7 @@ const Emoji = (props: Props) => {
       title={title}
       visible={visible}
       onChange={setVisible}
+      disabled={props.disabled}
       overlay={
         <div className="emoji-container">
           <ol className="emojis">
@@ -70,6 +71,10 @@ const Emoji = (props: Props) => {
       }
     >
       {trigger || <Smile className={`${prefix}-icon`} />}
+
+      {props.showToolbarName && (
+        <div className={`${prefix}-toolbar-item-name`}>{title}</div>
+      )}
     </DropdownToolbar>
   );
 };

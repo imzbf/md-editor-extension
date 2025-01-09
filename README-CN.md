@@ -101,6 +101,10 @@ yarn add @vavt/v3-extension
 | [ThemeSwitch](https://github.com/imzbf/md-editor-extension/blob/main/packages/v3/components/ThemeSwitch/README.md) | 用于切换编辑器主题的标准工具 |
 | [PreviewThemeSwitch](https://github.com/imzbf/md-editor-extension/blob/main/packages/v3/components/PreviewThemeSwitch/README.md) | 用于切换编辑器预览主题的下拉菜单工具 |
 
+| @vavt/v3-extension | md-editor-v3 |
+| ------------------ | ------------ |
+| >=3.0.0            | >=5.2.0      |
+
 ### @vavt/rt-extension
 
 这是`md-editor-rt`的扩展组件库
@@ -121,6 +125,10 @@ yarn add @vavt/rt-extension
 | [ExportPDF](https://github.com/imzbf/md-editor-extension/blob/main/packages/rt/components/ExportPDF/README.md) | 导出为 PDF 文件 |
 | [ThemeSwitch](https://github.com/imzbf/md-editor-extension/blob/main/packages/rt/components/ThemeSwitch/README.md) | 用于切换编辑器主题的标准工具 |
 | [PreviewThemeSwitch](https://github.com/imzbf/md-editor-extension/blob/main/packages/rt/components/PreviewThemeSwitch/README.md) | 用于切换编辑器预览主题的下拉菜单工具 |
+
+| @vavt/rt-extension | md-editor-rt |
+| ------------------ | ------------ |
+| >=3.0.0            | >=5.2.0      |
 
 ## 参与贡献
 

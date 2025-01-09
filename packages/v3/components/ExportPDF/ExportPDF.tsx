@@ -202,6 +202,7 @@ const ExportPDF = defineComponent({
           width={props.width}
           height={props.height}
           visible={state.visible}
+          disabled={props.disabled}
           title={
             props.title || (props.language === 'zh-CN' ? DEFAULT_TITLE_CN : DEFAULT_TITLE)
           }
@@ -215,7 +216,17 @@ const ExportPDF = defineComponent({
           onClose={() => {
             state.visible = false;
           }}
-          trigger={trigger || <Printer class={`${prefix}-icon`} />}
+          trigger={
+            <>
+              {trigger || <Printer class={`${prefix}-icon`} />}
+              {props.showToolbarName && (
+                <div class={`${prefix}-toolbar-item-name`}>
+                  {props.title ||
+                    (props.language === 'zh-CN' ? DEFAULT_TITLE_CN : DEFAULT_TITLE)}
+                </div>
+              )}
+            </>
+          }
         >
           <div class="export-pdf-content" ref={content}>
             <MdPreview
