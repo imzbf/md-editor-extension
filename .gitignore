@@ -5,3 +5,5 @@ dist
 .idea
 *.log*
 lib
+
+.vscode/*
