@@ -29,6 +29,7 @@ Language
 | it-IT | Italien               | [@JehtJanich](https://github.com/JehtJanich)       |
 | es-ES | Spanish               | [@mreysei](https://github.com/mreysei)             |
 | pl-PL | Polish                | [@pperzyna](https://github.com/pperzyna)           |
+| ar    | Arabic                | [@mzner](https://github.com/mzner)                 |
 
 PreviewTheme
 
