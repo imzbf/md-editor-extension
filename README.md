@@ -30,6 +30,7 @@ Language
 | es-ES | Spanish               | [@mreysei](https://github.com/mreysei)             |
 | pl-PL | Polish                | [@pperzyna](https://github.com/pperzyna)           |
 | ar    | Arabic                | [@mzner](https://github.com/mzner)                 |
+| ko-KR    | Korean                | [@Baw-Appie](https://github.com/Baw-Appie)                 |
 
 PreviewTheme
 
