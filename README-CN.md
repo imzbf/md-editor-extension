@@ -29,6 +29,7 @@ yarn add @vavt/cm-extension
 | it-IT | 意大利语 | [@JehtJanich](https://github.com/JehtJanich) |
 | es-ES | 西班牙语 | [@mreysei](https://github.com/mreysei) |
 | ar | 阿拉伯语 | [@mzner](https://github.com/mzner) |
+| ko-KR | 韩语 | [@Baw-Appie](https://github.com/Baw-Appie) |
 
 预览主题
 
