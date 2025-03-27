@@ -30,6 +30,7 @@ yarn add @vavt/cm-extension
 | es-ES | 西班牙语 | [@mreysei](https://github.com/mreysei) |
 | ar | 阿拉伯语 | [@mzner](https://github.com/mzner) |
 | ko-KR | 韩语 | [@Baw-Appie](https://github.com/Baw-Appie) |
+| tr-TR | 土耳其 | [@halillusion](https://github.com/halillusion) |
 
 预览主题
 
