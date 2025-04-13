@@ -37,6 +37,7 @@ const TR_TR: StaticTextDefaultValue = {
     pageFullscreen: 'Tarayıcı Tam Ekran',
     fullscreen: 'Tam Ekran',
     preview: 'Önizleme',
+    previewOnly: 'Sadece Önizleme',
     htmlPreview: 'HTML Kodu Önizleme',
     catalog: 'İçindekiler',
     github: 'Kaynak Kodu'
@@ -87,7 +88,7 @@ const TR_TR: StaticTextDefaultValue = {
     block: 'Blok Formül'
   },
   footer: {
-    markdownTotal: 'Kelime Sayısı',
+    markdownTotal: 'Karakter Sayısı',
     scrollAuto: 'Senkron Kaydırma'
   }
 };
