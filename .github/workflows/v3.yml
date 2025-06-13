@@ -25,7 +25,7 @@ jobs:
           run_install: true
 
       - name: Build
-        version: 9
+        version: 10
         run: npm run build:v3
 
       - name: Publish
