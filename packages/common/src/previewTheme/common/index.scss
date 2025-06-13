@@ -1,21 +1,46 @@
-@use './scss-vars.scss' as vars;
-@use './css-vars.scss';
+@use './scss-vars' as csv;
+@use './css-vars';
 
-@use './modules/admonition.scss';
-@use './modules/mermaid.scss';
-@use './modules/katex.scss';
-@use './modules/code.scss';
-@use './modules/figure.scss';
-@use './modules/heading.scss';
-@use './modules/hr.scss';
-@use './modules/link.scss';
-@use './modules/list.scss';
-@use './modules/image.scss';
-@use './modules/paragraph.scss';
-@use './modules/quote.scss';
-@use './modules/table.scss';
+@use './modules/admonition';
+@use './modules/mermaid';
+@use './modules/katex';
+@use './modules/code';
+@use './modules/figure';
+@use './modules/heading';
+@use './modules/hr';
+@use './modules/link';
+@use './modules/list';
+@use './modules/image';
+@use './modules/paragraph';
+@use './modules/quote';
+@use './modules/table';
 
-.#{vars.$prefix}-preview {
+@mixin scrollbar-theme(
+  $is-dark: false,
+  $track: if($is-dark, #0f0f0f, #e2e2e2),
+  $thumb: if($is-dark, #2d2d2d, #0000004d),
+  $thumb-hover: if($is-dark, #3a3a3a, #00000059),
+  $thumb-active: if($is-dark, #3a3a3a, #00000061)
+) {
+  ::-webkit-scrollbar-corner,
+  ::-webkit-scrollbar-track {
+    background-color: $track;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: $thumb;
+  }
+
+  ::-webkit-scrollbar-thumb:vertical:hover {
+    background-color: $thumb-hover;
+  }
+
+  ::-webkit-scrollbar-thumb:vertical:active {
+    background-color: $thumb-active;
+  }
+}
+
+.#{csv.$prefix}-preview {
   color: var(--md-theme-color);
 
   ::-webkit-scrollbar {
@@ -23,26 +48,25 @@
     height: 6px;
   }
 
-  ::-webkit-scrollbar-corner,
-  ::-webkit-scrollbar-track {
-    background-color: var(--md-theme-bg-color-scrollbar-track);
-    border-radius: 2px;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    border-radius: 2px;
-    background-color: var(--md-theme-bg-color-scrollbar-thumb);
-  }
-
   ::-webkit-scrollbar-button:vertical {
     display: none;
   }
 
-  ::-webkit-scrollbar-thumb:vertical:hover {
-    background-color: var(--md-theme-bg-color-scrollbar-thumb-hover);
+  ::-webkit-scrollbar-corner,
+  ::-webkit-scrollbar-track,
+  ::-webkit-scrollbar-thumb {
+    border-radius: 2px;
   }
+}
 
-  ::-webkit-scrollbar-thumb:vertical:active {
-    background-color: var(--md-theme-bg-color-scrollbar-thumb-active);
+.#{csv.$prefix} {
+  .#{csv.$prefix}-preview {
+    @include scrollbar-theme(false);
+  }
+}
+
+.#{csv.$prefix}-dark {
+  .#{csv.$prefix}-preview {
+    @include scrollbar-theme(true);
   }
 }

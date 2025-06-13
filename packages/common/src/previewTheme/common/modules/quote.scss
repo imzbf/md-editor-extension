@@ -1,18 +1,18 @@
-@use '../scss-vars.scss' as vars;
+@use '../scss-vars' as csv;
 
-@mixin code-vars($isDark) {
-  .#{vars.$prefix}-preview {
+@mixin quote-vars($isDark) {
+  .#{csv.$prefix}-preview {
     --md-theme-quote-color: var(--md-theme-color);
     --md-theme-quote-border: none;
     --md-theme-quote-bg-color: inherit;
   }
 }
 
-.#{vars.$prefix} {
-  @include code-vars(false);
+.#{csv.$prefix} {
+  @include quote-vars(false);
 }
 
-.#{vars.$prefix}-preview {
+.#{csv.$prefix}-preview {
   blockquote {
     padding: 0 1em;
     color: var(--md-theme-quote-color);

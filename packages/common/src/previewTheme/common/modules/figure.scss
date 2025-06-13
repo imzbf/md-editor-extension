@@ -1,6 +1,6 @@
-@use '../scss-vars.scss' as vars;
+@use '../scss-vars' as csv;
 
-.#{vars.$prefix}-preview {
+.#{csv.$prefix}-preview {
   figure {
     margin: 0 0 1em 0;
     display: inline-flex;
