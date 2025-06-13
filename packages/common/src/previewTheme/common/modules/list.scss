@@ -1,9 +1,9 @@
-@use '../scss-vars.scss' as vars;
+@use '../scss-vars' as csv;
 
-.#{vars.$prefix}-preview {
+.#{csv.$prefix}-preview {
   ol,
   ul {
-    padding-left: 2.35em;
+    padding-left: 2em;
 
     .task-list-item {
       list-style-type: none;

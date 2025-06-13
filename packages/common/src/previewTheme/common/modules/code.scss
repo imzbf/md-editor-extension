@@ -1,11 +1,11 @@
-@use '../scss-vars.scss' as vars;
+@use '../scss-vars' as csv;
 
 @mixin code-vars($isDark) {
-  .#{vars.$prefix}-preview {
+  .#{csv.$prefix}-preview {
     --md-theme-code-inline-color: #3594f7;
     --md-theme-code-inline-bg-color: rgba(59, 170, 250, 0.1);
     // 圆角
-    --md-theme-code-inline-radius: 2px;
+    --md-theme-code-inline-radius: var(--md-theme-radius-s);
 
     --md-theme-code-block-color: #a9b7c6;
     // 代码背景
@@ -13,30 +13,30 @@
     // 顶部背景
     --md-theme-code-before-bg-color: var(--md-theme-code-block-bg-color);
     // 圆角
-    --md-theme-code-block-radius: 5px;
+    --md-theme-code-block-radius: var(--md-theme-radius-m);
   }
 }
 
-.#{vars.$prefix} {
+.#{csv.$prefix} {
   @include code-vars(false);
 }
 
-.#{vars.$prefix}-dark {
+.#{csv.$prefix}-dark {
   @include code-vars(true);
 }
 
-.#{vars.$prefix}-preview {
+.#{csv.$prefix}-preview {
   // 行内
   code {
     color: var(--md-theme-code-inline-color);
     background-color: var(--md-theme-code-inline-bg-color);
     border-radius: var(--md-theme-code-inline-radius);
-    padding: 0 4px;
+    padding: 2px 4px;
     line-height: 22px;
   }
 
   // 块级
-  .#{vars.$prefix}-code {
+  .#{csv.$prefix}-code {
     color: var(--md-theme-code-block-color);
     font-size: 12px;
     line-height: 1;
@@ -45,13 +45,13 @@
 
     input[type='radio'],
     input[type='radio'] + pre,
-    input[type='radio'] + span.#{vars.$prefix}-code-lang {
+    input[type='radio'] + span.#{csv.$prefix}-code-lang {
       display: none;
     }
 
     input:checked + pre,
-    input:checked + span.#{vars.$prefix}-code-lang {
-      display: initial;
+    input:checked + span.#{csv.$prefix}-code-lang {
+      display: block;
     }
 
     input:checked + label {
@@ -59,19 +59,29 @@
       color: var(--md-theme-code-active-color);
     }
 
-    .#{vars.$prefix}-code-head {
-      display: flex;
+    .#{csv.$prefix}-code-head {
+      display: grid;
+      grid-template: '1rf 1rf';
       justify-content: space-between;
       height: 32px;
       width: 100%;
       font-size: 12px;
-      font-weight: 600;
+      // font-weight: 600;
       background-color: var(--md-theme-code-before-bg-color);
       margin-bottom: 0;
       border-top-left-radius: var(--md-theme-code-block-radius);
       border-top-right-radius: var(--md-theme-code-block-radius);
+      -webkit-tap-highlight-color: transparent;
+      list-style: none;
+      position: sticky;
+      top: 0;
+      z-index: 10000;
 
-      .#{vars.$prefix}-code-flag {
+      &::-webkit-details-marker {
+        display: none; /* 隐藏Webkit内核浏览器的箭头 */
+      }
+
+      .#{csv.$prefix}-code-flag {
         margin-left: 12px;
 
         span {
@@ -96,7 +106,7 @@
           margin-left: 4px;
         }
 
-        ul.#{vars.$prefix}-codetab-label {
+        ul.#{csv.$prefix}-codetab-label {
           // font-size: 0;
           box-sizing: border-box;
           white-space: nowrap;
@@ -143,21 +153,107 @@
         }
       }
 
-      .#{vars.$prefix}-code-lang {
-        // margin-right: 12px;
+      .#{csv.$prefix}-code-action {
+        display: flex;
+        align-items: center;
+
+        > * {
+          margin-right: 10px;
+        }
+      }
+
+      .#{csv.$prefix}-code-lang {
         line-height: 32px;
       }
 
-      .#{vars.$prefix}-copy-button {
+      .#{csv.$prefix}-copy-button:not(data-is-icon) {
         cursor: pointer;
         line-height: 32px;
-        margin-right: 12px;
         position: initial;
+
+        .#{csv.$prefix}-icon {
+          width: 15px;
+          height: 15px;
+          display: inline-block;
+          vertical-align: sub;
+        }
+      }
+
+      .#{csv.$prefix}-copy-button[data-is-icon] {
+        cursor: pointer;
+        line-height: 1;
+        position: relative;
+
+        .#{csv.$prefix}-icon {
+          width: 15px;
+          height: 15px;
+          display: inline-block;
+          vertical-align: sub;
+        }
+
+        &::before {
+          content: attr(data-tips);
+          color: var(--md-theme-code-copy-tips-color);
+          background-color: var(--md-theme-code-copy-tips-bg-color);
+          position: absolute;
+          font-size: 12px;
+          font-family: sans-serif;
+          width: max-content;
+          text-align: center;
+          padding: 4px;
+          border-radius: var(--md-theme-radius-s);
+          box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+          left: -10px;
+          top: 50%;
+          transform: translate(-100%, -50%);
+        }
+
+        &::after {
+          content: '';
+          color: var(--md-theme-code-copy-tips-bg-color);
+          position: absolute;
+          width: 0;
+          height: 0;
+          border: 5px solid transparent;
+          border-right-width: 0;
+          border-left-color: currentColor;
+          left: -10px;
+          top: 50%;
+          transform: translate(0, -50%);
+          filter: drop-shadow(4px 0 2px rgba(0, 0, 0, 0.2));
+        }
+
+        &::before,
+        &::after {
+          visibility: hidden;
+          transition: 0.3s;
+        }
+
+        &:hover::before,
+        &:hover::after {
+          visibility: visible;
+        }
+      }
+
+      .#{csv.$prefix}-collapse-tips {
+        margin-right: 12px;
+
+        .#{csv.$prefix}-icon,
+        .#{csv.$prefix}-iconfont {
+          width: 16px;
+          height: 16px;
+          font-size: 16px;
+          display: inline-block;
+          vertical-align: sub;
+          transform: rotate(0);
+          transition: transform 0.1s;
+        }
       }
     }
 
     pre {
       position: relative;
+      margin: 0;
 
       code {
         font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
@@ -168,12 +264,13 @@
         line-height: 1.6;
         overflow: auto;
         padding: 1em;
+        position: relative;
         border-top-left-radius: 0;
         border-top-right-radius: 0;
         border-bottom-left-radius: var(--md-theme-code-block-radius);
         border-bottom-right-radius: var(--md-theme-code-block-radius);
 
-        .#{vars.$prefix}-code-block {
+        .#{csv.$prefix}-code-block {
           display: inline-block;
           width: 100%;
           overflow: auto;
@@ -185,12 +282,12 @@
   }
 
   // 展开收起模块
-  details.#{vars.$prefix}-code {
-    .#{vars.$prefix}-code-head {
+  details.#{csv.$prefix}-code {
+    .#{csv.$prefix}-code-head {
       cursor: pointer;
     }
     &:not(open) {
-      .#{vars.$prefix}-code-head {
+      .#{csv.$prefix}-code-head {
         border-bottom-left-radius: var(--md-theme-code-block-radius);
         border-bottom-right-radius: var(--md-theme-code-block-radius);
       }
@@ -201,16 +298,23 @@
     }
 
     &[open] {
-      .#{vars.$prefix}-code-head {
+      .#{csv.$prefix}-code-head {
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
+
+        .#{csv.$prefix}-collapse-tips {
+          .#{csv.$prefix}-icon,
+          .#{csv.$prefix}-iconfont {
+            transform: rotate(-90deg);
+          }
+        }
       }
     }
   }
 }
 
 // show code row numer，显示代码行号
-.#{vars.$prefix}-scrn {
+.#{csv.$prefix}-scrn {
   span[rn-wrapper] {
     position: absolute;
     pointer-events: none;

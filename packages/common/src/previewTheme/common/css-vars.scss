@@ -1,7 +1,7 @@
-@use './scss-vars' as vars;
+@use './scss-vars' as csv;
 
 @mixin common-vars($isDark) {
-  .#{vars.$prefix}-preview {
+  .#{csv.$prefix}-preview {
     // 文字
     --md-theme-color: var(--md-color);
     --md-theme-color-reverse: #{if($isDark, #222, #eee)};
@@ -20,23 +20,21 @@
     --md-theme-bg-color: #{if($isDark, #000, #fff)};
     --md-theme-bg-color-inset: #{if($isDark, #111, #ececec)};
 
-    // 滚动条
-    --md-theme-bg-color-scrollbar-track: #{if($isDark, #0f0f0f, #e2e2e2)};
-    --md-theme-bg-color-scrollbar-thumb: #{if($isDark, #2d2d2d, #0000004d)};
-    --md-theme-bg-color-scrollbar-thumb-hover: #{if($isDark, #3a3a3a, #00000059)};
-    --md-theme-bg-color-scrollbar-thumb-active: #{if($isDark, #3a3a3a, #00000061)};
-
     // 代码
     --md-theme-code-copy-tips-color: inherit; // 复制文字
     --md-theme-code-copy-tips-bg-color: #{if($isDark, #3a3a3a, #fff)}; // 背景
     --md-theme-code-active-color: #{if($isDark, #e6c07b, #61aeee)}; // 激活状态
+
+    // 圆角
+    --md-theme-radius-s: 2px;
+    --md-theme-radius-m: 5px;
   }
 }
 
-.#{vars.$prefix} {
+.#{csv.$prefix} {
   @include common-vars(false);
 }
 
-.#{vars.$prefix}-dark {
+.#{csv.$prefix}-dark {
   @include common-vars(true);
 }
