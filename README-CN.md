@@ -31,6 +31,7 @@ yarn add @vavt/cm-extension
 | ar | 阿拉伯语 | [@mzner](https://github.com/mzner) |
 | ko-KR | 韩语 | [@Baw-Appie](https://github.com/Baw-Appie) |
 | tr-TR | 土耳其 | [@halillusion](https://github.com/halillusion) |
+| fa-ir | 波斯语 | [@nima-parandavar](https://github.com/nima-parandavar) |
 
 预览主题
 

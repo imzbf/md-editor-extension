@@ -16,22 +16,23 @@ yarn add @vavt/cm-extension
 
 Language
 
-| name  | description           | author                                             |
-| ----- | --------------------- | -------------------------------------------------- |
-| zh-TW | Chinese (Traditional) | [@imzbf](https://github.com/imzbf)                 |
-| fr-FR | French                | [@tofandel](https://github.com/tofandel)           |
-| jp-JP | Japanese              | [@xj89959853](https://github.com/xj89959853)       |
-| id-ID | Bahasa Indonesia      | [@vallerydelexy](https://github.com/vallerydelexy) |
-| jv-ID | Basa Jawa             | [@vallerydelexy](https://github.com/vallerydelexy) |
-| ru    | Russian               | [@gorgulenkozxc](https://github.com/gorgulenkozxc) |
-| pt-BR | Brazilian Portuguese  | [@kleberMRocha](https://github.com/kleberMRocha)   |
-| de-DE | German                | [@JehtJanich](https://github.com/JehtJanich)       |
-| it-IT | Italien               | [@JehtJanich](https://github.com/JehtJanich)       |
-| es-ES | Spanish               | [@mreysei](https://github.com/mreysei)             |
-| pl-PL | Polish                | [@pperzyna](https://github.com/pperzyna)           |
-| ar    | Arabic                | [@mzner](https://github.com/mzner)                 |
-| ko-KR | Korean                | [@Baw-Appie](https://github.com/Baw-Appie)         |
-| tr-TR | Turkish               | [@halillusion](https://github.com/halillusion)     |
+| name  | description           | author                                                 |
+| ----- | --------------------- | ------------------------------------------------------ |
+| zh-TW | Chinese (Traditional) | [@imzbf](https://github.com/imzbf)                     |
+| fr-FR | French                | [@tofandel](https://github.com/tofandel)               |
+| jp-JP | Japanese              | [@xj89959853](https://github.com/xj89959853)           |
+| id-ID | Bahasa Indonesia      | [@vallerydelexy](https://github.com/vallerydelexy)     |
+| jv-ID | Basa Jawa             | [@vallerydelexy](https://github.com/vallerydelexy)     |
+| ru    | Russian               | [@gorgulenkozxc](https://github.com/gorgulenkozxc)     |
+| pt-BR | Brazilian Portuguese  | [@kleberMRocha](https://github.com/kleberMRocha)       |
+| de-DE | German                | [@JehtJanich](https://github.com/JehtJanich)           |
+| it-IT | Italien               | [@JehtJanich](https://github.com/JehtJanich)           |
+| es-ES | Spanish               | [@mreysei](https://github.com/mreysei)                 |
+| pl-PL | Polish                | [@pperzyna](https://github.com/pperzyna)               |
+| ar    | Arabic                | [@mzner](https://github.com/mzner)                     |
+| ko-KR | Korean                | [@Baw-Appie](https://github.com/Baw-Appie)             |
+| tr-TR | Turkish               | [@halillusion](https://github.com/halillusion)         |
+| fa-IR | Persian               | [@nima-parandavar](https://github.com/nima-parandavar) |
 
 PreviewTheme
 
