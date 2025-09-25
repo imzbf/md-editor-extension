@@ -1,83 +1,97 @@
-## 1. md-editor-v3
+## 😲 md-editor-v3
 
-![](https://img.shields.io/github/package-json/v/imzbf/md-editor-v3) ![](https://img.shields.io/npm/dm/md-editor-v3) ![](https://img.shields.io/bundlephobia/min/md-editor-v3) ![](https://img.shields.io/github/license/imzbf/md-editor-v3) ![](https://img.shields.io/badge/ssr-%3E1.6.0-brightgreen)
+Markdown Editor for Vue3, developed in jsx and typescript, support different themes、beautify content by prettier.
 
-Markdown 编辑器，基于 react，使用 jsx 和 typescript 语法开发，支持切换主题、prettier 美化文本等。
+### 🤖 Base
 
-### 1.1 基本演示
+**bold**, <u>underline</u>, _italic_, ~~line-through~~, superscript^26^, subscript~1~, `inline code`, [link](https://github.com/imzbf)
 
-**加粗**，<u>下划线</u>，_斜体_，~删除线~，上标<sup>26</sup>，下标<sub>[1]</sub>，`inline code`，[超链接](https://imzbf.top)
+> quote: I Have a Dream
 
-1. 打开冰箱
-2. 钻进去
-3. 关闭冰箱
+1. So even though we face the difficulties of today and tomorrow, I still have a dream.
+2. It is a dream deeply rooted in the American dream.
+3. I have a dream that one day this nation will rise up.
 
-- 打开冰箱
-- 钻出来
-- 关闭冰箱
+- [ ] Friday
+- [ ] Saturday
+- [x] Sunday
 
-- [x] 打开冰箱
-- [ ] 关闭冰箱
+![Picture](https://imzbf.github.io/md-editor-rt/imgs/mark_emoji.gif)
 
-> 引用：这是一段文本引用
+## 🤗 Code
 
-![alt](https://imzbf.github.io/md-editor-v3/imgs/preview-light.png 'title')
+```vue
+<template>
+  <MdEditor v-model="text" />
+</template>
 
-## 2. 代码演示
-
-```js
-import { defineComponent, ref } from 'vue';
-import MdEditor from 'md-editor-v3';
+<script setup>
+import { ref } from 'vue';
+import { MdEditor } from 'md-editor-v3';
 import 'md-editor-v3/lib/style.css';
 
-export default defineComponent({
-  name: 'MdEditor',
-  setup() {
-    const text = ref('');
-    return () => (
-      <MdEditor modelValue={text.value} onChange={(v: string) => (text.value = v)} />
-    );
-  }
-});
+const text = ref('Hello Editor!');
+</script>
 ```
 
-```shell [install:yarn]
-yarn add md-editor-v3
-```
+## 🖨 Text
 
-```shell [install:npm]
-npm i md-editor-v3
-```
+The Old Man and the Sea served to reinvigorate Hemingway's literary reputation and prompted a reexamination of his entire body of work.
 
-## 3. 文本演示
+## 📈 Table
 
-依照普朗克长度这项单位，目前可观测的宇宙的直径估计值（直径约 930 亿光年，即 8.8 × 10<sup>26</sup> 米）即为 5.4 × 10<sup>61</sup>倍普朗克长度。而可观测宇宙体积则为 8.4 × 10<sup>184</sup>立方普朗克长度（普朗克体积）。
+| THead1          |      THead2       |           THead3 |
+| :-------------- | :---------------: | ---------------: |
+| text-align:left | text-align:center | text-align:right |
 
-## 4. 表格演示
+## 📏 Formula
 
-| 昵称 | 猿龄（年） | 来自      |
-| ---- | ---------- | --------- |
-| 之间 | ∞          | 中国-重庆 |
-
-## 5. 数学公式
+Inline: $x+y^{2x}$
 
 $$
-\begin{equation}
-a^2+b^2=c^2
-\end{equation}
+\sqrt[3]{x}
 $$
 
-## 6. 图形
+## 🧬 Diagram
+
+mermaid
 
 ```mermaid
 flowchart TD
   Start --> Stop
 ```
 
-## 7. 占个坑@！
+echarts
 
-!!! note 支持的类型
+```echarts
+{
+  tooltip: {
+    trigger: 'axis'
+  },
+  xAxis: {
+    type: 'category',
+    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+  },
+  yAxis: {
+    type: 'value'
+  },
+  series: [
+    {
+      data: [150, 230, 224, 218, 135, 147, 260],
+      type: 'line'
+    }
+  ]
+}
+```
+
+## 🪄 Alert
+
+!!! note Supported Types
 
 note、abstract、info、tip、success、question、warning、failure、danger、bug、example、quote、hint、caution、error、attention
 
 !!!
+
+## ☘️ em...
+
+none

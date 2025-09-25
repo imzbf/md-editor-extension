@@ -43,8 +43,8 @@
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.1",
     "eslint-plugin-vue": "^9.25.0",
-    "md-editor-rt": "^5.7.0",
-    "md-editor-v3": "^5.7.0",
+    "md-editor-rt": "^6.0.2",
+    "md-editor-v3": "^6.0.1",
     "multiparty": "^4.2.3",
     "prettier": "^3.2.5",
     "sass": "1.81.0",
@@ -53,10 +53,5 @@
     "vite": "^5.2.10",
     "vite-plugin-dts": "^3.9.0",
     "vue": "^3.5.13"
-  },
-  "pnpm": {
-    "patchedDependencies": {
-      "html3pdf@0.12.2": "patches/html3pdf@0.12.2.patch"
-    }
   }
 }
