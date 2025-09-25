@@ -101,7 +101,7 @@ const resolvePath = (p: string) => path.resolve(__dirname, p);
             }
           },
           rollupOptions: {
-            external: ['vue', 'md-editor-v3', 'lucide-vue-next', 'html3pdf'],
+            external: ['vue', 'md-editor-v3', 'lucide-vue-next'],
             output: {
               chunkFileNames: `${t}/chunks/[name].${extnames[t]}`,
               assetFileNames: 'asset/[name][extname]'

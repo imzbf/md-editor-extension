@@ -1,3 +1,6 @@
+// export-pdf-preview
+$editorId: 'export-pdf-preview';
+
 .export-pdf-content {
   height: calc(100% - 52px);
   margin-bottom: 20px;
@@ -6,4 +9,68 @@
 
 .export-pdf-content .md-editor-preview .md-editor-code pre code .md-editor-code-block {
   text-wrap: wrap;
+}
+
+@media print {
+  /* 隐藏 body 下除指定路径外的所有元素 */
+  body {
+    margin: 0;
+  }
+
+  .md-editor-modal-container > div.export-pdf-modal > .md-editor-modal {
+    border: none !important;
+  }
+  body > *,
+  .md-editor-modal-mask,
+  .md-editor-modal-header,
+  .md-editor-modal-func,
+  .md-editor-form-item,
+  .md-editor-code-head {
+    display: none !important;
+  }
+  .md-editor-preview .md-editor-code pre code {
+    border-top-left-radius: var(--md-theme-code-block-radius);
+    border-top-right-radius: var(--md-theme-code-block-radius);
+  }
+  .md-editor-modal-container > div > .md-editor-modal {
+    width: 100% !important;
+    height: auto !important;
+    box-shadow: none !important;
+  }
+  .md-editor-modal-container,
+  .md-editor-modal-container > div.export-pdf-modal,
+  .md-editor-modal-container > div.export-pdf-modal > .md-editor-modal,
+  .md-editor-modal-container
+    > div.export-pdf-modal
+    > .md-editor-modal
+    > .md-editor-modal-body,
+  .md-editor-modal-container
+    > div.export-pdf-modal
+    > .md-editor-modal
+    > .md-editor-modal-body
+    > .export-pdf-content {
+    display: block !important;
+    position: static !important;
+    overflow: visible !important;
+    height: auto !important;
+    max-height: none !important;
+  }
+  .md-editor-modal-container
+    > div
+    > .md-editor-modal
+    > .md-editor-modal-body
+    > .export-pdf-content {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    -moz-column-break-inside: avoid;
+  }
+  ##{$editorId} div.md-editor-echarts > div:nth-child(1),
+  ##{$editorId} .md-editor-echarts canvas {
+    width: 100% !important;
+    height: 100% !important;
+  }
+  ##{$editorId} div.md-editor-echarts > div:nth-child(2) {
+    display: none !important;
+  }
 }

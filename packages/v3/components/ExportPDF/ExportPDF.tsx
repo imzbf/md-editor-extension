@@ -1,8 +1,7 @@
 /* eslint-disable vue/require-default-prop */
 import { defineComponent, reactive, ref, CSSProperties } from 'vue';
 import type { PropType } from 'vue';
-import { MdPreview, ModalToolbar, ExposePreviewParam } from 'md-editor-v3';
-// import html2pdf from 'html3pdf';
+import { MdPreview, ModalToolbar, ExposePreviewParam, MdHeadingId } from 'md-editor-v3';
 import { Printer } from 'lucide-vue-next';
 import { getSlot } from '@vavt/utils/src/vue-tsx';
 import { prefix } from '@vavt/utils/src/static';
@@ -15,6 +14,13 @@ const EXPORT_BTN_TEXT = 'Export';
 const EXPORT_BTN_TEXT_CN = '导出';
 
 const EDITOR_ID = 'export-pdf-preview';
+
+/**
+ * modal-toolbar组件不会再关闭时销毁子组件，这时需要区别预览扩展组件的标题ID生成方式和编辑器的标题ID生成方式
+ *
+ * @see https://github.com/imzbf/md-editor-v3/issues/207
+ **/
+const headingId: MdHeadingId = ({ index }) => `pdf-ex-heading-${index}`;
 
 const ExportPDF = defineComponent({
   props: {
@@ -35,19 +41,13 @@ const ExportPDF = defineComponent({
       type: String as PropType<string>,
       default: ''
     },
-    fileName: {
-      type: String as PropType<string>,
-      default: 'md'
-    },
     exportBtnText: {
       type: String as PropType<string>,
       default: undefined
     },
     style: {
       type: [Object, String] as PropType<string | CSSProperties>,
-      default: () => ({
-        padding: '10mm'
-      })
+      default: () => ({})
     },
     onStart: {
       type: Function as PropType<() => void>,
@@ -60,18 +60,6 @@ const ExportPDF = defineComponent({
     onError: {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       type: Function as PropType<(err: unknown) => void>,
-      default: undefined
-    },
-    onProgress: {
-      type: Function as PropType<
-        (progress: {
-          val: number;
-          state: string;
-          n: number;
-          stack: string[];
-          ratio: number;
-        }) => void
-      >,
       default: undefined
     },
     noIconfont: {
@@ -94,26 +82,12 @@ const ExportPDF = defineComponent({
       type: Boolean as PropType<boolean>,
       default: undefined
     },
-    /**
-     * html2pdf配置项，它会覆盖默认配置！
-     *
-     * https://ekoopmans.github.io/html2pdf.js/
-     */
-    options: {
-      type: Object as PropType<object>,
-      default: () => {}
-    },
-    /**
-     * 自定义pdf
-     *
-     * @param ins html3pdf实例
-     * @returns
-     */
-    customize: {
-      type: Function as PropType<(ins: unknown) => void>
+    noEcharts: {
+      type: Boolean as PropType<boolean>,
+      default: undefined
     }
   },
-  emits: ['onStart', 'onSuccess', 'onError', 'onProgress'],
+  emits: ['onStart', 'onSuccess', 'onError'],
   setup(props, ctx) {
     const content = ref();
 
@@ -123,71 +97,25 @@ const ExportPDF = defineComponent({
       visible: false
     });
 
-    const progressCallback = (progress: {
-      val: number;
-      state: string;
-      n: number;
-      stack: string[];
-      ratio: number;
-    }) => {
-      if (props.onProgress) {
-        props.onProgress(progress);
-      } else {
-        ctx.emit('onProgress', progress);
-      }
-    };
-    /**
-     * modal-toolbar组件不会再关闭时销毁子组件，这时需要区别预览扩展组件的标题ID生成方式和编辑器的标题ID生成方式
-     *
-     * @see https://github.com/imzbf/md-editor-v3/issues/207
-     **/
-    const headingId = (_text: string, _level: number, index: number) =>
-      `pdf-ex-heading-${index}`;
-
     const onClick = () => {
-      // https://ekoopmans.github.io/html2pdf.js/
-      const opt = {
-        // margin: 10,
-        filename: `${props.fileName}.pdf`,
-        // https://html2canvas.hertzen.com/configuration
-        html2canvas: {
-          scale: 3,
-          useCORS: true
-        },
-        // tested Firefox max 9 pages, Chromium max 19 pages
-        pagesPerCanvas: navigator.userAgent.includes('Chrome') ? 19 : 9,
-        // 智能分页，防止图片被截断
-        pagebreak: { mode: 'avoid-all' },
-        // 支持文本中放链接，可点击跳转，默认true
-        // enableLinks: true
-        ...props.options
+      const target = document.querySelector('#export-pdf-preview');
+      if (!target) {
+        const error = new Error('No target element found for PDF export.');
+        props.onError?.(error);
+        ctx.emit('onError', error);
+        return;
+      }
+
+      props.onStart?.();
+      ctx.emit('onStart');
+
+      window.onafterprint = () => {
+        window.onafterprint = null;
+        props.onSuccess?.();
+        ctx.emit('onSuccess');
       };
 
-      props.onStart ? props.onStart() : ctx.emit('onStart');
-      import('html3pdf').then((ins) => {
-        const pdf = ins.default().set(opt).from(content.value);
-
-        pdf
-          .toPdf()
-          .get('pdf')
-          .then((pdfInstance: any) => {
-            props.customize?.(pdfInstance);
-          })
-          .then(() => {
-            pdf
-              .save()
-              .listen(progressCallback)
-              .then(() => {
-                props.onSuccess ? props.onSuccess() : ctx.emit('onSuccess');
-              })
-              .catch((error: unknown) => {
-                props.onError ? props.onError(error) : ctx.emit('onError', error);
-              })
-              .finally(() => {
-                previewRef.value?.rerender();
-              });
-          });
-      });
+      window.print();
     };
 
     ctx.expose({
@@ -199,6 +127,7 @@ const ExportPDF = defineComponent({
 
       return (
         <ModalToolbar
+          class="export-pdf-modal"
           width={props.width}
           height={props.height}
           visible={state.visible}
@@ -245,6 +174,7 @@ const ExportPDF = defineComponent({
               noImgZoomIn={props.noImgZoomIn}
               noKatex={props.noKatex}
               noMermaid={props.noMermaid}
+              noEcharts={props.noEcharts}
             />
           </div>
 

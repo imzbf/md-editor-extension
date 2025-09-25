@@ -32,10 +32,8 @@
     "@vitejs/plugin-vue-jsx": "^3.0.1",
     "vue-tsc": "^1.8.5"
   },
-  "dependencies": {
-    "html3pdf": "^0.12.2"
-  },
+  "dependencies": {},
   "peerDependencies": {
-    "md-editor-v3": ">=5.2.0"
+    "md-editor-v3": ">=6.0.0"
   }
 }

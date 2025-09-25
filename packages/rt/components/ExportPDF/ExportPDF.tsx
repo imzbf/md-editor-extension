@@ -7,7 +7,7 @@ import React, {
   forwardRef,
   ForwardedRef
 } from 'react';
-import { MdPreview, ModalToolbar, ExposePreviewParam } from 'md-editor-rt';
+import { MdPreview, ModalToolbar, ExposePreviewParam, MdHeadingId } from 'md-editor-rt';
 import { Printer } from 'lucide-react';
 import { prefix } from '@vavt/utils/src/static';
 import { CommomProps } from '../../common/props';
@@ -25,41 +25,17 @@ interface Props extends CommomProps {
   height?: string;
   modalTitle?: string;
   value?: string;
-  /**
-   * @deprecated replace with value
-   */
-  modelValue?: string;
-  fileName?: string;
   exportBtnText?: string;
   style?: CSSProperties;
   onStart?: () => void;
   onSuccess?: () => void;
   onError?: (err: unknown) => void;
-  onProgress?: (progress: {
-    val: number;
-    state: string;
-    n: number;
-    stack: string[];
-    ratio: number;
-  }) => void;
   noIconfont?: boolean;
   noHighlight?: boolean;
   noImgZoomIn?: boolean;
   noKatex?: boolean;
   noMermaid?: boolean;
-  /**
-   * html2pdf配置项，它会覆盖默认配置！
-   *
-   * https://ekoopmans.github.io/html2pdf.js/
-   */
-  options?: object;
-  /**
-   * 自定义pdf
-   *
-   * @param ins html3pdf实例
-   * @returns
-   */
-  customize?: (ins: unknown) => void;
+  noEcharts?: boolean;
 }
 
 /**
@@ -67,19 +43,14 @@ interface Props extends CommomProps {
  *
  * @see https://github.com/imzbf/md-editor-v3/issues/207
  **/
-const headingId = (_text: string, _level: number, index: number) =>
-  `pdf-ex-heading-${index}`;
+const headingId: MdHeadingId = ({ index }) => `pdf-ex-heading-${index}`;
 
 const ExportPDF = forwardRef((props: Props, ref: ForwardedRef<unknown>) => {
   const {
     width = '870px',
     height = '600px',
     trigger,
-    fileName = 'md',
-    style = {
-      padding: '10mm'
-    },
-    options = {},
+    style = {},
     disabled,
     showToolbarName
   } = props;
@@ -96,77 +67,33 @@ const ExportPDF = forwardRef((props: Props, ref: ForwardedRef<unknown>) => {
     setVisible(false);
   }, []);
 
-  const progressCallback = useCallback(
-    (progress: {
-      val: number;
-      state: string;
-      n: number;
-      stack: string[];
-      ratio: number;
-    }) => {
-      props.onProgress?.(progress);
-    },
-    [props]
-  );
-
   const onClick = useCallback(() => {
-    // https://ekoopmans.github.io/html2pdf.js/
-    const opt = {
-      // margin: 10,
-      filename: `${fileName}.pdf`,
-      // https://html2canvas.hertzen.com/configuration
-      html2canvas: {
-        scale: 3,
-        useCORS: true
-      },
-      // tested Firefox max 9 pages, Chromium max 19 pages
-      pagesPerCanvas: navigator.userAgent.includes('Chrome') ? 19 : 9,
-      // 智能分页，防止图片被截断
-      pagebreak: { mode: 'avoid-all' },
-      // 支持文本中放链接，可点击跳转，默认true
-      // enableLinks: true
-      ...options
-    };
+    const target = document.querySelector('#export-pdf-preview');
+    if (!target) {
+      const error = new Error('No target element found for PDF export.');
+      props.onError?.(error);
+      return;
+    }
 
     props.onStart?.();
-    import('html3pdf').then((ins) => {
-      const pdf = ins.default().set(opt).from(content.current);
 
-      pdf
-        .toPdf()
-        .get('pdf')
-        .then((pdfInstance: any) => {
-          props.customize?.(pdfInstance);
-        })
-        .then(() => {
-          pdf
-            .save()
-            .listen(progressCallback)
-            .then(() => {
-              props.onSuccess?.();
-            })
-            .catch((error: unknown) => {
-              props.onError?.(error);
-            })
-            .finally(() => {
-              previewRef.current?.rerender();
-            });
-        });
-    });
-  }, [fileName, options, progressCallback, props]);
+    window.onafterprint = () => {
+      window.onafterprint = null;
+      props.onSuccess?.();
+    };
 
-  useImperativeHandle(
-    ref,
-    () => {
-      return {
-        trigger: onClick
-      };
-    },
-    [onClick]
-  );
+    window.print();
+  }, [props]);
+
+  useImperativeHandle(ref, () => {
+    return {
+      trigger: onClick
+    };
+  }, [onClick]);
 
   return (
     <ModalToolbar
+      className="export-pdf-modal"
       width={width}
       height={height}
       visible={visible}
@@ -200,7 +127,7 @@ const ExportPDF = forwardRef((props: Props, ref: ForwardedRef<unknown>) => {
           codeTheme={props.codeTheme}
           previewTheme={props.previewTheme}
           language={props.language}
-          value={props.value || props.modelValue || ''}
+          value={props.value || ''}
           mdHeadingId={headingId}
           style={style}
           codeFoldable={false}
@@ -209,6 +136,7 @@ const ExportPDF = forwardRef((props: Props, ref: ForwardedRef<unknown>) => {
           noImgZoomIn={props.noImgZoomIn}
           noKatex={props.noKatex}
           noMermaid={props.noMermaid}
+          noEcharts={props.noEcharts}
         />
       </div>
       <div className={`${prefix}-form-item`}>
