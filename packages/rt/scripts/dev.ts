@@ -1,18 +1,18 @@
 import path from 'path';
-import { createServer } from 'vite';
 import { fileURLToPath } from 'url';
-import react from '@vitejs/plugin-react';
+import nodeServicePlugins from '@vavt/utils/src/node/vite-plugins/nodeService';
 import markdown from '@vavt/vite-plugin-import-markdown';
+import react from '@vitejs/plugin-react';
 
 // 默认的导出在import的时候会提示不存在
-import nodeServicePlugins from '@vavt/utils/src/node/vite-plugins/nodeService';
+import { createServer } from 'vite';
 const { nodeService } = nodeServicePlugins;
 
 // vite的兼容
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
 const resolvePath = (p: string) => path.resolve(__dirname, p);
 
-!(async () => {
+void (async () => {
   const server = await createServer({
     root: resolvePath('..'),
     configFile: false,

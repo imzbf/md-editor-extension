@@ -1,10 +1,10 @@
-import { defineComponent, PropType, reactive } from 'vue';
-import { DropdownToolbar } from 'md-editor-v3';
-import { SwatchBook } from 'lucide-vue-next';
-
-import { getSlot } from '@vavt/utils/src/vue-tsx';
-import { prefix } from '@vavt/utils/src/static';
 import { DEFAULT_EXTRA_OPTIONS, DEFAULT_OPTIONS } from '@vavt/data/src';
+import { prefix } from '@vavt/utils/src/static';
+import { getSlot } from '@vavt/utils/src/vue-tsx';
+import { SwatchBook } from 'lucide-vue-next';
+import { DropdownToolbar } from 'md-editor-v3';
+import { defineComponent, PropType, reactive } from 'vue';
+
 import { commomProps } from '../../common/props';
 
 const ThemeDropdown = defineComponent({
@@ -95,11 +95,7 @@ const ThemeDropdown = defineComponent({
         >
           {getSlot({ props, ctx }) || <SwatchBook class={`${prefix}-icon`} />}
 
-          {props.showToolbarName && (
-            <div class={`${prefix}-toolbar-item-name`}>
-              {props.title || props.modelValue}
-            </div>
-          )}
+          {props.showToolbarName && <div class={`${prefix}-toolbar-item-name`}>{props.title || props.modelValue}</div>}
         </DropdownToolbar>
       );
     };

@@ -1,9 +1,9 @@
-import React, { ReactNode, useState } from 'react';
-import { DropdownToolbar, PreviewThemes } from 'md-editor-rt';
-import { SwatchBook } from 'lucide-react';
-
-import { prefix } from '@vavt/utils/src/static';
 import { DEFAULT_EXTRA_OPTIONS, DEFAULT_OPTIONS } from '@vavt/data/src';
+import { prefix } from '@vavt/utils/src/static';
+import { SwatchBook } from 'lucide-react';
+import { DropdownToolbar, PreviewThemes } from 'md-editor-rt';
+import React, { ReactNode, useState } from 'react';
+
 import { CommomProps } from '../../common/props';
 
 interface Props extends CommomProps {
@@ -48,9 +48,7 @@ const ThemeDropdown = (props: Props) => {
     >
       {props.children || <SwatchBook className={`${prefix}-icon`} />}
 
-      {props.showToolbarName && (
-        <div className={`${prefix}-toolbar-item-name`}>{props.title || props.value}</div>
-      )}
+      {props.showToolbarName && <div className={`${prefix}-toolbar-item-name`}>{props.title || props.value}</div>}
     </DropdownToolbar>
   );
 };

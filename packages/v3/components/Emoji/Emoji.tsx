@@ -1,15 +1,16 @@
-import { defineComponent, reactive } from 'vue';
-import type { PropType } from 'vue';
-import { DropdownToolbar } from 'md-editor-v3';
-import type { InsertContentGenerator } from 'md-editor-v3';
-import { Smile } from 'lucide-vue-next';
-import { getSlot } from '@vavt/utils/src/vue-tsx';
 import { emojis } from '@vavt/data/src/default-emojis';
 import { prefix } from '@vavt/utils/src/static';
+import { getSlot } from '@vavt/utils/src/vue-tsx';
+import { Smile } from 'lucide-vue-next';
+import type { InsertContentGenerator } from 'md-editor-v3';
+import { DropdownToolbar } from 'md-editor-v3';
+import type { PropType } from 'vue';
+import { defineComponent, reactive } from 'vue';
 
 import { commomProps } from '../../common/props';
 
 const Emoji = defineComponent({
+  name: 'VavtEmoji',
   props: {
     ...commomProps,
     /**
@@ -78,9 +79,7 @@ const Emoji = defineComponent({
         >
           {trigger || <Smile class={`${prefix}-icon`} />}
 
-          {props.showToolbarName && (
-            <div class={`${prefix}-toolbar-item-name`}>{props.title || 'emoji'}</div>
-          )}
+          {props.showToolbarName && <div class={`${prefix}-toolbar-item-name`}>{props.title || 'emoji'}</div>}
         </DropdownToolbar>
       );
     };

@@ -1,7 +1,7 @@
-import React, { ReactNode, useCallback } from 'react';
-import { NormalToolbar, Themes } from 'md-editor-rt';
-import { Moon, Sun } from 'lucide-react';
 import { prefix } from '@vavt/utils/src/static';
+import { Moon, Sun } from 'lucide-react';
+import { NormalToolbar, Themes } from 'md-editor-rt';
+import React, { ReactNode, useCallback } from 'react';
 
 import { CommomProps } from '../../common/props';
 
@@ -18,20 +18,14 @@ const Mark = (props: Props) => {
   }, [props]);
 
   return (
-    <NormalToolbar
-      title={props.title || props.value}
-      onClick={onClick}
-      disabled={props.disabled}
-    >
+    <NormalToolbar title={props.title || props.value} onClick={onClick} disabled={props.disabled}>
       {props.children || props.value === 'light' ? (
         <Moon className={`${prefix}-icon`} />
       ) : (
         <Sun className={`${prefix}-icon`} />
       )}
 
-      {props.showToolbarName && (
-        <div className={`${prefix}-toolbar-item-name`}>{props.title || props.value}</div>
-      )}
+      {props.showToolbarName && <div className={`${prefix}-toolbar-item-name`}>{props.title || props.value}</div>}
     </NormalToolbar>
   );
 };

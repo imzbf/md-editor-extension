@@ -1,20 +1,14 @@
-import React, { useCallback } from 'react';
+import { prefix } from '@vavt/utils/src/static';
+import { Highlighter } from 'lucide-react';
 import { NormalToolbar } from 'md-editor-rt';
 import type { InsertContentGenerator } from 'md-editor-rt';
-import { Highlighter } from 'lucide-react';
-import { prefix } from '@vavt/utils/src/static';
+import React, { useCallback } from 'react';
 
 import { CommomProps } from '../../common/props';
 
-interface Props extends CommomProps {}
+type Props = CommomProps;
 
-const Mark = ({
-  title = 'mark',
-  insert = () => {},
-  trigger,
-  disabled,
-  showToolbarName
-}: Props) => {
+const Mark = ({ title = 'mark', insert = () => {}, trigger, disabled, showToolbarName }: Props) => {
   const onClick = useCallback(() => {
     const generator: InsertContentGenerator = (selectedText) => {
       return {

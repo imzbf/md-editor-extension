@@ -6,5 +6,5 @@
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true
   },
-  "include": ["scripts/**/*.ts", "./package.json"]
+  "include": ["scripts/**/*.ts", "./package.json", "eslint.config.mjs"]
 }

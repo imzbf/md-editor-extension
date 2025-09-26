@@ -1,10 +1,9 @@
-/* eslint-disable vue/require-default-prop */
+import { prefix } from '@vavt/utils/src/static';
+import { getSlot } from '@vavt/utils/src/vue-tsx';
+import { Printer } from 'lucide-vue-next';
+import { MdPreview, ModalToolbar, ExposePreviewParam, MdHeadingId } from 'md-editor-v3';
 import { defineComponent, reactive, ref, CSSProperties } from 'vue';
 import type { PropType } from 'vue';
-import { MdPreview, ModalToolbar, ExposePreviewParam, MdHeadingId } from 'md-editor-v3';
-import { Printer } from 'lucide-vue-next';
-import { getSlot } from '@vavt/utils/src/vue-tsx';
-import { prefix } from '@vavt/utils/src/static';
 import { commomProps } from '../../common/props';
 
 const DEFAULT_TITLE = 'Export as PDF';
@@ -58,7 +57,6 @@ const ExportPDF = defineComponent({
       default: undefined
     },
     onError: {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       type: Function as PropType<(err: unknown) => void>,
       default: undefined
     },
@@ -132,13 +130,8 @@ const ExportPDF = defineComponent({
           height={props.height}
           visible={state.visible}
           disabled={props.disabled}
-          title={
-            props.title || (props.language === 'zh-CN' ? DEFAULT_TITLE_CN : DEFAULT_TITLE)
-          }
-          modalTitle={
-            props.modalTitle ||
-            (props.language === 'zh-CN' ? DEFAULT_TITLE_CN : DEFAULT_TITLE)
-          }
+          title={props.title || (props.language === 'zh-CN' ? DEFAULT_TITLE_CN : DEFAULT_TITLE)}
+          modalTitle={props.modalTitle || (props.language === 'zh-CN' ? DEFAULT_TITLE_CN : DEFAULT_TITLE)}
           onClick={() => {
             state.visible = true;
           }}
@@ -150,8 +143,7 @@ const ExportPDF = defineComponent({
               {trigger || <Printer class={`${prefix}-icon`} />}
               {props.showToolbarName && (
                 <div class={`${prefix}-toolbar-item-name`}>
-                  {props.title ||
-                    (props.language === 'zh-CN' ? DEFAULT_TITLE_CN : DEFAULT_TITLE)}
+                  {props.title || (props.language === 'zh-CN' ? DEFAULT_TITLE_CN : DEFAULT_TITLE)}
                 </div>
               )}
             </>
@@ -180,8 +172,7 @@ const ExportPDF = defineComponent({
 
           <div class={`${prefix}-form-item`}>
             <button class={`${prefix}-btn`} type="button" onClick={onClick}>
-              {props.exportBtnText ||
-                (props.language === 'zh-CN' ? EXPORT_BTN_TEXT_CN : EXPORT_BTN_TEXT)}
+              {props.exportBtnText || (props.language === 'zh-CN' ? EXPORT_BTN_TEXT_CN : EXPORT_BTN_TEXT)}
             </button>
           </div>
         </ModalToolbar>

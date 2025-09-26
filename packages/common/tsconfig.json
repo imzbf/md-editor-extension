@@ -12,6 +12,6 @@
     "importHelpers": true,
     "skipLibCheck": true
   },
-  "include": ["src/locale/*.ts", "index.d.ts"],
+  "include": ["src/locale/*.ts", "index.d.ts", "eslint.config.mjs"],
   "exclude": ["node_modules"]
 }

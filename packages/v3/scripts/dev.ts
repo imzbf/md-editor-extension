@@ -1,25 +1,19 @@
 import path from 'path';
-import { createServer } from 'vite';
 import { fileURLToPath } from 'url';
+import nodeServicePlugins from '@vavt/utils/src/node/vite-plugins/nodeService';
+import markdown from '@vavt/vite-plugin-import-markdown';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
-import markdown from '@vavt/vite-plugin-import-markdown';
 
 // 默认的导出在import的时候会提示不存在
-import nodeServicePlugins from '@vavt/utils/src/node/vite-plugins/nodeService';
+import { createServer } from 'vite';
 const { nodeService } = nodeServicePlugins;
 
 // vite的兼容
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
 const resolvePath = (p: string) => path.resolve(__dirname, p);
 
-// vue3.3.x兼容
-const __defProp = Object.defineProperty;
-const __name = (target, value) =>
-  __defProp(target, 'name', { value, configurable: true });
-globalThis.__name = __name;
-
-!(async () => {
+void (async () => {
   const server = await createServer({
     root: resolvePath('..'),
     configFile: false,

@@ -1,8 +1,8 @@
-import { defineComponent, PropType } from 'vue';
-import { NormalToolbar, Themes } from 'md-editor-v3';
-import { Moon, Sun } from 'lucide-vue-next';
-import { getSlot } from '@vavt/utils/src/vue-tsx';
 import { prefix } from '@vavt/utils/src/static';
+import { getSlot } from '@vavt/utils/src/vue-tsx';
+import { Moon, Sun } from 'lucide-vue-next';
+import { NormalToolbar, Themes } from 'md-editor-v3';
+import { defineComponent, PropType } from 'vue';
 
 import { commomProps } from '../../common/props';
 
@@ -32,22 +32,14 @@ const Mark = defineComponent({
 
     return () => {
       return (
-        <NormalToolbar
-          title={props.title || props.modelValue}
-          disabled={props.disabled}
-          onClick={onClick}
-        >
+        <NormalToolbar title={props.title || props.modelValue} disabled={props.disabled} onClick={onClick}>
           {getSlot({ props, ctx }) || props.modelValue === 'light' ? (
             <Moon class={`${prefix}-icon`} />
           ) : (
             <Sun class={`${prefix}-icon`} />
           )}
 
-          {props.showToolbarName && (
-            <div class={`${prefix}-toolbar-item-name`}>
-              {props.title || props.modelValue}
-            </div>
-          )}
+          {props.showToolbarName && <div class={`${prefix}-toolbar-item-name`}>{props.title || props.modelValue}</div>}
         </NormalToolbar>
       );
     };

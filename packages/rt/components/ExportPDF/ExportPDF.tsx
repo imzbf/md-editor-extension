@@ -1,3 +1,6 @@
+import { prefix } from '@vavt/utils/src/static';
+import { Printer } from 'lucide-react';
+import { MdPreview, ModalToolbar, ExposePreviewParam, MdHeadingId } from 'md-editor-rt';
 import React, {
   useCallback,
   CSSProperties,
@@ -7,9 +10,6 @@ import React, {
   forwardRef,
   ForwardedRef
 } from 'react';
-import { MdPreview, ModalToolbar, ExposePreviewParam, MdHeadingId } from 'md-editor-rt';
-import { Printer } from 'lucide-react';
-import { prefix } from '@vavt/utils/src/static';
 import { CommomProps } from '../../common/props';
 
 const DEFAULT_TITLE = 'Export as PDF';
@@ -46,14 +46,7 @@ interface Props extends CommomProps {
 const headingId: MdHeadingId = ({ index }) => `pdf-ex-heading-${index}`;
 
 const ExportPDF = forwardRef((props: Props, ref: ForwardedRef<unknown>) => {
-  const {
-    width = '870px',
-    height = '600px',
-    trigger,
-    style = {},
-    disabled,
-    showToolbarName
-  } = props;
+  const { width = '870px', height = '600px', trigger, style = {}, disabled, showToolbarName } = props;
 
   const [visible, setVisible] = useState(false);
   const content = useRef<HTMLDivElement>(null);
@@ -97,13 +90,8 @@ const ExportPDF = forwardRef((props: Props, ref: ForwardedRef<unknown>) => {
       width={width}
       height={height}
       visible={visible}
-      title={
-        props.title || (props.language === 'zh-CN' ? DEFAULT_TITLE_CN : DEFAULT_TITLE)
-      }
-      modalTitle={
-        props.modalTitle ||
-        (props.language === 'zh-CN' ? DEFAULT_TITLE_CN : DEFAULT_TITLE)
-      }
+      title={props.title || (props.language === 'zh-CN' ? DEFAULT_TITLE_CN : DEFAULT_TITLE)}
+      modalTitle={props.modalTitle || (props.language === 'zh-CN' ? DEFAULT_TITLE_CN : DEFAULT_TITLE)}
       onClick={open}
       onClose={close}
       trigger={
@@ -111,8 +99,7 @@ const ExportPDF = forwardRef((props: Props, ref: ForwardedRef<unknown>) => {
           {trigger || <Printer className={`${prefix}-icon`} />}
           {showToolbarName && (
             <div className={`${prefix}-toolbar-item-name`}>
-              {props.title ||
-                (props.language === 'zh-CN' ? DEFAULT_TITLE_CN : DEFAULT_TITLE)}
+              {props.title || (props.language === 'zh-CN' ? DEFAULT_TITLE_CN : DEFAULT_TITLE)}
             </div>
           )}
         </>
@@ -141,8 +128,7 @@ const ExportPDF = forwardRef((props: Props, ref: ForwardedRef<unknown>) => {
       </div>
       <div className={`${prefix}-form-item`}>
         <button className={`${prefix}-btn`} type="button" onClick={onClick}>
-          {props.exportBtnText ||
-            (props.language === 'zh-CN' ? EXPORT_BTN_TEXT_CN : EXPORT_BTN_TEXT)}
+          {props.exportBtnText || (props.language === 'zh-CN' ? EXPORT_BTN_TEXT_CN : EXPORT_BTN_TEXT)}
         </button>
       </div>
     </ModalToolbar>

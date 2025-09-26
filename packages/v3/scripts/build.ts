@@ -1,21 +1,21 @@
-import path from 'path';
 import fs from 'fs';
-import { writeFile } from 'node:fs';
 import { Buffer } from 'node:buffer';
+import { writeFile } from 'node:fs';
+import path from 'path';
 import { fileURLToPath } from 'url';
-import { build, LibraryFormats } from 'vite';
+import folder from '@vavt/utils/src/node/folder';
 import vueJsx from '@vitejs/plugin-vue-jsx';
+import { build, LibraryFormats } from 'vite';
 import dts from 'vite-plugin-dts';
 
 import packageJson from '../package.json';
 
-import folder from '@vavt/utils/src/node/folder';
 const { removeDir } = folder;
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
 const resolvePath = (p: string) => path.resolve(__dirname, p);
 
-!(async () => {
+void (async () => {
   const entryList = fs.readdirSync(path.resolve(__dirname, resolvePath('../components')));
   const componentsNames = entryList.filter((e) => /^[A-Z][A-Za-z0-9]*[^.local]$/.test(e));
 
@@ -38,9 +38,7 @@ const resolvePath = (p: string) => path.resolve(__dirname, p);
       };
 
       componentsNames.forEach((name) => {
-        entry[`${name}-c`] = resolvePath(
-          `../components/${name}/${t === 'cjs' ? name : ''}`
-        );
+        entry[`${name}-c`] = resolvePath(`../components/${name}/${t === 'cjs' ? name : ''}`);
 
         const scssPath = resolvePath(`../styles/${name}.scss`);
         if (t === 'es' && fs.existsSync(scssPath)) {
@@ -114,7 +112,7 @@ const resolvePath = (p: string) => path.resolve(__dirname, p);
 
   // 移除package.json中的workspace
   const devDependencies = Object.keys(packageJson.devDependencies).reduce((p, key) => {
-    if (/^workspace:/.test(packageJson.devDependencies[key])) {
+    if (/^workspace:/.test(packageJson.devDependencies[key] as string)) {
       return p;
     }
 

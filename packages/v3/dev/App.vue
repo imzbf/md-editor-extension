@@ -1,13 +1,7 @@
 <template>
   <button @click="changeTheme">{{ theme }}</button>
   <button @click="exportHandler">导出</button>
-  <MdEditor
-    v-model="text"
-    :toolbars="toolbars"
-    :theme="theme"
-    :previewTheme="previewTheme"
-    :showToolbarName="true"
-  >
+  <MdEditor v-model="text" :toolbars="toolbars" :theme="theme" :previewTheme="previewTheme" :showToolbarName="true">
     <template #defToolbars>
       <Mark />
       <Emoji />
@@ -38,23 +32,15 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import data from '@vavt/data/src/markdown-demo.md';
+import { message } from '@vavt/message';
 import { MdEditor } from 'md-editor-v3';
 import type { ToolbarNames, Themes, PreviewThemes } from 'md-editor-v3';
+import { ref } from 'vue';
+
 import 'md-editor-v3/lib/style.css';
 
-import { message } from '@vavt/message';
-
-import data from '@vavt/data/src/markdown-demo.md';
-
-import {
-  Mark,
-  Emoji,
-  OriginalImg,
-  ExportPDF,
-  PreviewThemeSwitch,
-  ThemeSwitch
-} from '../components';
+import { Mark, Emoji, OriginalImg, ExportPDF, PreviewThemeSwitch, ThemeSwitch } from '../components';
 
 const pdfRef = ref();
 const text = ref(data);

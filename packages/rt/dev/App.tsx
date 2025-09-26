@@ -1,19 +1,11 @@
-import React, { useState, StrictMode, useCallback, useRef } from 'react';
+import data from '@vavt/data/src/markdown-demo.md';
+import { message } from '@vavt/message';
 import { MdEditor, PreviewThemes, Themes, ToolbarNames } from 'md-editor-rt';
+import React, { useState, StrictMode, useCallback, useRef } from 'react';
+
 import 'md-editor-rt/lib/style.css';
 
-import { message } from '@vavt/message';
-
-import data from '@vavt/data/src/markdown-demo.md';
-
-import {
-  Mark,
-  Emoji,
-  OriginalImg,
-  ExportPDF,
-  ThemeSwitch,
-  PreviewThemeSwitch
-} from '../components';
+import { Mark, Emoji, OriginalImg, ExportPDF, ThemeSwitch, PreviewThemeSwitch } from '../components';
 
 import './style.scss';
 
