@@ -15,16 +15,16 @@ const ZH_TW: StaticTextDefaultValue = {
     bold: '加粗',
     underline: '下劃線',
     italic: '斜體',
-    strikeThrough: '删除線',
+    strikeThrough: '刪除線',
     title: '標題',
     sub: '下標',
     sup: '上標',
     quote: '引用',
-    unorderedList: '無序列錶',
-    orderedList: '有序列錶',
-    task: '任務列錶',
+    unorderedList: '無序列表',
+    orderedList: '有序列表',
+    task: '任務列表',
     codeRow: '行內代碼',
-    code: '塊級代碼',
+    code: '程式碼區塊',
     link: '鏈接',
     image: '圖片',
     table: '表格',
@@ -35,11 +35,11 @@ const ZH_TW: StaticTextDefaultValue = {
     save: '保存',
     prettier: '美化',
     pageFullscreen: '瀏覽器全屏',
-    fullscreen: '屏幕全屏',
+    fullscreen: '螢幕全屏',
     preview: '預覽',
     htmlPreview: 'html代碼預覽',
     catalog: '目錄',
-    github: '源碼地址'
+    github: '源碼地址',
   },
   titleItem: {
     h1: '一級標題',
@@ -47,12 +47,12 @@ const ZH_TW: StaticTextDefaultValue = {
     h3: '三級標題',
     h4: '四級標題',
     h5: '五級標題',
-    h6: '六級標題'
+    h6: '六級標題',
   },
   imgTitleItem: {
     link: '添加鏈接',
     upload: '上傳圖片',
-    clip2upload: '裁剪上傳'
+    clip2upload: '裁剪上傳',
   },
   linkModalTips: {
     linkTitle: '添加鏈接',
@@ -61,16 +61,16 @@ const ZH_TW: StaticTextDefaultValue = {
     descLabelPlaceHolder: '請輸入描述...',
     urlLabel: '鏈接地址：',
     urlLabelPlaceHolder: '請輸入链接...',
-    buttonOK: '確定'
+    buttonOK: '確定',
   },
   clipModalTips: {
     title: '裁剪圖片上傳',
-    buttonUpload: '上傳'
+    buttonUpload: '上傳',
   },
   copyCode: {
     text: '複製代碼',
     successTips: '已複製！',
-    failTips: '複製失敗！'
+    failTips: '複製失敗！',
   },
   mermaid: {
     flow: '流程圖',
@@ -80,16 +80,16 @@ const ZH_TW: StaticTextDefaultValue = {
     state: '狀態圖',
     pie: '餅圖',
     relationship: '關係圖',
-    journey: '旅程圖'
+    journey: '旅程圖',
   },
   katex: {
     inline: '行內公式',
-    block: '塊級公式'
+    block: '區塊公式',
   },
   footer: {
     markdownTotal: '字數',
-    scrollAuto: '同步滾動'
-  }
-};
+    scrollAuto: '同步滾動',
+  },
+}
 
 export default ZH_TW;
