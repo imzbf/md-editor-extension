@@ -35,7 +35,7 @@ const ZH_TW: StaticTextDefaultValue = {
     save: '保存',
     prettier: '美化',
     pageFullscreen: '瀏覽器全屏',
-    fullscreen: '幕全屏',
+    fullscreen: '螢幕全屏',
     preview: '預覽',
     htmlPreview: 'html代碼預覽',
     catalog: '目錄',
