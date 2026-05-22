@@ -86,7 +86,7 @@ const FA_IR: StaticTextDefaultValue = {
     block: 'بلوک'
   },
   footer: {
-    markdownTotal: 'تعداد کلمات',
+    markdownTotal: 'تعداد حروف',
     scrollAuto: 'اسکرول خودکار'
   }
 };
