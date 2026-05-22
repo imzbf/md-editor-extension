@@ -99,7 +99,7 @@ void (async () => {
             }
           },
           rollupOptions: {
-            external: ['vue', 'md-editor-v3', 'lucide-vue-next'],
+            external: ['vue', 'md-editor-v3', '@lucide/vue'],
             output: {
               chunkFileNames: `${t}/chunks/[name].${extnames[t]}`,
               assetFileNames: 'asset/[name][extname]'

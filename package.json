@@ -48,7 +48,7 @@
     "eslint-plugin-vue": "^10.5.0",
     "jiti": "^2.6.0",
     "md-editor-rt": "^6.0.2",
-    "md-editor-v3": "^6.0.1",
+    "md-editor-v3": "^6.5.1",
     "multiparty": "^4.2.3",
     "prettier": "^3.6.2",
     "sass": "1.81.0",

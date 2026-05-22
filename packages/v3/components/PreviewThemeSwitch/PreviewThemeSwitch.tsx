@@ -1,7 +1,7 @@
+import { SwatchBook } from '@lucide/vue';
 import { DEFAULT_EXTRA_OPTIONS, DEFAULT_OPTIONS } from '@vavt/data/src';
 import { prefix } from '@vavt/utils/src/static';
 import { getSlot } from '@vavt/utils/src/vue-tsx';
-import { SwatchBook } from 'lucide-vue-next';
 import { DropdownToolbar } from 'md-editor-v3';
 import { defineComponent, PropType, reactive } from 'vue';
 

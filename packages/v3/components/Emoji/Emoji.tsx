@@ -1,7 +1,7 @@
+import { Smile } from '@lucide/vue';
 import { emojis } from '@vavt/data/src/default-emojis';
 import { prefix } from '@vavt/utils/src/static';
 import { getSlot } from '@vavt/utils/src/vue-tsx';
-import { Smile } from 'lucide-vue-next';
 import type { InsertContentGenerator } from 'md-editor-v3';
 import { DropdownToolbar } from 'md-editor-v3';
 import type { PropType } from 'vue';

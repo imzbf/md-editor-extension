@@ -1,6 +1,6 @@
+import { Highlighter } from '@lucide/vue';
 import { prefix } from '@vavt/utils/src/static';
 import { getSlot } from '@vavt/utils/src/vue-tsx';
-import { Highlighter } from 'lucide-vue-next';
 import { NormalToolbar } from 'md-editor-v3';
 import type { InsertContentGenerator } from 'md-editor-v3';
 import { defineComponent } from 'vue';

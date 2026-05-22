@@ -1,6 +1,6 @@
+import { Printer } from '@lucide/vue';
 import { prefix } from '@vavt/utils/src/static';
 import { getSlot } from '@vavt/utils/src/vue-tsx';
-import { Printer } from 'lucide-vue-next';
 import { MdPreview, ModalToolbar, ExposePreviewParam, MdHeadingId } from 'md-editor-v3';
 import { defineComponent, reactive, ref, CSSProperties } from 'vue';
 import type { PropType } from 'vue';

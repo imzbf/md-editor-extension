@@ -1,6 +1,6 @@
+import { Moon, Sun } from '@lucide/vue';
 import { prefix } from '@vavt/utils/src/static';
 import { getSlot } from '@vavt/utils/src/vue-tsx';
-import { Moon, Sun } from 'lucide-vue-next';
 import { NormalToolbar, Themes } from 'md-editor-v3';
 import { defineComponent, PropType } from 'vue';
 
