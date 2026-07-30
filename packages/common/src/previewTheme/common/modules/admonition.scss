@@ -44,7 +44,7 @@ $palette: (
   @include admonition-vars(false);
 }
 
-.#{csv.$prefix}-dark {
+.#{csv.$prefix}[data-theme='dark'] {
   @include admonition-vars(true);
 }
 

@@ -35,6 +35,6 @@
   @include common-vars(false);
 }
 
-.#{csv.$prefix}-dark {
+.#{csv.$prefix}[data-theme='dark'] {
   @include common-vars(true);
 }

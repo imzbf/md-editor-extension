@@ -33,7 +33,7 @@
 }
 
 // 暗模式
-.#{vars.$prefix}-dark {
+.#{vars.$prefix}[data-theme='dark'] {
   @include theme-vars(true);
 }
 
@@ -112,7 +112,28 @@
 }
 
 [class*='arknights-theme #{vars.$prefix}-scrn'] {
-  span[rn-wrapper] {
+  span[rn-wrapper]:not([data-line-number]) {
     top: 26px;
+  }
+
+  pre {
+    code {
+      .#{vars.$prefix}-code-line {
+        > [rn-wrapper] {
+          display: inline-flex;
+          justify-content: flex-end;
+          align-items: flex-start;
+          color: var(--md-theme-code-line-number-color);
+          pointer-events: none;
+          user-select: none;
+          white-space: normal;
+
+          &::before {
+            color: inherit;
+            content: attr(data-line-number);
+          }
+        }
+      }
+    }
   }
 }

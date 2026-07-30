@@ -65,7 +65,7 @@
   }
 }
 
-.#{csv.$prefix}-dark {
+.#{csv.$prefix}[data-theme='dark'] {
   .#{csv.$prefix}-preview {
     @include scrollbar-theme(true);
   }

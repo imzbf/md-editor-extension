@@ -14,6 +14,14 @@
     --md-theme-code-before-bg-color: var(--md-theme-code-block-bg-color);
     // 圆角
     --md-theme-code-block-radius: var(--md-theme-radius-m);
+    --md-theme-code-line-number-color: #999;
+    --md-theme-code-line-number-gap: 0.5em;
+    --md-theme-code-line-highlight-bg-color: #{if(
+        $isDark,
+        rgba(59, 170, 250, 0.18),
+        rgba(59, 170, 250, 0.14)
+      )};
+    --md-theme-code-line-highlight-border-color: #{if($isDark, #3baafa, #1f7ed8)};
   }
 }
 
@@ -21,13 +29,14 @@
   @include code-vars(false);
 }
 
-.#{csv.$prefix}-dark {
+.#{csv.$prefix}[data-theme='dark'] {
   @include code-vars(true);
 }
 
 .#{csv.$prefix}-preview {
   // 行内
   code {
+    direction: ltr;
     color: var(--md-theme-code-inline-color);
     background-color: var(--md-theme-code-inline-bg-color);
     border-radius: var(--md-theme-code-inline-radius);
@@ -61,7 +70,7 @@
 
     .#{csv.$prefix}-code-head {
       display: grid;
-      grid-template: '1rf 1rf';
+      grid-template: '1fr 1fr';
       justify-content: space-between;
       height: 32px;
       width: 100%;
@@ -270,6 +279,35 @@
         border-bottom-left-radius: var(--md-theme-code-block-radius);
         border-bottom-right-radius: var(--md-theme-code-block-radius);
 
+        &:has(.#{csv.$prefix}-code-line) {
+          white-space: normal;
+        }
+
+        .#{csv.$prefix}-code-line {
+          display: grid;
+          grid-template-columns: var(--md-code-line-number-width) minmax(0, 1fr);
+          column-gap: var(--md-theme-code-line-number-gap);
+          align-items: start;
+          min-height: 1.6em;
+
+          &:not(:has(> [rn-wrapper])) {
+            grid-template-columns: minmax(0, 1fr);
+          }
+
+          &.#{csv.$prefix}-code-line-highlight,
+          &.highlighted-line {
+            background-color: var(--md-theme-code-line-highlight-bg-color);
+            box-shadow: inset 3px 0 0 var(--md-theme-code-line-highlight-border-color);
+          }
+        }
+
+        .#{csv.$prefix}-code-line-content {
+          min-width: 0;
+          white-space: pre-wrap;
+          overflow-wrap: anywhere;
+          word-break: break-word;
+        }
+
         .#{csv.$prefix}-code-block {
           display: inline-block;
           width: 100%;
@@ -315,7 +353,7 @@
 
 // show code row numer，显示代码行号
 .#{csv.$prefix}-scrn {
-  span[rn-wrapper] {
+  span[rn-wrapper]:not([data-line-number]) {
     position: absolute;
     pointer-events: none;
     top: 1em;
@@ -343,7 +381,26 @@
 
   pre {
     code {
-      padding-left: 3.5em !important;
+      &:not(:has(.#{csv.$prefix}-code-line)) {
+        padding-left: 3.5em !important;
+      }
+
+      .#{csv.$prefix}-code-line {
+        > [rn-wrapper] {
+          display: inline-flex;
+          justify-content: flex-end;
+          align-items: flex-start;
+          color: var(--md-theme-code-line-number-color);
+          pointer-events: none;
+          user-select: none;
+          white-space: normal;
+
+          &::before {
+            color: inherit;
+            content: attr(data-line-number);
+          }
+        }
+      }
     }
   }
 }
