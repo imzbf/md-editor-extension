@@ -18,6 +18,8 @@ void (async () => {
     configFile: false,
     publicDir: resolvePath('../dev/public'),
     resolve: {
+      // workspace 与编辑器可能安装了不同版本的 React，开发时统一使用同一实例以保证 hooks 正常工作。
+      dedupe: ['react', 'react-dom'],
       alias: {
         '@': resolvePath('../dev'),
         '~': resolvePath('../components')
