@@ -1,14 +1,10 @@
 import fs from 'fs';
-import { Buffer } from 'node:buffer';
-import { writeFile } from 'node:fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import folder from '@vavt/utils/src/node/folder';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import { build, LibraryFormats } from 'vite';
 import dts from 'vite-plugin-dts';
-
-import packageJson from '../package.json';
 
 const { removeDir } = folder;
 
@@ -110,28 +106,4 @@ void (async () => {
     })
   );
 
-  // 移除package.json中的workspace
-  const devDependencies = Object.keys(packageJson.devDependencies).reduce((p, key) => {
-    if (/^workspace:/.test(packageJson.devDependencies[key] as string)) {
-      return p;
-    }
-
-    return {
-      ...p,
-      [key]: packageJson.devDependencies[key]
-    };
-  }, {});
-
-  const newPackageJson = {
-    ...packageJson,
-    devDependencies
-  };
-
-  writeFile(
-    resolvePath('../package.json'),
-    new Uint8Array(Buffer.from(JSON.stringify(newPackageJson, null, 2))),
-    (err) => {
-      console.log(err);
-    }
-  );
 })();

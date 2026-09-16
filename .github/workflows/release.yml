@@ -1,0 +1,135 @@
+name: Release Packages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  id-token: write
+
+concurrency:
+  group: npm-release-main
+  cancel-in-progress: false
+
+jobs:
+  release:
+    name: Version And Publish
+    # 手动触发时可以选择其他分支，但只有 main 分支允许发布。
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v7
+        with:
+          # 重跑时必须读取上次运行生成的版本提交，
+          # 避免重复消费原有 Changeset，导致版本号再次递增。
+          ref: main
+          fetch-depth: 0
+
+      # 发布任务持有 OIDC 令牌，受污染的缓存可能通过恶意安装脚本窃取令牌。
+      # 因此遵循 setup-node 的建议，在发布工作流中禁用依赖缓存。
+      - name: Setup Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: 26
+          package-manager-cache: false
+          registry-url: https://registry.npmjs.org/
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Test Release Tooling
+        run: |
+          npm run test:changeset
+          npm run test:release
+
+      # 版本提交和 `changeset publish` 创建的附注标签都需要 Git 身份，
+      # 因此每次运行都要配置，不能受是否存在 Changeset 的条件限制。
+      - name: Configure Git Identity
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Detect Pending Changesets
+        id: pending
+        shell: bash
+        run: |
+          if [ -n "$(find .changeset -maxdepth 1 -type f -name '*.md' ! -name 'README.md' -print -quit)" ]; then
+            echo "has_changesets=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_changesets=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Version Packages
+        if: steps.pending.outputs.has_changesets == 'true'
+        run: |
+          npm run changeset:version
+          # changeset version 只修改 package.json 中的版本号，不会更新锁文件，
+          # 因此需要在提交前同步更新锁文件。
+          npm install --package-lock-only --ignore-scripts
+
+      - name: Build Packages
+        run: npm run build
+
+      - name: Verify Package Contents
+        run: npm pack --dry-run --workspace=@vavt/cm-extension --workspace=@vavt/v3-extension --workspace=@vavt/rt-extension
+
+      - name: Commit Release Versions
+        if: steps.pending.outputs.has_changesets == 'true'
+        shell: bash
+        run: |
+          git add --all .changeset package.json package-lock.json packages/*/package.json packages/*/CHANGELOG.md
+          git commit -m "chore(release): version packages [skip ci]"
+
+      # 版本提交必须先推送到 main，再发布 npm。changeset publish 会对比
+      # package.json 与 npm 上的版本，因此推送成功后即使发布失败，也能通过重跑恢复。
+      # 如果先发布再推送，推送被拒绝时 main 会保留旧版本和未消费的 Changeset，
+      # 下次运行就会再次递增版本号，跳过已经发布的版本。
+      - name: Push Release Commit
+        if: steps.pending.outputs.has_changesets == 'true'
+        run: git push origin HEAD:main
+
+      - name: Publish Packages
+        id: publish
+        run: npm run changeset:publish
+        env:
+          NPM_CONFIG_PROVENANCE: 'true'
+
+      # npm 发布成功后，标签推送或 GitHub 接口调用仍可能失败。
+      # 每次运行都要补齐已发布版本的记录，即使没有新增 Changeset。
+      # 失败必须明确上报，便于重跑恢复。
+      - name: Push Tags And Create GitHub Releases
+        run: npm run release:github
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # 版本提交最初只存在于 main，需要回合并到 develop，同步版本号和更新日志，
+      # 避免下次发布合并时产生冲突。这里不受 has_changesets 条件限制：
+      # 恢复失败的发布时，版本可能已经提交，但 develop 仍需同步。
+      - name: Back-merge Release Into Develop
+        if: ${{ success() && steps.publish.outcome == 'success' }}
+        shell: bash
+        run: |
+          release_commit=$(git rev-parse HEAD)
+          git fetch origin develop
+
+          # develop 没有新增提交时，可以直接快进到发布提交。
+          if git push origin "$release_commit:develop"; then
+            echo "Fast-forwarded develop to the release commit."
+            exit 0
+          fi
+
+          # 发布期间 develop 有了新提交时，改为执行合并。
+          # npm 发布已经完成且无法撤销，因此合并冲突只提示人工处理，不使任务失败。
+          git checkout -B develop origin/develop
+          if ! git merge --no-edit "$release_commit"; then
+            git merge --abort || true
+            echo "::warning::Back-merge into develop conflicted. Merge main into develop manually to pick up the version commit."
+            exit 0
+          fi
+          if ! git push origin develop; then
+            echo "::warning::Back-merge into develop could not be pushed (develop moved again). Merge main into develop manually."
+          fi

@@ -1,7 +1,11 @@
 {
   "name": "@vavt/md-editor-extension",
   "version": "0.0.0",
+  "private": true,
   "license": "MIT",
+  "workspaces": [
+    "packages/*"
+  ],
   "description": "Extensions for md-editor-rt and md-editor-v3.",
   "keywords": [
     "md-editor-v3",
@@ -19,22 +23,36 @@
     "url": "https://github.com/imzbf/md-editor-extension/issues"
   },
   "scripts": {
-    "dev:cm": "pnpm --filter=@vavt/cm-extension run dev",
-    "dev:v3": "pnpm --filter=@vavt/v3-extension run dev",
-    "dev:rt": "pnpm --filter=@vavt/rt-extension run dev",
-    "build:cm": "pnpm --filter=@vavt/cm-extension run build",
-    "build:v3": "pnpm --filter=@vavt/v3-extension run build",
-    "build:rt": "pnpm --filter=@vavt/rt-extension run build",
-    "build": "pnpm build:cm & pnpm build:v3 & pnpm build:rt"
+    "dev:cm": "npm run dev --workspace=@vavt/cm-extension",
+    "dev:v3": "npm run dev --workspace=@vavt/v3-extension",
+    "dev:rt": "npm run dev --workspace=@vavt/rt-extension",
+    "build:cm": "npm run build --workspace=@vavt/cm-extension",
+    "build:v3": "npm run build --workspace=@vavt/v3-extension",
+    "build:rt": "npm run build --workspace=@vavt/rt-extension",
+    "build": "npm run build --workspaces --if-present",
+    "changeset": "changeset",
+    "changeset:version": "changeset version",
+    "changeset:publish": "changeset publish",
+    "changeset:check": "node scripts/check-changeset.mjs",
+    "release:github": "node scripts/github-releases.mjs",
+    "test:changeset": "node --test scripts/check-changeset.test.mjs",
+    "test:release": "node --test scripts/github-releases.test.mjs"
+  },
+  "overrides": {
+    "md-editor-v3": "$md-editor-v3",
+    "md-editor-rt": "$md-editor-rt"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.31.1",
     "@eslint/js": "^9.36.0",
     "@types/multiparty": "^0.0.36",
     "@types/node": "^24.5.2",
     "@typescript-eslint/eslint-plugin": "^8.44.1",
     "@typescript-eslint/parser": "^8.44.1",
     "@typescript-eslint/utils": "^8.44.1",
+    "@vavt/data": "0.0.0",
     "@vavt/message": "^2.0.1",
+    "@vavt/utils": "0.0.0",
     "@vavt/vite-plugin-import-markdown": "^1.0.1",
     "@vitejs/plugin-vue": "^6.0.1",
     "axios": "^1.6.8",
@@ -47,8 +65,8 @@
     "eslint-plugin-react-refresh": "^0.4.22",
     "eslint-plugin-vue": "^10.5.0",
     "jiti": "^2.6.0",
-    "md-editor-rt": "^6.0.2",
-    "md-editor-v3": "^6.5.1",
+    "md-editor-rt": "^7.0.0-0",
+    "md-editor-v3": "^7.0.0-0",
     "multiparty": "^4.2.3",
     "prettier": "^3.6.2",
     "sass": "1.81.0",
@@ -59,5 +77,11 @@
     "vite-plugin-dts": "^3.9.0",
     "vue": "^3.5.13",
     "vue-eslint-parser": "^10.2.0"
+  },
+  "allowScripts": {
+    "@parcel/watcher@2.6.0": true,
+    "esbuild@0.28.2": true,
+    "fsevents@2.3.3": true,
+    "unrs-resolver@1.12.2": true
   }
 }
