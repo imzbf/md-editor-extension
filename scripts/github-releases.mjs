@@ -2,7 +2,11 @@ import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 import process from 'node:process';
+import { setTimeout as delay } from 'node:timers/promises';
 import { fileURLToPath } from 'node:url';
+
+const NPM_METADATA_ATTEMPTS = 6;
+const NPM_METADATA_RETRY_DELAY_MS = 10_000;
 
 /**
  * 从 Changesets 维护的包级更新日志中读取版本标题。
@@ -37,7 +41,7 @@ export function getReleasePackages(cwd) {
 /**
  * 在 `changeset publish` 之后运行，以 npm 上的实际版本为准判断是否已发布。
  * 保留已有 GitHub Release，包括维护者手动编辑的说明。
- * 仅允许替换网络请求函数，测试可在本地仓库中验证真实的标签和推送操作，
+ * 仅允许替换网络请求和重试等待函数，测试可在本地仓库中验证真实的标签和推送操作，
  * 同时避免向外部服务执行实际发布。
  */
 export async function syncGitHubReleases({
@@ -46,7 +50,8 @@ export async function syncGitHubReleases({
   token = process.env.GITHUB_TOKEN,
   apiUrl = process.env.GITHUB_API_URL || 'https://api.github.com',
   serverUrl = process.env.GITHUB_SERVER_URL || 'https://github.com',
-  fetchImpl = globalThis.fetch
+  fetchImpl = globalThis.fetch,
+  waitImpl = delay
 } = {}) {
   if (!repository || !token) throw new Error('GITHUB_REPOSITORY and GITHUB_TOKEN are required.');
 
@@ -86,19 +91,36 @@ export async function syncGitHubReleases({
   const created = [];
   for (const pkg of packages) {
     // 读取 npm 公共仓库时不携带 GitHub 凭据。
-    // 历史更新日志中可能包含未成功发布到 npm 的版本，需核实后再处理。
-    const response = await fetchImpl(`https://registry.npmjs.org/${encodeURIComponent(pkg.name)}`, {
-      headers: { Accept: 'application/vnd.npm.install-v1+json' },
-      signal: AbortSignal.timeout(30_000)
-    });
-    if (!response.ok) throw new Error(`npm metadata for ${pkg.name} failed (${response.status}).`);
-    const metadata = await response.json();
-    if (!metadata.versions?.[pkg.version]) {
-      throw new Error(`${pkg.name}@${pkg.version} is not available on npm yet. Rerun the release workflow.`);
+    // 精简安装元数据可能在发布成功后仍停留在旧版本，因此使用完整元数据并要求刷新缓存。
+    // 完整元数据也可能有同步延迟；有限重试后仍查不到版本则停止，不能跳过发布校验。
+    let metadata;
+    for (let attempt = 1; attempt <= NPM_METADATA_ATTEMPTS; attempt += 1) {
+      const response = await fetchImpl(`https://registry.npmjs.org/${encodeURIComponent(pkg.name)}`, {
+        headers: { Accept: 'application/json', 'Cache-Control': 'no-cache' },
+        signal: AbortSignal.timeout(30_000)
+      });
+      if (!response.ok && response.status !== 404) {
+        throw new Error(`npm metadata for ${pkg.name} failed (${response.status}).`);
+      }
+      // 首次发布的包可能短暂返回 404；读取响应体后按版本尚未同步处理。
+      const content = await response.text();
+      metadata = response.ok ? JSON.parse(content) : {};
+      if (metadata.versions?.[pkg.version]) break;
+      if (attempt === NPM_METADATA_ATTEMPTS) {
+        throw new Error(
+          `${pkg.name}@${pkg.version} is not available on npm after ${NPM_METADATA_ATTEMPTS} attempts. Rerun the release workflow.`
+        );
+      }
+
+      console.warn(
+        `${pkg.name}@${pkg.version} is not visible on npm yet. Retrying (${attempt + 1}/${NPM_METADATA_ATTEMPTS}) in ${NPM_METADATA_RETRY_DELAY_MS / 1000}s.`
+      );
+      await waitImpl(NPM_METADATA_RETRY_DELAY_MS);
     }
 
     for (const version of pkg.versions) {
       const tag = `${pkg.name}@${version}`;
+      // 历史更新日志可能包含未成功发布到 npm 的版本，不能为这些版本创建发行记录。
       if (!metadata.versions[version] || existingReleases.has(tag)) continue;
 
       if (!localTags.has(tag)) {

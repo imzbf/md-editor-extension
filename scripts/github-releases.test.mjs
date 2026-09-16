@@ -57,17 +57,22 @@ function createFixture(t) {
   return { cwd, remote, git, write, commit, setVersion, firstCommit, releaseCommit };
 }
 
-/** 仅模拟网络请求，不执行真实的 npm 发布或 GitHub 写入操作。 */
-function createAPI({ versions = ['1.0.0', '1.1.0'], releases = [] } = {}) {
+/** 模拟网络请求和重试等待，不执行真实的 npm 发布或 GitHub 写入操作。 */
+function createAPI({ versions = ['1.0.0', '1.1.0'], releases = [], npmResponses = [] } = {}) {
   const existing = [...releases];
   const created = [];
   const requests = [];
+  const waits = [];
+  const pendingResponses = [...npmResponses];
   const fetchImpl = async (url, options) => {
     requests.push(url);
     if (url.startsWith('https://registry.npmjs.org/')) {
       assert.equal(options.headers.Authorization, undefined);
       assert.equal(url, `https://registry.npmjs.org/${encodeURIComponent(PACKAGE_NAME)}`);
-      return Response.json({ versions: Object.fromEntries(versions.map((version) => [version, {}])) });
+      return (
+        pendingResponses.shift() ??
+        Response.json({ versions: Object.fromEntries(versions.map((version) => [version, {}])) })
+      );
     }
 
     assert.equal(options.headers.Authorization, 'Bearer test-token');
@@ -83,7 +88,10 @@ function createAPI({ versions = ['1.0.0', '1.1.0'], releases = [] } = {}) {
     const page = Number(new URL(url).searchParams.get('page'));
     return Response.json(existing.slice((page - 1) * 100, page * 100));
   };
-  return { created, requests, fetchImpl };
+  const waitImpl = async (milliseconds) => {
+    waits.push(milliseconds);
+  };
+  return { created, requests, waits, fetchImpl, waitImpl };
 }
 
 function sync(fixture, api) {
@@ -93,7 +101,8 @@ function sync(fixture, api) {
     token: 'test-token',
     apiUrl: 'https://api.github.com',
     serverUrl: 'https://github.com',
-    fetchImpl: api.fetchImpl
+    fetchImpl: api.fetchImpl,
+    waitImpl: api.waitImpl
   });
 }
 
@@ -185,10 +194,59 @@ test('does not tag or announce older versions that never reached npm', async (t)
   assert.equal(fixture.git(['tag', '--list'], fixture.remote), TAG);
 });
 
-test('requires the current package version to be available on npm', async (t) => {
+test('uses full npm metadata when installation metadata is stale', async (t) => {
+  const fixture = createFixture(t);
+  const api = createAPI();
+  const fetchImpl = api.fetchImpl;
+  // npm 已接受发布时，安装用的精简元数据仍可能停留在旧版本。
+  api.fetchImpl = (url, options) => {
+    if (url.startsWith('https://registry.npmjs.org/')) {
+      if (options.headers.Accept === 'application/vnd.npm.install-v1+json') {
+        return Promise.resolve(Response.json({ versions: { '1.0.0': {} } }));
+      }
+      assert.equal(options.headers.Accept, 'application/json');
+    }
+    return fetchImpl(url, options);
+  };
+
+  assert.deepEqual(await sync(fixture, api), [TAG, OLD_TAG]);
+  assert.deepEqual(api.waits, []);
+});
+
+test('waits for npm metadata to include the published version before creating tags', async (t) => {
+  const fixture = createFixture(t);
+  const api = createAPI({
+    npmResponses: [Response.json({ versions: { '1.0.0': {} } }), Response.json({ versions: { '1.0.0': {} } })]
+  });
+  const waitImpl = api.waitImpl;
+  api.waitImpl = async (milliseconds) => {
+    // 等待期间连历史版本也不能开始写入，避免尚未确认本次发布便报告成功。
+    assert.equal(fixture.git(['tag', '--list']), '');
+    assert.equal(fixture.git(['tag', '--list'], fixture.remote), '');
+    assert.deepEqual(api.created, []);
+    await waitImpl(milliseconds);
+  };
+
+  assert.deepEqual(await sync(fixture, api), [TAG, OLD_TAG]);
+  assert.deepEqual(api.waits, [10_000, 10_000]);
+  assert.equal(api.requests.filter((url) => url.startsWith('https://registry.npmjs.org/')).length, 3);
+});
+
+test('retries a newly published package whose metadata initially returns 404', async (t) => {
+  const fixture = createFixture(t);
+  const api = createAPI({ npmResponses: [Response.json({ error: 'Not found' }, { status: 404 })] });
+
+  assert.deepEqual(await sync(fixture, api), [TAG, OLD_TAG]);
+  assert.deepEqual(api.waits, [10_000]);
+});
+
+test('fails after bounded retries when the current package version is still missing', async (t) => {
   const fixture = createFixture(t);
   const api = createAPI({ versions: ['1.0.0'] });
-  await assert.rejects(sync(fixture, api), /1\.1\.0 is not available on npm yet/);
+  await assert.rejects(sync(fixture, api), /1\.1\.0 is not available on npm after 6 attempts/);
+  assert.deepEqual(api.waits, Array(5).fill(10_000));
+  assert.equal(api.requests.filter((url) => url.startsWith('https://registry.npmjs.org/')).length, 6);
+  assert.equal(fixture.git(['tag', '--list']), '');
   assert.equal(fixture.git(['tag', '--list'], fixture.remote), '');
   assert.deepEqual(api.created, []);
 });
@@ -212,6 +270,7 @@ test('does not treat a registry outage as successful publication', async (t) => 
       : fetchImpl(url, options);
   await assert.rejects(sync(fixture, api), /npm metadata .* failed \(503\)/);
   assert.equal(fixture.git(['tag', '--list']), '');
+  assert.deepEqual(api.waits, []);
 });
 
 test('checks all GitHub Release pages before deciding a version is missing', async (t) => {
