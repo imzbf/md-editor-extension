@@ -22,6 +22,9 @@
   "sideEffects": [
     "**/*.css"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "dev": "tsx ./scripts/dev",
     "local": "tsx ./.local/dev",
@@ -37,6 +40,6 @@
   },
   "dependencies": {},
   "peerDependencies": {
-    "md-editor-rt": ">=6.0.0"
+    "md-editor-rt": "^7.0.0"
   }
 }

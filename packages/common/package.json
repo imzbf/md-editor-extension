@@ -23,9 +23,23 @@
   ],
   "types": "index.d.ts",
   "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "dev": "tsx ./scripts/dev",
     "build": "tsc && tsx scripts/build-style"
   },
-  "devDependencies": {}
+  "peerDependencies": {
+    "md-editor-rt": "^7.0.0",
+    "md-editor-v3": "^7.0.0"
+  },
+  "peerDependenciesMeta": {
+    "md-editor-rt": {
+      "optional": true
+    },
+    "md-editor-v3": {
+      "optional": true
+    }
+  }
 }
