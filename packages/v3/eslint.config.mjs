@@ -73,7 +73,7 @@ export default defineConfig([
       // 允许使用 v-html
       'vue/no-v-html': 'off',
 
-      // 属性强制使用 camelCase
+      // 属性强制使用小驼峰命名（camelCase）
       'vue/attribute-hyphenation': [
         'error',
         'never',
@@ -97,7 +97,7 @@ export default defineConfig([
         }
       ],
 
-      // 强制事件名使用 camelCase
+      // 强制事件名使用小驼峰命名（camelCase）
       'vue/v-on-event-hyphenation': [
         'error',
         'never',
@@ -107,7 +107,7 @@ export default defineConfig([
         }
       ],
 
-      // 强制组件名使用 PascalCase
+      // 强制组件名使用大驼峰命名（PascalCase）
       'vue/component-name-in-template-casing': [
         'error',
         'PascalCase',
@@ -120,7 +120,7 @@ export default defineConfig([
       // 每行最多 4 个属性（根据你的设置关闭强制）
       'vue/max-attributes-per-line': ['off'],
 
-      /* ===== Import 顺序 ===== */
+      /* ===== 导入顺序 ===== */
       'import/order': [
         'error',
         {

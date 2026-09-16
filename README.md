@@ -11,7 +11,7 @@ Share your configuration of [md-editor-v3](https://github.com/imzbf/md-editor-v3
 This is a public configuration library that includes languages and themes.
 
 ```shell
-yarn add @vavt/cm-extension
+npm install @vavt/cm-extension
 ```
 
 Language
@@ -92,7 +92,7 @@ export default () => {
 This is the extension component library for `md-editor-v3`
 
 ```shell
-yarn add @vavt/v3-extension
+npm install @vavt/v3-extension
 ```
 
 #### components
@@ -115,7 +115,7 @@ yarn add @vavt/v3-extension
 This is the extension component library for `md-editor-rt`
 
 ```shell
-yarn add @vavt/rt-extension
+npm install @vavt/rt-extension
 ```
 
 #### components
@@ -134,6 +134,17 @@ yarn add @vavt/rt-extension
 | >=3.0.0            | >=5.2.0      |
 
 ## Contribute
+
+### Development
+
+Install dependencies and build all workspaces from the repository root:
+
+```shell
+npm install
+npm run build
+```
+
+Run a package development server with `npm run dev:cm`, `npm run dev:v3`, or `npm run dev:rt`.
 
 - Fork the repository.
 - Write code based on existing templates.

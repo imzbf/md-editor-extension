@@ -7,7 +7,7 @@ Text markers
 First
 
 ```shell
-yarn add markdown-it-mark
+npm install markdown-it-mark
 ```
 
 Second

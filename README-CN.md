@@ -11,27 +11,27 @@
 这是一个公共的配置库，包括语言、主题。
 
 ```shell
-yarn add @vavt/cm-extension
+npm install @vavt/cm-extension
 ```
 
 语言
 
-| 语言名称 | 描述 | 作者 |
-| --- | --- | --- |
-| zh-TW | 中文（繁体） | [@imzbf](https://github.com/imzbf) |
-| fr-FR | 法语 | [@tofandel](https://github.com/tofandel) |
-| jp-JP | 日语 | [@xj89959853](https://github.com/xj89959853) |
-| id-ID | 印尼语 | [@vallerydelexy](https://github.com/vallerydelexy) |
-| jv-ID | Basa Jawa(?不太清楚中文是啥) | [@vallerydelexy](https://github.com/vallerydelexy) |
-| ru | 俄语 | [@gorgulenkozxc](https://github.com/gorgulenkozxc) |
-| pt-BR | 巴西葡萄牙语 | [@kleberMRocha](https://github.com/kleberMRocha) |
-| de-DE | 德语 | [@JehtJanich](https://github.com/JehtJanich) |
-| it-IT | 意大利语 | [@JehtJanich](https://github.com/JehtJanich) |
-| es-ES | 西班牙语 | [@mreysei](https://github.com/mreysei) |
-| ar | 阿拉伯语 | [@mzner](https://github.com/mzner) |
-| ko-KR | 韩语 | [@Baw-Appie](https://github.com/Baw-Appie) |
-| tr-TR | 土耳其 | [@halillusion](https://github.com/halillusion) |
-| fa-ir | 波斯语 | [@nima-parandavar](https://github.com/nima-parandavar) |
+| 语言名称 | 描述                         | 作者                                                   |
+| -------- | ---------------------------- | ------------------------------------------------------ |
+| zh-TW    | 中文（繁体）                 | [@imzbf](https://github.com/imzbf)                     |
+| fr-FR    | 法语                         | [@tofandel](https://github.com/tofandel)               |
+| jp-JP    | 日语                         | [@xj89959853](https://github.com/xj89959853)           |
+| id-ID    | 印尼语                       | [@vallerydelexy](https://github.com/vallerydelexy)     |
+| jv-ID    | Basa Jawa(?不太清楚中文是啥) | [@vallerydelexy](https://github.com/vallerydelexy)     |
+| ru       | 俄语                         | [@gorgulenkozxc](https://github.com/gorgulenkozxc)     |
+| pt-BR    | 巴西葡萄牙语                 | [@kleberMRocha](https://github.com/kleberMRocha)       |
+| de-DE    | 德语                         | [@JehtJanich](https://github.com/JehtJanich)           |
+| it-IT    | 意大利语                     | [@JehtJanich](https://github.com/JehtJanich)           |
+| es-ES    | 西班牙语                     | [@mreysei](https://github.com/mreysei)                 |
+| ar       | 阿拉伯语                     | [@mzner](https://github.com/mzner)                     |
+| ko-KR    | 韩语                         | [@Baw-Appie](https://github.com/Baw-Appie)             |
+| tr-TR    | 土耳其                       | [@halillusion](https://github.com/halillusion)         |
+| fa-ir    | 波斯语                       | [@nima-parandavar](https://github.com/nima-parandavar) |
 
 预览主题
 
@@ -91,7 +91,7 @@ export default () => {
 这是`md-editor-v3`的扩展组件库
 
 ```shell
-yarn add @vavt/v3-extension
+npm install @vavt/v3-extension
 ```
 
 #### components
@@ -116,7 +116,7 @@ yarn add @vavt/v3-extension
 安装
 
 ```shell
-yarn add @vavt/rt-extension
+npm install @vavt/rt-extension
 ```
 
 #### components
@@ -135,6 +135,17 @@ yarn add @vavt/rt-extension
 | >=3.0.0            | >=5.2.0      |
 
 ## 参与贡献
+
+### 开发
+
+在仓库根目录安装依赖并构建所有 workspace：
+
+```shell
+npm install
+npm run build
+```
+
+可使用 `npm run dev:cm`、`npm run dev:v3` 或 `npm run dev:rt` 启动对应组件的开发服务。
 
 - Fork 这个仓库；
 - 按照仓库的模板编写你的配置代码；
