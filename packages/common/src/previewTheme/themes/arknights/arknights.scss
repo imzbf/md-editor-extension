@@ -45,7 +45,8 @@
   overflow-x: hidden;
   color: var(--text);
   position: relative;
-  background-image: linear-gradient(90deg, rgba(217, 234, 251, 0.25) 3%, transparent 0),
+  background-image:
+    linear-gradient(90deg, rgba(217, 234, 251, 0.25) 3%, transparent 0),
     linear-gradient(360deg, rgba(217, 234, 251, 0.25) 3%, transparent 0);
   background-size: 20px 20px;
   background-position: 50%;
@@ -53,25 +54,17 @@
   hr {
     height: 1px;
     border: none;
-    margin-top: 32px;
-    margin-bottom: 32px;
+    margin-block-start: 32px;
+    margin-block-end: 32px;
     background-size: 4px 1px;
-    background-image: linear-gradient(
-      to left,
-      var(--blue) 0%,
-      var(--blue) 25%,
-      transparent 50%
-    );
+    background-image: linear-gradient(to left, var(--blue) 0%, var(--blue) 25%, transparent 50%);
   }
 
   input[type='checkbox'] {
     position: relative;
 
     &::before {
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      inset: 0;
       content: '';
       width: inherit;
       height: inherit;
@@ -84,13 +77,15 @@
     }
 
     &:checked::after {
+      // 勾选图形保持 LTR，避免随 RTL 文本方向镜像。
+      direction: ltr;
       content: '';
-      top: 10%;
-      left: 18%;
+      inset-block-start: 10%;
+      inset-inline-start: 18%;
       width: 90%;
       height: 40%;
-      border-left: 2px solid var(--blue);
-      border-bottom: 2px solid var(--blue);
+      border-inline-start: 2px solid var(--blue);
+      border-block-end: 2px solid var(--blue);
       color: var(--blue);
       z-index: 2;
       transform: rotate(-45deg);
@@ -112,10 +107,6 @@
 }
 
 [class*='arknights-theme #{vars.$prefix}-scrn'] {
-  span[rn-wrapper]:not([data-line-number]) {
-    top: 26px;
-  }
-
   pre {
     code {
       .#{vars.$prefix}-code-line {

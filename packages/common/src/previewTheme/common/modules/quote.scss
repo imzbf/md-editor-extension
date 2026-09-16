@@ -16,7 +16,7 @@
   blockquote {
     padding: 0 1em;
     color: var(--md-theme-quote-color);
-    border-left: var(--md-theme-quote-border);
+    border-inline-start: var(--md-theme-quote-border);
     background-color: var(--md-theme-quote-bg-color);
   }
 }

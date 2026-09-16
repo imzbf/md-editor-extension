@@ -8,6 +8,7 @@
 .#{csv.$prefix}-katex-inline,
 .#{csv.$prefix}-katex-block {
   display: none;
+  direction: ltr;
 }
 
 .#{csv.$prefix}-katex-inline[data-processed] {

@@ -13,12 +13,7 @@
     --md-theme-code-block-bg-color: var(--area);
     --md-theme-code-line-number-color: var(--line);
     --md-theme-code-line-number-gap: 0.5em;
-    --md-theme-code-line-highlight-bg-color: #{if(
-        $isDark,
-        rgba(55, 178, 255, 0.18),
-        rgba(55, 178, 255, 0.14)
-      )};
-    --md-theme-code-line-highlight-border-color: var(--blue);
+    --md-theme-code-line-highlight-bg-color: #{if($isDark, rgba(55, 178, 255, 0.18), rgba(55, 178, 255, 0.14))};
   }
 }
 
@@ -43,27 +38,28 @@
   .md-editor-code {
     border: 1px solid var(--border);
 
+    // 装饰角随阅读方向切换，代码内容方向由 common 保持为 LTR。
     &::before {
-      top: -4px;
-      left: -4px;
+      inset-block-start: -4px;
+      inset-inline-start: -4px;
       width: 20px;
       height: 20px;
       content: '';
-      border-top: 8px solid var(--yellow);
-      border-left: 8px solid var(--yellow);
+      border-block-start: 8px solid var(--yellow);
+      border-inline-start: 8px solid var(--yellow);
       z-index: 10;
       position: absolute;
     }
 
     &::after {
-      right: -4px;
-      bottom: -4px;
+      inset-inline-end: -4px;
+      inset-block-end: -4px;
       width: 20px;
       height: 20px;
       content: '';
       z-index: 10;
-      border-right: 8px solid var(--blue);
-      border-bottom: 8px solid var(--blue);
+      border-inline-end: 8px solid var(--blue);
+      border-block-end: 8px solid var(--blue);
       position: absolute;
     }
 
@@ -101,7 +97,6 @@
           &.#{vars.$prefix}-code-line-highlight,
           &.highlighted-line {
             background-color: var(--md-theme-code-line-highlight-bg-color);
-            box-shadow: inset 3px 0 0 var(--md-theme-code-line-highlight-border-color);
           }
         }
 
@@ -115,12 +110,12 @@
 
       &:nth-child(2n + 1) {
         &::before {
-          border-top-color: var(--green);
-          border-left-color: var(--green);
+          border-block-start-color: var(--green);
+          border-inline-start-color: var(--green);
         }
         &::after {
-          border-right-color: var(--purple);
-          border-bottom-color: var(--purple);
+          border-inline-end-color: var(--purple);
+          border-block-end-color: var(--purple);
         }
       }
     }
@@ -128,8 +123,8 @@
 
   .code-tabs {
     pre {
-      border-bottom-left-radius: 5px;
-      border-bottom-right-radius: 5px;
+      border-end-start-radius: 5px;
+      border-end-end-radius: 5px;
       border: none;
     }
   }

@@ -13,8 +13,8 @@
 
     &::after {
       content: 'FROM';
-      top: 0;
-      left: 0;
+      inset-block-start: 0;
+      inset-inline-start: 0;
       width: 40px;
       line-height: 1;
       padding: 2px 0;
@@ -29,8 +29,8 @@
 
     &::before {
       content: 'CITATION';
-      top: 0;
-      left: 44px;
+      inset-block-start: 0;
+      inset-inline-start: 44px;
       line-height: 1;
       padding: 2px 0;
       font-size: 12px;

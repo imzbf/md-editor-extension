@@ -3,14 +3,14 @@
 .#{csv.$prefix}-preview {
   ol,
   ul {
-    padding-left: 2em;
+    padding-inline-start: 2em;
 
     .task-list-item {
       list-style-type: none;
 
       input {
-        margin-left: -1.5em;
-        margin-right: 0.1em;
+        margin-inline-start: -1.5em;
+        margin-inline-end: 0.1em;
       }
     }
   }

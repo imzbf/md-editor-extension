@@ -3,7 +3,7 @@
 .#{themeVars.$theme-name} {
   p {
     line-height: inherit;
-    margin-top: themeVars.$line-space;
-    margin-bottom: themeVars.$line-space;
+    margin-block-start: themeVars.$line-space;
+    margin-block-end: themeVars.$line-space;
   }
 }

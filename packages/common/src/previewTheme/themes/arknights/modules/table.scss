@@ -8,17 +8,17 @@
     background-color: var(--table-bg-color);
     overflow: auto;
     border-collapse: collapse;
-    margin-bottom: 1em;
+    margin-block-end: 1em;
 
     tr:hover {
       th,
       td {
-        border-bottom: 1px solid var(--yellow);
+        border-block-end: 1px solid var(--yellow);
       }
     }
   }
   thead {
-    text-align: left;
+    text-align: start;
   }
   tbody {
     tr:nth-child(2n - 1) {
@@ -27,7 +27,7 @@
   }
   th {
     font-size: 1.2em;
-    border-bottom: 1px dashed var(--line);
+    border-block-end: 1px dashed var(--line);
   }
   th,
   td {
@@ -36,6 +36,6 @@
   }
   td {
     min-width: 120px;
-    border-bottom: 1px solid var(--table-bg-color);
+    border-block-end: 1px solid var(--table-bg-color);
   }
 }

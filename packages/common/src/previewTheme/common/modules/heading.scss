@@ -40,7 +40,7 @@
   @for $i from 1 through 6 {
     h#{$i} {
       color: var(--md-theme-heading-#{$i}-color);
-      border-bottom: var(--md-theme-heading-#{$i}-border);
+      border-block-end: var(--md-theme-heading-#{$i}-border);
     }
   }
 
