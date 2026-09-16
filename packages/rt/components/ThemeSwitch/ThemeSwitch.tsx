@@ -11,7 +11,7 @@ interface Props extends CommomProps {
   children?: ReactNode;
 }
 
-const Mark = (props: Props) => {
+const ThemeSwitch = (props: Props) => {
   const onClick = useCallback(() => {
     const value = props.value === 'light' ? 'dark' : 'light';
     props.onChange?.(value);
@@ -19,15 +19,13 @@ const Mark = (props: Props) => {
 
   return (
     <NormalToolbar title={props.title || props.value} onClick={onClick} disabled={props.disabled}>
-      {props.children || props.value === 'light' ? (
-        <Moon className={`${prefix}-icon`} />
-      ) : (
-        <Sun className={`${prefix}-icon`} />
-      )}
+      {/* 自定义内容优先；只在未提供 children 时根据主题选择默认图标。 */}
+      {props.children ||
+        (props.value === 'light' ? <Moon className={`${prefix}-icon`} /> : <Sun className={`${prefix}-icon`} />)}
 
       {props.showToolbarName && <div className={`${prefix}-toolbar-item-name`}>{props.title || props.value}</div>}
     </NormalToolbar>
   );
 };
 
-export default Mark;
+export default ThemeSwitch;

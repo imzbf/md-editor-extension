@@ -16,7 +16,7 @@ interface Props extends CommomProps {
 }
 
 const ThemeDropdown = (props: Props) => {
-  const { options = DEFAULT_OPTIONS, extraOptions = DEFAULT_EXTRA_OPTIONS } = props;
+  const { options = DEFAULT_OPTIONS, extraOptions = DEFAULT_EXTRA_OPTIONS, closeAfterSelect = true } = props;
   const [visible, setVisible] = useState(false);
 
   return (
@@ -34,7 +34,7 @@ const ThemeDropdown = (props: Props) => {
               tabIndex={0}
               key={option.value}
               onClick={() => {
-                if (props.closeAfterSelect) {
+                if (closeAfterSelect) {
                   setVisible(false);
                 }
                 props.onChange(option.value);

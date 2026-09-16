@@ -14,6 +14,7 @@ const OriginalImg = defineComponent({
   setup(props, ctx) {
     const onClick = () => {
       const generator: InsertContentGenerator = () => {
+        // 保留原生 HTML 以支持 width 等属性；v7 需由使用方显式开启 markdown-it 的 html 解析。
         return {
           targetValue: '<img src="" alt="" width="100%">',
           select: true,

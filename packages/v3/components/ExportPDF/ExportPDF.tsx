@@ -1,7 +1,7 @@
 import { Printer } from '@lucide/vue';
 import { prefix } from '@vavt/utils/src/static';
 import { getSlot } from '@vavt/utils/src/vue-tsx';
-import { MdPreview, ModalToolbar, ExposePreviewParam, MdHeadingId } from 'md-editor-v3';
+import { MdPreview, ModalToolbar, ExposePreviewParam, MdHeadingId, MdPreviewProps } from 'md-editor-v3';
 import { defineComponent, reactive, ref, CSSProperties } from 'vue';
 import type { PropType } from 'vue';
 import { commomProps } from '../../common/props';
@@ -47,6 +47,11 @@ const ExportPDF = defineComponent({
     style: {
       type: [Object, String] as PropType<string | CSSProperties>,
       default: () => ({})
+    },
+    // 导出会创建独立的 MdPreview，必须显式传入与编辑器相同的 HTML 过滤函数。
+    sanitize: {
+      type: Function as PropType<MdPreviewProps['sanitize']>,
+      default: undefined
     },
     onStart: {
       type: Function as PropType<() => void>,
@@ -160,6 +165,7 @@ const ExportPDF = defineComponent({
               modelValue={props.modelValue}
               mdHeadingId={headingId}
               style={props.style}
+              sanitize={props.sanitize}
               codeFoldable={false}
               showCodeRowNumber={false}
               noHighlight={props.noHighlight}

@@ -17,3 +17,11 @@ on md-editor v6.
 declares both editors as optional peer dependencies at `>= 7.0.0`, so whichever
 editor you have installed is version checked and the other one is ignored.
 Upgrade the editor before upgrading these packages.
+
+Forward `ExportPDF.sanitize` to its internal preview so HTML filtering can match
+the editor when opting into raw HTML on v7. Preserve custom content in both
+`ThemeSwitch` components and close React's `PreviewThemeSwitch` after selection
+by default, matching Vue and the documented behavior.
+
+Document the HTML opt-in required by `OriginalImg` and custom HTML emoji, and
+correct the controlled editor and theme bindings in the component examples.

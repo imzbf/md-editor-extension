@@ -1,6 +1,6 @@
 import { prefix } from '@vavt/utils/src/static';
 import { Printer } from 'lucide-react';
-import { MdPreview, ModalToolbar, ExposePreviewParam, MdHeadingId } from 'md-editor-rt';
+import { MdPreview, ModalToolbar, ExposePreviewParam, MdHeadingId, MdPreviewProps } from 'md-editor-rt';
 import React, {
   useCallback,
   CSSProperties,
@@ -27,6 +27,8 @@ interface Props extends CommomProps {
   value?: string;
   exportBtnText?: string;
   style?: CSSProperties;
+  /** 导出会创建独立的 MdPreview，需传入与编辑器相同的 HTML 过滤函数。 */
+  sanitize?: MdPreviewProps['sanitize'];
   onStart?: () => void;
   onSuccess?: () => void;
   onError?: (err: unknown) => void;
@@ -117,6 +119,7 @@ const ExportPDF = forwardRef((props: Props, ref: ForwardedRef<unknown>) => {
           value={props.value || ''}
           mdHeadingId={headingId}
           style={style}
+          sanitize={props.sanitize}
           codeFoldable={false}
           showCodeRowNumber={false}
           noHighlight={props.noHighlight}
