@@ -1,6 +1,12 @@
 ## ExportPDF
 
-Export content as a PDF file.
+Open the browser's print dialog to save content as a PDF file.
+
+## md-editor v7
+
+If the editor uses `sanitize`, explicitly pass the same function with `<ExportPDF :modelValue="text" :sanitize="sanitize" />`; the prop is forwarded to the export preview. When configuring Markdown plugins by `editorId`, also handle `export-pdf-preview`. See [OriginalImg](../OriginalImg/README.md) for HTML opt-in configuration.
+
+Code folding and line numbers are disabled for export. v7 code line highlighting remains available.
 
 ## Usage
 
@@ -37,10 +43,11 @@ const toolbars = ['bold', 0, 'underline'];
 | width | `string` | '870px' | Width of component `Modal` |
 | height | `string` | '600px' | Height of component `Modal` |
 | modalTitle | `string` | 'Export as PDF' or '导出为 PDF' | Title of component `Modal` |
-| modelValue | `string` | '' | Conten need to be exported |
+| modelValue | `string` | '' | Content to export |
 | exportBtnText | `string` | 'Export' or '导出' |  |
-| style | `string \| CSSProperties` | `{ padding: '10mm' }` |  |
-| noIconfont | `boolean` |  | Not append iconfont script |
+| style | `string \| CSSProperties` | `{}` | Style of the export preview |
+| sanitize | `(html: string) => string` | Editor's identity function | Filter the export preview HTML; pass the same function used by the editor |
+| noIconfont | `boolean` |  | Legacy prop with no effect; icons no longer use iconfont |
 | noHighlight | `boolean` |  | Highlight code or not |
 | noImgZoomIn | `boolean` |  | Enable the function of enlarging images |
 | noKatex | `boolean` |  | Use katex or not |
@@ -49,17 +56,17 @@ const toolbars = ['bold', 0, 'underline'];
 
 ## Slots
 
-| name | type | default | description |
-| --- | --- | --- | --- |
-| trigger | `string \| VNode \| JSX.Element` | `<span class="mee-iconfont icon-mee-pdf" />` | Content displayed in the toolbar |
+| name    | type                             | default                              | description                      |
+| ------- | -------------------------------- | ------------------------------------ | -------------------------------- |
+| trigger | `string \| VNode \| JSX.Element` | `<Printer class="md-editor-icon" />` | Content displayed in the toolbar |
 
 ## Events
 
-| name      | type                     | description |
-| --------- | ------------------------ | ----------- |
-| onStart   | `() => void`             |             |
-| onSuccess | `() => void`             |             |
-| onError   | `(err: unknown) => void` |             |
+| name | type | description |
+| --- | --- | --- |
+| onStart | `() => void` | Before opening the print dialog |
+| onSuccess | `() => void` | On `afterprint`, including cancellation; does not confirm that a file was saved |
+| onError | `(err: unknown) => void` | The export preview element could not be found |
 
 ## Expose
 

@@ -19,11 +19,12 @@ import '@vavt/rt-extension/lib/asset/PreviewThemeSwitch.css';
 const toolbars = ['bold', 0, '=', 'github'];
 
 export default () => {
-  const [theme, setTheme] = useState('light');
+  const [previewTheme, setPreviewTheme] = useState('default');
 
   return (
     <MdEditor
       value="content"
+      previewTheme={previewTheme}
       toolbars={toolbars}
       defToolbars={[
         <PreviewThemeSwitch
@@ -43,7 +44,7 @@ export default () => {
 | name | type | default | description |
 | --- | --- | --- | --- |
 | title | `string` | `props.value` | Shown as a tooltip text when the mouse moves over |
-| value | `string` | 'light' | Editor's preview theme |
+| value | `string` | Required | Editor's preview theme |
 | options | `Array<{ value: string; label: string }>` | [DEFAULT_OPTIONS](https://github.com/imzbf/md-editor-extension/blob/develop/packages/data/src/index.ts#L1) | Option; defaults to a list of preview theme names within the editor |
 | extraOptions | `Array<{ value: string; label: string }>` | `[]` | Extra options that will be appended to the default list |
 | closeAfterSelect | `boolean` | `true` | Whether to close the dropdown menu after selection |

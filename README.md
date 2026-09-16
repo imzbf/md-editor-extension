@@ -6,6 +6,10 @@ Share your configuration of [md-editor-v3](https://github.com/imzbf/md-editor-v3
 
 ## Usage
 
+In md-editor v7, `OriginalImg` and custom HTML emoji need explicit `html: true` in `markdownItConfig`. `Mark` works with `html: false` after registering `markdown-it-mark`. Pass the same `sanitize` function to the editor and `ExportPDF`; see the component READMEs below for configuration examples.
+
+v7 also uses `[data-theme='dark']` for dark mode, a new code line structure, and JSON5 objects for ECharts options. Upgrade the editor and extension styles together.
+
 ### @vavt/cm-extension
 
 This is a public configuration library that includes languages and themes.
@@ -106,9 +110,9 @@ npm install @vavt/v3-extension
 | [ThemeSwitch](https://github.com/imzbf/md-editor-extension/blob/main/packages/v3/components/ThemeSwitch/README.md) | Standard tool for toggling the editor's theme |
 | [PreviewThemeSwitch](https://github.com/imzbf/md-editor-extension/blob/main/packages/v3/components/PreviewThemeSwitch/README.md) | Dropdown menu tool for switching the editor's preview theme |
 
-| @vavt/v3-extension | md-editor-v3 |
-| ------------------ | ------------ |
-| >=3.0.0            | >=5.2.0      |
+| @vavt/v3-extension      | md-editor-v3 |
+| ----------------------- | ------------ |
+| Next major (unreleased) | ^7.0.0       |
 
 ### @vavt/rt-extension
 
@@ -129,9 +133,9 @@ npm install @vavt/rt-extension
 | [ThemeSwitch](https://github.com/imzbf/md-editor-extension/blob/main/packages/rt/components/ThemeSwitch/README.md) | Standard tool for toggling the editor's theme |
 | [PreviewThemeSwitch](https://github.com/imzbf/md-editor-extension/blob/main/packages/rt/components/PreviewThemeSwitch/README.md) | Dropdown menu tool for switching the editor's preview theme |
 
-| @vavt/rt-extension | md-editor-rt |
-| ------------------ | ------------ |
-| >=3.0.0            | >=5.2.0      |
+| @vavt/rt-extension      | md-editor-rt |
+| ----------------------- | ------------ |
+| Next major (unreleased) | ^7.0.0       |
 
 ## Contribute
 

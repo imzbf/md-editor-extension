@@ -6,6 +6,10 @@
 
 ## 使用
 
+md-editor v7 中，`OriginalImg` 和自定义 HTML 表情需要在 `markdownItConfig` 中显式设置 `html: true`；`Mark` 注册 `markdown-it-mark` 后可继续使用 `html: false`。请给编辑器和 `ExportPDF` 传入同一个 `sanitize` 函数，配置示例见下方各组件文档。
+
+v7 同时改用 `[data-theme='dark']` 切换暗色主题、调整代码块的逐行结构，并使用 JSON5 对象解析 ECharts 配置。请同时升级编辑器和扩展样式。
+
 ### @vavt/cm-extension
 
 这是一个公共的配置库，包括语言、主题。
@@ -105,9 +109,9 @@ npm install @vavt/v3-extension
 | [ThemeSwitch](https://github.com/imzbf/md-editor-extension/blob/main/packages/v3/components/ThemeSwitch/README.md) | 用于切换编辑器主题的标准工具 |
 | [PreviewThemeSwitch](https://github.com/imzbf/md-editor-extension/blob/main/packages/v3/components/PreviewThemeSwitch/README.md) | 用于切换编辑器预览主题的下拉菜单工具 |
 
-| @vavt/v3-extension | md-editor-v3 |
-| ------------------ | ------------ |
-| >=3.0.0            | >=5.2.0      |
+| @vavt/v3-extension     | md-editor-v3 |
+| ---------------------- | ------------ |
+| 下一主版本（尚未发布） | ^7.0.0       |
 
 ### @vavt/rt-extension
 
@@ -130,9 +134,9 @@ npm install @vavt/rt-extension
 | [ThemeSwitch](https://github.com/imzbf/md-editor-extension/blob/main/packages/rt/components/ThemeSwitch/README.md) | 用于切换编辑器主题的标准工具 |
 | [PreviewThemeSwitch](https://github.com/imzbf/md-editor-extension/blob/main/packages/rt/components/PreviewThemeSwitch/README.md) | 用于切换编辑器预览主题的下拉菜单工具 |
 
-| @vavt/rt-extension | md-editor-rt |
-| ------------------ | ------------ |
-| >=3.0.0            | >=5.2.0      |
+| @vavt/rt-extension     | md-editor-rt |
+| ---------------------- | ------------ |
+| 下一主版本（尚未发布） | ^7.0.0       |
 
 ## 参与贡献
 

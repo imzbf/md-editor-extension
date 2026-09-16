@@ -20,7 +20,7 @@ export default () => {
 
   return (
     <MdEditor
-      modelValue={value}
+      value={value}
       onChange={setValue}
       toolbars={['bold', 0, '=', 'github']}
       defToolbars={[<Emoji key="Emoji" trigger={<span>emoji</span>} />]}
@@ -36,4 +36,4 @@ export default () => {
 | title | `string` | 'emoji' | Shown as a tooltip text when the mouse moves over |
 | emojis | `Array<string>` | emojis | Alternative emojis |
 | selectAfterInsert | `boolean` | true | Select content after inserting it |
-| trigger | `string \| ReactElement` | `<span className="mee-iconfont icon-mee-emoji" />` | Content displayed in the toolbar |
+| trigger | `string \| ReactElement` | `<Smile className="md-editor-icon" />` | Content displayed in the toolbar |

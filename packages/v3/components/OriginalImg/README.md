@@ -1,6 +1,12 @@
 ## OriginalImg
 
-Append `<img >`.
+Insert `<img src="" alt="" width="100%">` and select the image URL for editing.
+
+## md-editor v7
+
+v7 defaults to `html: false`, so the inserted tag appears as text in `MdEditor`, `MdPreview`, and `ExportPDF`. To render it as an image, explicitly enable HTML in `markdownItConfig` before mounting the components, as shown below. `OriginalImg` does not change parser settings automatically.
+
+For untrusted content, also pass an HTML sanitizer to every preview, including `ExportPDF`. To keep `html: false`, use the editor's built-in Markdown image tool instead.
 
 ## Usage
 
@@ -19,7 +25,7 @@ Append `<img >`.
 
 <script setup>
 import { ref } from 'vue';
-import { MdEditor } from 'md-editor-v3';
+import { MdEditor, config } from 'md-editor-v3';
 import 'md-editor-v3/lib/style.css';
 
 import { OriginalImg } from '@vavt/v3-extension';
@@ -28,6 +34,13 @@ import { OriginalImg } from '@vavt/v3-extension';
 // import '@vavt/v3-extension/lib/asset/style.css';
 // Or individual style for OriginalImg
 import '@vavt/v3-extension/lib/asset/OriginalImg.css';
+
+// Enable raw HTML for trusted content; merge this into any existing plugin configuration.
+config({
+  markdownItConfig(md) {
+    md.set({ html: true });
+  }
+});
 
 const text = ref('');
 const toolbars = ['bold', 0, 'underline'];
@@ -38,10 +51,10 @@ const toolbars = ['bold', 0, 'underline'];
 
 | name  | type     | default | description                                       |
 | ----- | -------- | ------- | ------------------------------------------------- |
-| title | `string` | 'img'   | Shown as a tooltip text when the mouse moves over |
+| title | `string` | 'image' | Shown as a tooltip text when the mouse moves over |
 
 ## Slots
 
 | name | type | default | description |
 | --- | --- | --- | --- |
-| trigger | `string \| VNode \| JSX.Element` | `<span class="mee-iconfont icon-mee-tupian" />` | Content displayed in the toolbar |
+| trigger | `string \| VNode \| JSX.Element` | `<ImagePlus class="md-editor-icon" />` | Content displayed in the toolbar |

@@ -34,10 +34,10 @@ const toolbars: ToolbarNames[] = ['bold', 0, 'underline'];
 
 ## Props
 
-| name | type | default | description |
-| --- | --- | --- | --- |
-| title | `string` | 'Theme Switcher' | Shown as a tooltip text when the mouse moves over |
-| modelValue | `string` | 'light' | Editor's theme |
+| name       | type     | default            | description                                       |
+| ---------- | -------- | ------------------ | ------------------------------------------------- |
+| title      | `string` | `props.modelValue` | Shown as a tooltip text when the mouse moves over |
+| modelValue | `Themes` | 'light'            | Editor's theme                                    |
 
 ## Events
 

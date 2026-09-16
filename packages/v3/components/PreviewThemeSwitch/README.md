@@ -6,7 +6,7 @@ Dropdown menu tool for switching the editor's preview theme.
 
 ```vue
 <template>
-  <MdEditor v-model="text" :toolbars="toolbars" :theme="theme">
+  <MdEditor v-model="text" :toolbars="toolbars" :previewTheme="previewTheme">
     <template #defToolbars>
       <PreviewThemeSwitch v-model="previewTheme" />
       <!-- <PreviewThemeSwitch v-model="previewTheme">
@@ -39,8 +39,8 @@ const toolbars: ToolbarNames[] = ['bold', 0, 'underline'];
 
 | name | type | default | description |
 | --- | --- | --- | --- |
-| title | `string` | 'Theme Switcher' | Shown as a tooltip text when the mouse moves over |
-| modelValue | `string` | 'light' | Editor's preview theme |
+| title | `string` | `props.modelValue` | Shown as a tooltip text when the mouse moves over |
+| modelValue | `string` | '' | Editor's preview theme |
 | options | `Array<{ value: string; label: string }>` | [DEFAULT_OPTIONS](https://github.com/imzbf/md-editor-extension/blob/develop/packages/data/src/index.ts#L1) | Option; defaults to a list of preview theme names within the editor |
 | extraOptions | `Array<{ value: string; label: string }>` | `[]` | Extra options that will be appended to the default list |
 | closeAfterSelect | `boolean` | `true` | Whether to close the dropdown menu after selection |
@@ -49,7 +49,7 @@ const toolbars: ToolbarNames[] = ['bold', 0, 'underline'];
 
 | name     | type                      | default   | description |
 | -------- | ------------------------- | --------- | ----------- |
-| onChange | `(value: Themes) => void` | undefined |             |
+| onChange | `(value: string) => void` | undefined |             |
 
 ## Slots
 

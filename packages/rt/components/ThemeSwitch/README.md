@@ -24,6 +24,7 @@ export default () => {
   return (
     <MdEditor
       value="content"
+      theme={theme}
       toolbars={toolbars}
       defToolbars={[<ThemeSwitch value={theme} onChange={setTheme} key="ThemeSwitch" />]}
     />
@@ -36,7 +37,7 @@ export default () => {
 | name | type | default | description |
 | --- | --- | --- | --- |
 | title | `string` | `props.value` | Shown as a tooltip text when the mouse moves over |
-| value | `string` | 'light' | Editor's theme |
+| value | `string` | Required | Editor's theme: `'light'` or `'dark'` |
 | children | `ReactNode` | `<Moon  class="md-editor-icon" /> \| <Sun  class="md-editor-icon" />` | Content displayed in the toolbar |
 
 ## Events

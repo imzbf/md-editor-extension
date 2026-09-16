@@ -1,6 +1,6 @@
 ## Mark
 
-Text markers
+Insert `==selected text==`; `markdown-it-mark` renders it as `<mark>selected text</mark>`.
 
 ## Usage
 
@@ -36,7 +36,7 @@ export default () => {
 
   return (
     <MdEditor
-      modelValue={value}
+      value={value}
       onChange={setValue}
       toolbars={['bold', 0, '=', 'github']}
       defToolbars={[<Mark key="Mark" trigger={<span>mark</span>} />]}
@@ -45,9 +45,9 @@ export default () => {
 };
 ```
 
-## Slots
+## Props
 
 | name | type | default | description |
 | --- | --- | --- | --- |
-| title | `string` | 'emoji' | Shown as a tooltip text when the mouse moves over |
-| trigger | `string \| ReactElement` | `<span className="mee-iconfont icon-mee-mark" />` | Content displayed in the toolbar |
+| title | `string` | 'mark' | Shown as a tooltip text when the mouse moves over |
+| trigger | `string \| ReactElement` | `<Highlighter className="md-editor-icon" />` | Content displayed in the toolbar |
